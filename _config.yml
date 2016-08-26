@@ -38,7 +38,7 @@ title:               zeerd's blog
 tagline:             闲来生雅意，无事最逍遥。对窗遥望雪，一盏茶香飘。
 url:                 "http://http://blog.zeerd.com"
 paginate_l:           4
-baseurl:             "/"
+baseurl:             ""
 
 paginate_langs:      ["en", "sv", "ru"]
 

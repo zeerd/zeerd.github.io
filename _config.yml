@@ -26,6 +26,9 @@ version:             2.0.0
 github:
   repo:              https://github.com/zeerd/zeerd.github.io
 
+# Conversion
+excerpt_separator: "<!--break-->"
+
 # Gems
 gems:
   - jekyll-paginate

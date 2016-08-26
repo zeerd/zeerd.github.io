@@ -40,7 +40,7 @@ url:                 "http://blog.zeerd.com"
 paginate_l:           4
 baseurl:             ""
 
-paginate_langs:      ["en", "sv", "ru"]
+
 
 # Assets
 #

@@ -34,10 +34,9 @@ exclude: [README.md]
 #fb_appid:           337414769782635
 
 # Setup
-title:               zeerd's blog
+title:               zeerd's blog1
 tagline:             闲来生雅意，无事方逍遥。对窗遥望雪，一盏茶香飘。
 url:                 "http://blog.zeerd.com"
-paginate_l:           4
 baseurl:             ""
 
 

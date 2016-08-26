@@ -13,18 +13,22 @@
       <div class="masthead">
 
         <div class="container">
- 	<h3 class="masthead-title">
+ <h3 class="masthead-title">
           <h3 class="masthead-title">
             <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
-            <small>{{ site.tagline }}</small>
             <small>
-		{% for page in site.pages_list %}
-	        &nbsp;&nbsp;&nbsp;
-	        <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
-	        {% endfor %}
+	{% for page in site.pages_list %}
+  &nbsp;&nbsp;&nbsp;
+  <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
+{% endfor %}
 	   </small>
 	</h3>
         <h3 class="masthead-title">
+           <small>
+	     <a href="{{site.url}}{{site.baseurl}}/en">English</a>
+	     <a href="{{site.url}}{{site.baseurl}}/sv">Svenska</a>
+	     <a href="{{site.url}}{{site.baseurl}}/ru">Русский</a>
+	   </small>
         </div>
       </div>
 
@@ -38,7 +42,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-24328633-1', 'auto');
+  ga('create', 'UA-67139587-1', 'auto');
   ga('send', 'pageview');
 </script>
 <!-- Analytics end -->
@@ -65,6 +69,7 @@
 
  <footer class="footer">
  <small>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">The content of this page </span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://vrepin.org/" property="cc:attributionName" rel="cc:attributionURL">Vitaly Repin</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>,
 	  <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>.
 	  </small>
 </footer>

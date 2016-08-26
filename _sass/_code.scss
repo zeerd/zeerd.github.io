@@ -5,13 +5,13 @@
 
 code,
 pre {
-  font-family: $code-font-family;
+  font-family: Menlo, Monaco, "Courier New", monospace;
 }
 
 code {
   padding: .25em .5em;
   font-size: 85%;
-  color: $code-color;
+  color: #bf616a;
   background-color: #f9f9f9;
   border-radius: 3px;
 }

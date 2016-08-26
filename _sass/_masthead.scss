@@ -11,15 +11,16 @@
 .masthead-title {
   margin-top: 0;
   margin-bottom: 0;
-  color: $gray-4;
+  color: #505050;
 
   a {
-    color: inherit;
+    color: #505050;
   }
 
   small {
     font-size: 75%;
     font-weight: 400;
-    opacity: .5;
+    color: #c0c0c0;
+    letter-spacing: 0;
   }
 }

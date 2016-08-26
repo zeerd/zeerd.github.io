@@ -3,5 +3,5 @@
 [zeerd](http://blog.zeerd.com)
 
 
-based on [poole](https://github.com/poole/poole)
+based on [vrepinblog](https://github.com/vitalyrepin/vrepinblog)
 

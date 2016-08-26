@@ -44,23 +44,22 @@
 <!-- Analytics end -->
 
  {% if page.comments %}
-<div id="disqus_thread"></div>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="0" data-title="Home" data-url="http://blog.zeerd.com"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'vitalyrepinblog';
-{% unless page.gamla_disqus_satte %}    
-    var disqus_identifier = '{{ page.id | escape }}';
-    var disqus_title = '{{ page.title | escape }}';
-    var disqus_url = '{{site.url}}{{site.baseurl}}{{ page.url }}';
-{% endunless %}    
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+var duoshuoQuery = {short_name:"zeerd"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
  {% endif %}
 
  <footer class="footer">

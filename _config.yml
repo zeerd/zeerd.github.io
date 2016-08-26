@@ -40,6 +40,8 @@ url:                 "http://http://blog.zeerd.com"
 paginate_l:           4
 baseurl:             "/"
 
+paginate_langs:      ["en", "sv", "ru"]
+
 # Assets
 #
 # We specify the directory for Jekyll so we can use @imports.

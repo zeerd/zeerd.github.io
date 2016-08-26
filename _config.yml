@@ -75,10 +75,10 @@ kramdown:
   auto_ids: true
 
 pages_list:
-  About: 'about/'
-  Tags: 'tags/'
-  Pebble: 'pebble/'
-  Feed: 'atom.xml'
+  About: '/about/'
+  Tags: '/tags/'
+  Pebble: '/pebble/'
+  Feed: '/atom.xml'
 
 picture:
   source: "_assets/imgs/_fullsize"

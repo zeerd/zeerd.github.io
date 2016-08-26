@@ -1,0 +1,20 @@
+---
+layout: post
+title: 旧文整理：MinGW写的简易记事本 Ver0.02
+tags: [MinGW,Notepad,Windows]
+---
+<h2>{{ page.title }}</h2>
+<p>参照http://bnlt.org/?p=59内容，成功的通过手机链接了open vpn。</p>
+
+<p>下面仅列出一些相关链接：<br>
+出现错误：Note:Cannot open TUN/TAP dev /dev/tun:No such file or directory(errno=2)<br>
+milestone可用的tun.ko的下载地址： http://code.google.com/p/sbdtools/downloads/detail?name=tun.ko&amp;can=2&amp;q=tun.ko<br>
+拷贝到/system/lib/modules目录下，执行insmod /system/lib/modules/tun.ko</p>
+
+<p>openvpn软件包的下载地址： http://cloud.github.com/downloads/fries/android-external-openvpn/openvpn-android-2.1.tar.bz2<br>
+用这个虽然麻烦一点，但是总比总是adb失败要容易对付一些……</p>
+
+<p>最后补充几点：<br>
+在所有软件备齐之后，运行时可能还会出现类似“linux ifconfig failed could not execute external program”。这是因为openvpn会去/system/xbin/bb下面查找系统命令，而实际上安装busybox之后，这些系统命令在/system/bin目录下。<br>
+执行“ln -s /system/bin/ifconfig /system/xbin/bb/ifconfig”即可链接过去。仔细查看屏幕输出的log，可能不止缺少ifconfig，但是只要缺了，就按着上面命令格式添加类似的link即可。 </p>
+<p>{{ page.date | date_to_string }}</p>

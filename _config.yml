@@ -1,20 +1,20 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-permalink: "/:title/"
+##permalink: "/:title/"
 
-highlighter: rouge
+##highlighter: rouge
 
-timezone: Asia/Shanghai
+##timezone: Asia/Shanghai
 
 # Default YAML frontmatter settings
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      comments: true
+##defaults:
+##  -
+##    scope:
+##      path: ""
+##      type: "posts"
+##    values:
+##      comments: true
 
 # Tagging settings
 tag_title_prefix:   "Posts tagged #"
@@ -29,7 +29,7 @@ tag_title_suffix:   ""
 image_base:          /public/images/
 
 # Do not copy these file to the output directory
-exclude: [README.md]
+##exclude: [README.md]
 
 #fb_appid:           337414769782635
 
@@ -44,9 +44,9 @@ baseurl:             ""
 # Assets
 #
 # We specify the directory for Jekyll so we can use @imports.
-sass:
-  sass_dir:          _sass
-  style:            :compressed
+##sass:
+##  sass_dir:          _sass
+##  style:            :compressed
 
 # About/contact
 author:
@@ -66,11 +66,11 @@ gems:
 # Conversion
 excerpt_separator: "<!--break-->"
 
-redcarpet:
-  extensions: ["footnotes"]
+##redcarpet:
+##  extensions: ["footnotes"]
 
-kramdown:
-  auto_ids: true
+##kramdown:
+##  auto_ids: true
 
 pages_list:
   About: '/about/'
@@ -78,17 +78,17 @@ pages_list:
   Pebble: '/pebble/'
   Feed: '/atom.xml'
 
-picture:
-  source: "_assets/imgs/_fullsize"
-  output: "generated"
-  markup: "picture"
-  presets:
-    default:
-      ppi: [1, 1.5, 2]
-      source_medium:
-        media: "(min-width: 40em)"
-        width: "640"
-      source_small:
-        height: "100"
-      source_default:
-        width: "640"
+##picture:
+##  source: "_assets/imgs/_fullsize"
+##  output: "generated"
+##  markup: "picture"
+##  presets:
+##    default:
+##      ppi: [1, 1.5, 2]
+##      source_medium:
+##        media: "(min-width: 40em)"
+##        width: "640"
+##      source_small:
+##        height: "100"
+##      source_default:
+##        width: "640"

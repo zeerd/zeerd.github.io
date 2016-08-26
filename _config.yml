@@ -29,6 +29,11 @@ github:
 # Conversion
 excerpt_separator: "<!--break-->"
 
+pages_list:
+  About: 'about/'
+  Tags: 'tags/'
+  Pebble: 'pebble/'
+  
 # Gems
 gems:
   - jekyll-paginate

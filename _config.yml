@@ -1,7 +1,7 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-##permalink: "/:title/"
+permalink: "/:title/"
 
 ##highlighter: rouge
 
@@ -34,11 +34,11 @@ image_base:          /public/images/
 #fb_appid:           337414769782635
 
 # Setup
-title:               zeerd's blog1
+title:               zeerd's blog
 tagline:             闲来生雅意，无事方逍遥。对窗遥望雪，一盏茶香飘。
 url:                 "http://blog.zeerd.com"
 baseurl:             ""
-
+paginate:            1
 
 
 # Assets

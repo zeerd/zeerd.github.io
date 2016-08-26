@@ -2,9 +2,9 @@
 permalink:           pretty
 
 # Setup
-title:               Poole
-tagline:             The Jekyll Butler
-url:                 http://getpoole.com
+title:               zeerd's blog
+tagline:             闲来生雅意，无事醉逍遥。对窗遥望雪，一盏茶香飘。
+url:                 http://blog.zeerd.com
 paginate:            1
 baseurl:             ""
 
@@ -17,14 +17,14 @@ sass:
 
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              zeerd
+  url:               http://about.zeerd.com
+  email:             emneg@zeerd.com
 
 # Custom vars
 version:             2.0.0
 github:
-  repo:              https://github.com/poole/poole
+  repo:              https://github.com/zeerd/zeerd.github.io
 
 # Gems
 gems:

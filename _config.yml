@@ -3,7 +3,7 @@
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink: "/:title/"
 
-highlighter: pygments
+highlighter: rouge
 
 timezone: Asia/Shanghai
 

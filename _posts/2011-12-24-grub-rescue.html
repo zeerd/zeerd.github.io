@@ -1,6 +1,6 @@
 ---
 layout: post
-title: error: no such partition / grub rescue> 一解
+title: error no such partition / grub rescue> 一解
 tag: [grub]
 ---
 在windows下面删除了一个分区。原以为应该对Ubuntu没什么影响的。不曾想，重启之后出现了grub错误。<br><br>启动界面下显示：<br><br>error: no such partition<br>grub rescue><br><br>此时，输入ls命令，列出所有磁盘分区。<br>然后输入set命令查看现有的设定。发现分区的序号变更了，现有设定和磁盘分区不匹配。<br><br>grub rescue>ls<br>(hd0) (hd0,msdos7) (hd0,msdos6) (hd0,msdos3) ....<br>grub rescue>set<br>prefix=(hd0,msdos5)/boot/grub<br>root=hd0,msdos5<br><br>仔细对照发现，ls的结果中根本没有(hd0,msdos5)，怀疑是删除分区时分区序号变更了。<br>再次查看ls的列表，里面有msdos6和msdos3，没有msdos4。因为只删除了一个分区，因此猜测分区变成了msdos6。<br><br>尝试输入：<br>grub rescue>set root=hd0,msdos6<br>grub rescue>set prefix=(hd0,msdos6)/boot/grub<br>grub rescue>insmod normal<br><br>此时，如果尝试成功，则命令行提示符会变色。原本的提示符是灰色的，成功之后会变成纯白色。<br><br>再次输入：<br>grub rescue>normal<br>既可以进入熟悉的grub启动画面了。<br><br><a href="http://blog.zeerd.com/public/2011-12-24/2011-12-23_07-50-39_944.jpg"><img src="http://blog.zeerd.com/public/2011-12-24/2011-12-23_07-50-39_944.jpg" alt="" title="2011-12-23_07-50-39_944" width="300" height="168" /></a>

@@ -1,0 +1,6 @@
+---
+layout: post
+title: GoDaddy下PHP访问Mysql数据库
+tags: [GoDaddy,MySQL]
+---
+首先，Go Daddy提供了一个例子程序：<br><br>进入到数据库管理页面——Go Daddy那个Hosting Contrl center的管理页面，不是phpmyadmin的页面，点击“Configuration”，然后后面就会多出来两个链接。<br><br>点“Connecting to a MySQL Database on Your Linux Hosting Account Using PHP”，会跳转到一个例子程序的页面。<br><br>这里，需要注意两个问题：<br>1、“$hostname”要指向你在“Hosting Contrl center”里面看到那个“Host Name”。也即是类似“zeexxxxxxxxxxxxxxxxx.db.nnnnnnnn.hostedresource.com”那个。<br><br>2、“$dbname”的大小写。使用phpmysql创建数据库的话，无论你填写的是大小写的，都会被替换成小写——我不知道这个是不是mysql的限制——我在这里卡了半天。

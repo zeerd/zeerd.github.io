@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 你好，世界
+title: C++中的static陷阱
 tags: [cpp,bug]
 comments: true
 ---
@@ -12,7 +12,7 @@ comments: true
 <br>
 看下面实例：<br>
 <pre>
-#include
+#include <stdio.h>
 
 class A{
     public:
@@ -37,4 +37,4 @@ class A{
   601030<br>
   <br>
   说明两个实体中，函数静态成员变量和static类型的类成员变量一样，所有类实体共用同一个内存空间。<br>
-<p>{{ page.date | date_to_string }}</p>
+<p>{{site.author.name}} @ {{ page.date | date_to_string }}</p>

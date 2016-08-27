@@ -29,7 +29,7 @@ tag_title_suffix:   ""
 image_base:          /public/images/
 
 # Do not copy these file to the output directory
-exclude: [README.md]
+exclude: [README.md,Gemfile]
 
 #fb_appid:           337414769782635
 

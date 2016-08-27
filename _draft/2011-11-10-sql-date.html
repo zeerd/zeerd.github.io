@@ -1,6 +1,0 @@
----
-layout: post
-title: SQL 存储过程，获取当前周起止时间
-tags: [SQL]
----
-<p>Declare @Weekday int<br>Declare @Today datetime<br>Declare @Startday datetime<br>Declare @Endday datetime</p>\n<p>-- 获取今天凌晨零点的datetime<br>Set @Today = convert(datetime, str(year(getdate())) + str(month(getdate())) + str(day(getdate())))</p>\n<p>-- 获取今天是本周的第几天（返回结果是以周日为第一天的）<br>Select @Weekday = datapart(weekday, getdate()) -1</p>\n<p>-- 获取本周第一天和最后一天的datetime<br>Set @Startday = dateadd(dd, -@weekday+1, @Today)<br>Set @Endday = dateadd(dd, +(7-@Weekday+1), @Today)</p>\n<p>Select * from table where @Startday <= timefield and timefield <= @3ndday</p>

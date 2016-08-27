@@ -1,0 +1,8 @@
+---
+layout: post
+title: 概念：无缝导航
+tags: [Navi]
+---
+什么是“无缝导航”？ <br>
+<!--break-->
+<a href="http://virtual.vtt.fi/virtual/noppa/mvenue/towards%20seamless%20navigation.pdf">Towards Seamless Navigation</a>给出的定义是： <br>Seamless navigation is a term which describes universal navigation systems, where transitions between different navigation modes and services are, more or less, seamless for the user. <br>简单的说，就是在不同的环境下能够使导航不间断的延续。 <br><br>举例来说，小明驾车去一个首次关注到的旅游景点，但是景点停车场满员了，只能把车停在较远的停车场。这样，小明就需要用手机导航完成从停车场到景点之间的路途指引。而无缝导航在这里需要做的事情就是，将车载导航上的目标坐标同步到手机上去（实际上，无缝导航的概念还要包括进一步的室内导航）。<br><br>大部分的无缝导航需要依赖于车载导航、云服务、手机导航三者的协调运作。也即是说，要实现这个功能，就需要车载导航可以上网。即便跳过云服务，至少也要实现车载导航到手机的链接和数据传输。 <br><br>所以，这里我提出一个比较傻瓜的方法。即利用QR码实现这一步互联。当车载导航检测到车辆停止的信息之后，判断目的地与当前位置的距离，如果距离超出一定的设定值，则自动将目的地坐标生成QR码并弹出到车载导航屏幕上。用户可以用手机直接扫描QR码实现手机导航的目的地设定。 <br><br>技术细节： <br>1、linux系统可以使用qrencode库来完成QR码图片的做成。 <br>2、QR码的地图信息的格式类似如下：geo:40.71872,-73.98905,100 <br>3、一个简单的命令行例子：/usr/local/bin/qrencode -o geo.png "geo:40.71872,-73.98905,100" <br>4、代码： <br><pre class="brush: c; gutter: true; first-line: 1; highlight: []; html-script: false">int main(int argc, char* argv[]) <br>{ <br>	QRcode *code; <br>	code = QRcode_encodeString((char *)argv[1], 0, QR_ECLEVEL_L, QR_MODE_8, 1); <br>	writePNG(code, argv[2]); <br>	return 0; <br>} </pre><br>#gcc qr_geo.c  -lpng -lqrencode <br>#./a.out "geo:40.71872,-73.98905,100" geo.png <br><br>其中： <br>QRcode_encodeString是qrencode的库函数，用于从字符串生成QR码； <br>writePNG是从qrencode的qrenc.c中抄来的函数，用于将生成的QR码保存到PNG类型的图片文件中。 <br><br>有了文件之后，就只需要把图片显示到屏幕上了。

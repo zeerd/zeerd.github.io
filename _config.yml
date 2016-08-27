@@ -8,13 +8,13 @@ highlighter: rouge
 timezone: Asia/Shanghai
 
 # Default YAML frontmatter settings
-defaults:re
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      comments: true
+##defaults:re
+##  -
+##    scope:
+##      path: ""
+##      type: "posts"
+##    values:
+##      comments: true
 
 # Tagging settings
 tag_title_prefix:   "Posts tagged #"

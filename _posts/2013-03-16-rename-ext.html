@@ -1,0 +1,6 @@
+---
+layout: post
+title: 递归替换指定路径及子路径下的文件扩展名
+tag: [C99]
+---
+一个shell脚本。用于递归替换指定路径及子路径下的文件扩展名。我不清楚是否linux下已经有命令可以实现了……<br><br>&nbsp;<br><pre class="brush: bash; gutter: true">#!/bin/bash<br><br>function chgext(){<br>  for file in ` ls $1 -A`<br>  do<br>    if [ -d $1&quot;/&quot;$file ]<br>    then<br>      chgext $1&quot;/&quot;$file $2 $3 <br>    else<br>      local path=$1&quot;/&quot;$file  #得到文件的完整的目录<br>      local name=$file        #得到文件的名字<br><br>      local file_ext=${name##*.}<br>      local file_head=${name%.*}<br><br>      if [[ $file_ext == $2 ]];then<br>        echo $1&quot;/&quot;$file_head.$2 &quot; =&gt; &quot; $file_head.$3<br>        mv $1&quot;/&quot;$file_head.$2 $1&quot;/&quot;$file_head.$3<br>      fi<br><br>    fi<br>  done<br>}<br><br># $1 -- workpath<br># $2 -- extname from<br># $3 -- extname to<br># Example : chgext.sh . php html<br>#           Change all *.php to *.html including the subdirectories<br>chgext $1 $2 $3</pre>

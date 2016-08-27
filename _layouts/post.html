@@ -29,7 +29,7 @@ anchors.remove('.masthead-title');
         <h3>
           <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
+            <small><a href="{{site.author.url}}">{{site.author.name}}</a> @ {{ post.date | date_to_string }}</small>
           </a>
         </h3>
       </li>

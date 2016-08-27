@@ -4,6 +4,7 @@ title: SQL将指定表排序并输出满足条件的记录是第几条
 tag: [SQL]
 ---
 <p>用于获取名次等的查询功能。</p>
+<!--break-->
 <p>Select @result=fieldx from(<br>
      Select *, ROW_NUMBER() over (order by fieldy desc) as fieldx from table where xxx<br>
     ) AS T<br>

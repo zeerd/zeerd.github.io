@@ -1,0 +1,25 @@
+---
+layout: post
+title: Linux下配置svnserve.conf
+tags: [linux,svn] 
+---
+<h2>{{ page.title }}</h2>
+权限问题困扰了我好久，访问一直提示：“svn: Authorization failed”<br>
+今天终于发现问题的所在了！<br>
+<br>
+svnserve.conf默认创建后，有一个域的写法如下<br>
+<br>
+[/foo/bar]<br>
+harry = rw<br>
+&amp;joe = r<br>
+* =<br>
+<br>
+由于是紧接着[groups]域的而且例子里面仅给出了user的写法，所以不假思索就写成如下了：<br>
+[/]<br>
+admin = rw <br>
+（其中admin是group而不是user）<br>
+<br>
+正确的写法是：<br>
+[/]<br>
+@admin = rw<br>
+<p>{{ page.date | date_to_string }}</p>

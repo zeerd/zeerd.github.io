@@ -4,7 +4,7 @@ layout: default
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-author"><a href="{{site.author.url}}">{{site.author.name}}</a></span> @ <span class="post-date">{{ page.date | date_to_string }}</span>
+  <span class="post-date"><a href="{{site.author.url}}">{{site.author.name}}</a> @ {{ page.date | date_to_string }}</span>
   {{ content | replace: '<!--break-->', '<a class="anchor" id="read-more"></a>' }}
 </div>
 

@@ -1,0 +1,8 @@
+---
+layout: post
+title: Android媒体数据库的排序原理
+tag: [Android,Media,Sort]
+---
+Android原生的媒体排序是依赖于数据库中的key字段进行的。<br>
+<!--break-->
+<br>下面是4.4.2系统中andio view的字段名：<br>_id|_data|_display_name|_size|mime_type|date_added|is_drm|date_modified|title|title_key|duration|artist_id|composer|album_id|track|year|is_ringtone|is_music|is_alarm|is_notification|is_podcast|bookmark|album_artist|artist_id:1|artist_key|artist|album_id:1|album_key|album<br>可以从中找到很多key字段，如：title_key、artist_key、album_key<br><br>当调用ContentResolver.query()接口时，sortOrder字段传入的DEFAULT_SORT_ORDER就是这些字段名称。<br><br>而这些字段是通过java.text.Collator来生成的。<br>具体可以按着下面的代码流程去调查：<br>./packages/providers/MediaProvider/src/com/android/providers/media/MediaProvider.java(insertFile()、update()、getKeyIdForName()) <br>-> <br>./frameworks/base/core/java/android/provider/MediaStore.java(Audio.keyFor)<br>-> <br>./frameworks/base/core/java/android/database/DatabaseUtils.java(getCollationKey)<br>-> <br>./libcore/luni/src/main/java/java/text/Collator.java(getCollationKey)<br>-> <br>./libcore/luni/src/main/java/java/text/CollationKey.java<br><br>Collator类提供了基于模糊等级的字符串比较算法。比如“a”是否等同于“à”。<br>CollationKey将给定的字符串转换为一系列可以和其他 CollationKey 按位进行比较的位.<br>这个类不能单独用于生成key，而是必须基于Collator.getCollationKey类进行生成。<br>因为CollationKey的生成依赖于Collator中定义的对象规则，在不同的Collator中生成的key没有比较意义。<br><br>虽然Java的Collator比Android的稍微强大一些（Android的源码没有封装Collator类的FULL_DECOMPOSITION实现），但也仅可以实现全角半角的匹配，不能做到拼音级别的匹配。<br>也就是说，如果要在Android上实现类似Apple设备的那种排序（汉字按着拼音字母插入到英文中间混合显示），就需要重写Android的相关代码，把keyFor的实现替换掉。

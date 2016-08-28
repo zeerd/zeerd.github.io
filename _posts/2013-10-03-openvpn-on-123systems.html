@@ -1,0 +1,9 @@
+---
+layout: post
+title: 在123systems.net上架设OpenVPN
+tags: [VPN,OpenVPN]
+---
+参照http://www.vpser.net/build/linode-install-openvpn.html的文章全程进行操作。<br>
+<!--break-->
+<br>系统是Ubuntu 11.04。<br><br>其中需要注意的是：<br>运行到“iptables -t nat -A POSTROUTING -s 10.168.0.0/16 -o eth0 -j MASQUERADE”这一步，可能会出现下面提示：<br>iptables: No chain/target/match by that name.<br><br>这时候，可以换成“iptables -t nat -A POSTROUTING -s 10.168.0.0/16 -j SNAT --to-source 你VPS的IP”试试。<br><br>另外，123systems.net的Enable TUN/TAP功能，在重装系统之后不会被清除。也就是说，如果之前Enable过，重装了系统之后，需要Disable掉再重新Enable一次。否则你看到的Enable状态是假的。<br><br>最后补充一下，win8系统下运行OpenVPN客户端，必须用管理员权限打开，否则权限不够。其他系统不确定。
+<br><br><br><strong>PPTP(VPN)</strong><br>好像是，123systems系统在12月份的升级之后开始支持pptp了。<br>参照 http://www.vpser.net/manage/linode-vps-pptp-vpn-howto.html 进行。<br><br>同上，其中设置iptables一步需要修改：<br>iptables -t nat -A POSTROUTING -s 192.168.217.0/24 -j SNAT --to-source 你VPS的IP

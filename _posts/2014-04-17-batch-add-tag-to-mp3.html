@@ -1,0 +1,7 @@
+---
+layout: post
+title: 批量生成带TAG信息的MP3测试文件
+tags: [TAG]
+---
+<!--break-->
+下面这个shell脚本，可以批量生成带有指定长度TAG字符串的mp3文件。用于进行各种容量方面的测试。<br>需要准备一个ding.mp3文件放在shell脚本同路径下。<br><br><br><pre class="brush: bash; gutter: true">#!/bin/bash<br><br>function show_usage()<br>{<br>    echo &quot;Usage : &quot; $0 &quot;&lt;tag text length&gt; &lt;file number to make&gt;&quot;<br>}<br><br>if [ -z &quot;$1&quot; ];then<br>    show_usage<br>else<br>    max_num=$1<br>    output_path=$2<br><br>    if [ ! -d $output_path ];then<br>        echo making folder to save the files ... `pwd`/$output_path<br>        mkdir $output_path<br>    fi<br><br>    for i in $(seq $output_path) ;do<br>        s=&quot;&quot;<br>        for j in $(seq $max_num) ;do<br>            s=$s&quot;$i&quot;<br>        done<br>        r=${s:0:$max_num}<br><br>        fmt=&quot;%0&quot;${#output_path}&quot;d&quot;<br>        filename=$output_path&quot;/&quot;`printf $fmt $i`&quot;.mp3&quot;<br>        `avconv -v 0 -i ding.mp3 -c copy -metadata title=$r -metadata artist=$r -metadata album=$r -metadata composer=$r -metadata genre=&quot;Other&quot; $filename`<br><br>        echo -n .<br>    done<br><br>    echo done.<br>fi<br><br><br></pre>

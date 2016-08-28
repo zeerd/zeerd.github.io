@@ -1,0 +1,7 @@
+---
+layout: post
+title: 使用gdb调试jni的方法
+tags: [Android,GDB]
+---
+<!--break-->
+1、首先需要安装gdbserver。Android默认的make是不包含 gdbserver的，需要手动安装：<br><br>cd codes/prebuilts/misc/android-arm/gdbserver<br>mm<br><br>2、在调试版的环境下运行gdbserver。假定测试程序的名称是test：<br><br>gdbserver :[调试端口] test <br>成功的话会显示类似下面的提示：<br>Process /system/bin/test created; pid = xxx<br>Listening on port yyyy<br><br>3、在linux机器上运行gdb进行调试：<br><br>1）命令类似如下，具体的路径请自行调整。注意，后面的可执行文件要使用LINKED目录下面的。只有这个是附带debug信息的。<br>codes/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7/bin/arm-eabi-gdb out/target/product/<debug_board_name>/obj/EXECUTABLES/test_intermediates/LINKED/test<br><br>2）进入dbg环境之后，设置环境参数。同上，具体路径请自行调整（安全起见，建议适用绝对路径）：<br>set sysroot out/target/product/<debug_board_name>/symbols/<br>set solib-search-path out/target/product/<debug_board_name>/symbols/system/lib<br><br>3）运行程序，命令如下：<br>(gdb)target remote [调试机IP]:[调试端口]<br>如果成功，则gdb会停在下面的提示状态：<br>__dl__start () at bionic/linker/arch/arm/begin.S:35<br>35&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; r0, sp<br><br>此时，输入Continue命令：<br>(gdb) c<br><br>至此，如果一切顺利，程序就会开始执行了。

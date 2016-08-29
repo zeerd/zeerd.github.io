@@ -5,9 +5,25 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <span class="post-date"><a href="{{site.author.url}}" target="_blank">{{site.author.name}}</a> @ {{ page.date | date_to_string }}</span>
+  {% include tagsforpost.html tags=page.tags %}
   {{ content | replace: '<!--break-->', '<a class="anchor" id="read-more"></a>' }}
 </div>
 
+<div class="ds-share" data-thread-key="{{ page.id | escape }}" data-title="{{ page.title | escape }}" data-images="http://blog.zeerd.com/public/blog.png" data-content="点击阅读精彩内容" data-url="{{site.url}}{{site.baseurl}}{{ page.url }}">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      	
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
 <script type="text/javascript">
@@ -19,7 +35,7 @@ anchors.remove('.masthead-title');
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/2.3.1/picturefill.min.js"></script>
 
-{% include tagsforpost.html tags=page.tags %}
+
 
 <div class="related">
   <h2>Related Posts</h2>

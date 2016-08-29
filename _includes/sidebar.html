@@ -16,7 +16,7 @@
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/atom.xml">Feed</a>
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Latest posts</a>
 
-  <ul class="posts">  
+    <ul class="posts">  
 	{% for post in site.posts limit:20 %}  
 	   <li>  
 		   <span>{{ post.date | date_to_string }}</span> &raquo;  
@@ -25,6 +25,9 @@
 	   </li>  
 	{% endfor %}  
    </ul>
+   
+   <a class="sidebar-nav-item" href="{{ site.baseurl }}/">Recent Visitors</a>
+   <ul class="ds-recent-visitors" data-num-items="10" data-avatar-size="25"></ul>
 
     {% comment %}
       The code below dynamically generates a sidebar nav of pages with

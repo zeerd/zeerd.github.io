@@ -70,6 +70,7 @@ kramdown:
   auto_ids: true
 
 pages_list:
+  Search: '/search.html'
   About: '/about/'
   Tags: '/tags/'
   Pebble: '/pebble/'

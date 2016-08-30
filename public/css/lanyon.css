@@ -273,6 +273,10 @@ a.sidebar-nav-item:focus {
   }
 }
 
+.maintitle {
+  background-color: #e5e5e5;
+}
+
 /* Slide effect
  *
  * Handle the sliding effects of the sidebar and content in one spot, seperate

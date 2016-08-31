@@ -35,7 +35,7 @@ exclude: [README.md,Gemfile]
 
 # Setup
 title:               zeerd's blog
-tagline:             闲来生雅意，无事方逍遥。对窗遥望雪，一盏茶香飘。
+tagline:             闲来生雅趣，无事乐逍遥。对窗相望雪，一盏茶香飘。
 url:                 "http://blog.zeerd.com"
 baseurl:             ""
 paginate:            10

@@ -20,7 +20,7 @@ void GTEST_REPORT(void)
         std::string errors = "如下条目NG:\n";
         int i, max = result.total_part_count();
 
-        for(i=0;i<max;i++) {
+        for(i=0;i&lt;max;i++) {
             char p[1024];
             snprintf(p, 1024, 
                      "%s(%d)\n", 

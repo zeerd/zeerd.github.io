@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://blog.zeerd.com/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/search/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/about/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/tags/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/ubuntu-16-04-count-not-mount-cd-rom/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/export-result-from-gtest/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/hello-world/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/dbus-p2p-ipc/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/backtrace-from-singal-handle/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-linux-ota/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/linux-fork-with-input/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/real-length-of-utf8-string/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/linux-file-system-right-non-user/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-hide-sdcard-from-user/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/use-openssl-to-sign/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/linux-libzip/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-usb-device-info/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/porting-taglib-to-android/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/linux-mount-sbmfs-with-boot/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-notification-centor/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-baidu-cafe-autotest/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-gdb-jni/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/batch-add-tag-to-mp3/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-media-sort/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/pebble/</loc>
+  <lastmod>2016-10-04T13:28:32+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/page2/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/simple-webserver-on-nanohttpd/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-search-to-copy/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/android-openvpn/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/ffmpeg-c2c3-bug/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/Unity-3D-DllNotFoundException/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/rename-ext/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/variable-length-arrays/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/connman-agent/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/unicode-of-html-to-utf8/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/144MB-Disk-Fat/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/strict-aliasing-rules/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/game-geo/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/godaddy-mysql/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/how-grease-monkey-help-us/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/ubuntu-grub-recovery/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/linux-process-manager/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/notepad-by-mingw/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/seamless-navigation/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/ubuntu-virtualbox-network/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/offline-web-tar/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/openvpn-on-123systems/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/php-dev-book-system/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/sql-list-index/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/sql-date/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/sql-2nd-select/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/media-database/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/ubuntu-virtualbox-mount-vdi/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/cpp-static-trap/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/libav-example/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/grub-rescue/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/html5-text-fade-in/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/linux-svnserve/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/page3/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/page4/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/page5/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+<url>
+  <loc>http://blog.zeerd.com/page6/</loc>
+  <lastmod>2016-10-04T13:28:35+00:00</lastmod>
+</url>
+</urlset>

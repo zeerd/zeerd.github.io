@@ -7,6 +7,7 @@ tag: Linux,Timeout,Watchdog
 本文用来记录一下gettimeofday和clock_gettime的重要不同点。
 <!--break-->
 参照如下的例子程序：
+
 ```
     /*
      * gcc t.c -o t -lrt 
@@ -63,6 +64,7 @@ tag: Linux,Timeout,Watchdog
         return 0;
     }
 ```
+
 运行结果如下所示：
 
 ```

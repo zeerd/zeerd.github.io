@@ -55,12 +55,8 @@ tags: [gdbus,p2p,IPC]
 typedef enum {
     MSG_SEND_SUCCESS,   /**&lt; a message sent success */
     MSG_SEND_FAIL,      /**&lt; a message sent fail */
-    MSG_TIMEOUT,        /**&lt; a sync message timeout */
     MSG_ERR_PARAM,      /**&lt; parameter wrong */
-    MSG_ERR_OPEN,       /**&lt; error occur when open the pipe of communication */
-    MSG_ERR_BIND,       /**&lt; error occur when bind to the pipe */
     MSG_ERR_CONNECT,    /**&lt; error occur when connecting to the other side */
-    MSG_ERR_LISTEN,     /**&lt; error occur when listening from the other side */
     MSG_ERROR           /**&lt; something wrong in the system which we not sure */
 }my_ipc_result_t;
 

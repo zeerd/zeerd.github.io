@@ -7,7 +7,7 @@ tag: [github,git]
 <!--break-->
 这个时候就需要我们可以拥有一些手段对这个git log进行修改。
 
-github给出了一个[方法](https://help.github.com/articles/changing-a-commit-message/)，但是不知道是git版本更新还是其他原因导致，这里面存在一个问题：网页中提到，需要执行命令“push --force”，并给出一个例子：
+github给出了一个[方法](https://help.github.com/articles/changing-a-commit-message/)，但是不知道是git版本更新还是其他原因导致，这里面存在一个问题：网页中提到，需要执行命令“ ```push --force```”，并给出一个例子：
 
 ```
 git push --force example-branch
@@ -17,10 +17,9 @@ git push --force example-branch
 
 下面是我修改git log的全过程：
 
-```
- + git clone https://github.com/zeerd/wayland-ivi-extension.git
- + cd wayland-ivi-extension/
- + git checkout patch-1
- + git commit --amend
- + git push --force
-```
+
+ + ```git clone https://github.com/zeerd/wayland-ivi-extension.git```
+ + ```cd wayland-ivi-extension/```
+ + ```git checkout patch-1```
+ + ```git commit --amend```
+ + ```git push --force```

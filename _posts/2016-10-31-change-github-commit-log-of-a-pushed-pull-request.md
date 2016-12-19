@@ -17,8 +17,10 @@ git push --force example-branch
 
 下面是我修改git log的全过程：
 
+```
  + git clone https://github.com/zeerd/wayland-ivi-extension.git
  + cd wayland-ivi-extension/
  + git checkout patch-1
  + git commit --amend
  + git push --force
+```

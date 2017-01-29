@@ -3,8 +3,10 @@ layout: post
 title: 在Yocto环境中集成基于RPM发布的软件包
 tag: [yocto,rpm]
 ---
+
 bb文件可以参照如下的格式进行编写。
 <!--break-->
+
 ```
 LICENSE = "CLOSED"
 

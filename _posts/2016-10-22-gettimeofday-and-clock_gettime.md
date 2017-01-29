@@ -1,7 +1,7 @@
 ---
 layout: post
 title: gettimeofday和clock_gettime
-tag: Linux,Timeout,Watchdog
+tag: [Linux,Timeout,Watchdog]
 ---
 
 本文用来记录一下gettimeofday和clock_gettime的重要不同点。

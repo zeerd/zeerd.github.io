@@ -20,7 +20,7 @@ inherit bin_package
 
 INSANE_SKIP_${PN} += "already-stripped"
 
-do_install() {
+do_install_append() {
     cp -r ${S}/* ${D}
 }
 ```

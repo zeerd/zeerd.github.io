@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MSYS2环境中编译程序提示“error: '_P_WAIT' undeclared”错误
+title: MSYS2 环境中编译程序提示“_P_WAIT”错误
 tag: [MSYS2,automake]
 ---
 

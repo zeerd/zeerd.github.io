@@ -8,61 +8,61 @@ tag: [Linux,Timeout,Watchdog]
 <!--break-->
 参照如下的例子程序：
 
-```
-    /*
-     * gcc t.c -o t -lrt 
-     */
-    
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    
-    #include <time.h>
-    #include <sys/time.h>
-    
-    int main(int argc, char* argv[])
-    {
-        struct timeval now;
-        struct timespec tp;
-        struct timezone zone;
-    
-        int h, m, s;
-    
-        system("date +'%H:%M:%S'");
-    
-        gettimeofday(&now, &zone);
-        h = now.tv_sec / 60 / 60 % 24;
-        m = now.tv_sec / 60 % 60;
-        s = now.tv_sec % 60;
-        printf("gettimeofday : %02d:%02d:%02d\n", h, m, s);
-    
-        clock_gettime(CLOCK_MONOTONIC_RAW, &tp);
-        h = tp.tv_sec / 60 / 60 % 24;
-        m = tp.tv_sec / 60 % 60;
-        s = tp.tv_sec % 60;
-        printf("clock_gettime : %02d:%02d:%02d\n", h, m, s);
-    
-        now.tv_sec += 60 * 10;
-        settimeofday(&now, &zone);
-    
-        printf("\n======================\n\n");
-    
-        system("date +'%H:%M:%S'");
-    
-        gettimeofday(&now, &zone);
-        h = now.tv_sec / 60 / 60 % 24;
-        m = now.tv_sec / 60 % 60;
-        s = now.tv_sec % 60;
-        printf("gettimeofday : %02d:%02d:%02d\n", h, m, s);
-    
-        clock_gettime(CLOCK_MONOTONIC_RAW, &tp);
-        h = tp.tv_sec / 60 / 60 % 24;
-        m = tp.tv_sec / 60 % 60;
-        s = tp.tv_sec % 60;
-        printf("clock_gettime : %02d:%02d:%02d\n", h, m, s);
-    
-        return 0;
-    }
+```c
+/*
+ * gcc t.c -o t -lrt 
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include <time.h>
+#include <sys/time.h>
+
+int main(int argc, char* argv[])
+{
+    struct timeval now;
+    struct timespec tp;
+    struct timezone zone;
+
+    int h, m, s;
+
+    system("date +'%H:%M:%S'");
+
+    gettimeofday(&now, &zone);
+    h = now.tv_sec / 60 / 60 % 24;
+    m = now.tv_sec / 60 % 60;
+    s = now.tv_sec % 60;
+    printf("gettimeofday : %02d:%02d:%02d\n", h, m, s);
+
+    clock_gettime(CLOCK_MONOTONIC_RAW, &tp);
+    h = tp.tv_sec / 60 / 60 % 24;
+    m = tp.tv_sec / 60 % 60;
+    s = tp.tv_sec % 60;
+    printf("clock_gettime : %02d:%02d:%02d\n", h, m, s);
+
+    now.tv_sec += 60 * 10;
+    settimeofday(&now, &zone);
+
+    printf("\n======================\n\n");
+
+    system("date +'%H:%M:%S'");
+
+    gettimeofday(&now, &zone);
+    h = now.tv_sec / 60 / 60 % 24;
+    m = now.tv_sec / 60 % 60;
+    s = now.tv_sec % 60;
+    printf("gettimeofday : %02d:%02d:%02d\n", h, m, s);
+
+    clock_gettime(CLOCK_MONOTONIC_RAW, &tp);
+    h = tp.tv_sec / 60 / 60 % 24;
+    m = tp.tv_sec / 60 % 60;
+    s = tp.tv_sec % 60;
+    printf("clock_gettime : %02d:%02d:%02d\n", h, m, s);
+
+    return 0;
+}
 ```
 
 运行结果如下所示：

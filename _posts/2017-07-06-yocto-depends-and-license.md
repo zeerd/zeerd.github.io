@@ -14,7 +14,7 @@ tag: [Yocto,License,Linux]
 
 每一次使用Yocto生成Image，都会默认生成一份License列表，保存的位置如下()：
 
-```
+```bash
 user@debian:~/yocto/build$ ls tmp/deploy/licenses/core-image-minimal-${machine}-${datetime}/license.manifest
 ```
 
@@ -41,7 +41,7 @@ NOTE: Task dependencies saved to 'task-depends.dot'
 
 接下来，可以使用如下脚本(dep.py)对这两个文件进行收集整理，生成基于FreeMind的依赖关系图。
 
-<pre><code>
+```python
 
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
@@ -79,12 +79,12 @@ def make_db():
     for line in open(dpfile):
         line=line.strip('\n')
 
-        if line.find(" -&gt; ") &gt;= 0:
+        if line.find(" -> ") >= 0:
             aline = line.split(' ')
-            if len(aline) &gt;= 3:
+            if len(aline) >= 3:
                 project = aline[0].replace("\"", "")
                 depend = aline[2].replace("\"", "")
-                if aline[1] == "-&gt;":
+                if aline[1] == "->":
                     cu.execute("\
                         select * from depends \
                         where \
@@ -100,14 +100,14 @@ def show_depends(db, proj, depelvel):
     searched[proj] = proj
 
     if depelvel == 1:
-        output.write("&lt;map version=\"1.0.1\"&gt;\n")
-        output.write("&lt;node \
+        output.write("<map version=\"1.0.1\">\n")
+        output.write("<node \
                           COLOR=\"#000000\" \
                           CREATED=\"1498714017621\" \
                           ID=\"ID_1\" \
                           MODIFIED=\"1498714017621\" \
-                          TEXT=\""+proj+"\"&gt;\n")
-        output.write("&lt;icon BUILTIN=\"list\"/&gt;\n")
+                          TEXT=\""+proj+"\">\n")
+        output.write("<icon BUILTIN=\"list\"/>\n")
 
     depelvel = depelvel + 1
 
@@ -115,50 +115,50 @@ def show_depends(db, proj, depelvel):
     cu.execute("select d.* from depends as d \
                   where d.project='"+proj+"' order by d.depend")
     for row in cu:
-        output.write("&lt;node \
+        output.write("<node \
                           COLOR=\"#000000\" \
                           CREATED=\"1498714017621\" \
                           FOLDED=\"true\" \
                           ID=\"ID_1\" \
                           MODIFIED=\"1498714017621\" \
-                          STYLE=\"bubble\"&gt;\n")
-        if depelvel &lt;= 10:
+                          STYLE=\"bubble\">\n")
+        if depelvel <= 10:
             if depelvel-1 == 1:
-                output.write("&lt;cloud/&gt;\n");
-            output.write("&lt;icon BUILTIN=\"full-"+str(depelvel-1)+"\"/&gt;\n");
+                output.write("<cloud/>\n");
+            output.write("<icon BUILTIN=\"full-"+str(depelvel-1)+"\"/>\n");
         else:
-            output.write("&lt;icon BUILTIN=\"freemind_butterfly\"/&gt;\n");
-        output.write("&lt;richcontent TYPE=\"NODE\"&gt;")
-        output.write("&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body width=\"\"&gt;")
+            output.write("<icon BUILTIN=\"freemind_butterfly\"/>\n");
+        output.write("<richcontent TYPE=\"NODE\">")
+        output.write("<html><head></head><body width=\"\">")
 
         output.write(row['depend'])
 
         if row['depend'] in licenses:
-            output.write("&lt;hr/&gt;")
+            output.write("<hr/>")
             output.write(licenses[row['depend']])
 
-        output.write("&lt;/body&gt;&lt;/html&gt;")
-        output.write("&lt;/richcontent&gt;\n")
+        output.write("</body></html>")
+        output.write("</richcontent>\n")
 
         if not row['depend'] in searched:
             show_depends(db, row['depend'], depelvel)
 
-        output.write("&lt;/node&gt;\n")
+        output.write("</node>\n")
 
     depelvel = depelvel - 1
 
     if depelvel == 1:
-        output.write("&lt;/node&gt;\n")
-        output.write("&lt;/map&gt;\n")
+        output.write("</node>\n")
+        output.write("</map>\n")
 
 def load_licenses():
     for line in open(licfile):
         line=line.strip('\n')
         aline = line.split(' ')
 
-        if line.find("RECIPE NAME: ") &gt;= 0:
+        if line.find("RECIPE NAME: ") >= 0:
             recipe = aline[2]
-        if line.find("LICENSE: ") &gt;= 0:
+        if line.find("LICENSE: ") >= 0:
             licenses[recipe] = line.replace("LICENSE: ", "")
 
 load_licenses()
@@ -171,7 +171,7 @@ output.close()
 
 db.close()
 
-</code></pre>
+```
 
 
 

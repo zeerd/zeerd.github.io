@@ -38,6 +38,7 @@ tag: [Linux,Graphic,Terminology]
 
 Weston内部名词：
 --------
+
 |         Long          | Long[CN] | Short | Description                              | Notes[CN] |                  Others                  |
 | :-------------------: | :------- | :---: | :--------------------------------------- | :-------- | :--------------------------------------: |
 | presentation feedback |          |       | The main feature of this interface is accurate resentation timing feedback to ensure smooth video playback while maintaining audio/video synchronization. Some features use the concept of a presentation clock, which is defined in presentation.clock_id event. |           | weston-1.9.0 \ protocol \ presentation_timing.xml |

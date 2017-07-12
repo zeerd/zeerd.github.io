@@ -1,12 +1,14 @@
 ---
 layout: post
 title: 整理一些显示系统相关名词
-tag: [Yocto,License,Linux]
+tag: [Linux,Graphic,Terminology]
 ---
 
+<!--break-->
 
 显示系统相关名词
 --------
+
 |                  Long                   | Long[CN] | Short  | Description                              | Notes[CN]                                |                  Others                  |
 | :-------------------------------------: | :------- | :----: | :--------------------------------------- | :--------------------------------------- | :--------------------------------------: |
 |        Generic Buffer Management        |          |  GBM   | Generic Buffer Management (GBM) is an API which provides a mechanism for allocating buffers for graphics rendering tied to Mesa. GBM is intended to be used as a native platform for EGL on drm or openwfd. The handle it creates can be used to initialize EGL and to create render target buffers. |                                          | [Refer](https://en.wikipedia.org/wiki/Mesa_%28computer_graphics%29) |

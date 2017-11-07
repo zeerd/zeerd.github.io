@@ -38,3 +38,9 @@ linux-fincore --pages=false --summarize --only-cached ${FILES}
 [How can you tell whether a file is being cached in memory in linux?](https://stackoverflow.com/questions/210809/how-can-you-tell-whether-a-file-is-being-cached-in-memory-in-linux)
 
 [Help! Linux ate my RAM!](https://www.linuxatemyram.com/play.html)
+
+[How do you empty the buffers and cache on a Linux system?](https://unix.stackexchange.com/questions/87908/how-do-you-empty-the-buffers-and-cache-on-a-linux-system)
+
+[Drop a specific file from the Linux filesystem cache?](https://unix.stackexchange.com/questions/36907/drop-a-specific-file-from-the-linux-filesystem-cache)
+
+[Understanding and optimizing Memory utilization](http://careers.directi.com/display/tu/Understanding+and+optimizing+Memory+utilization)

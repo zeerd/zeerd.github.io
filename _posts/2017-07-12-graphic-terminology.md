@@ -45,3 +45,9 @@ Weston内部名词：
 |     buffer object     |          |  bo   |                                          |           |                    -                     |
 | media stream counter  |          |  msc  |                                          |           |                                          |
 
+
+Others:
+--------
+[modeset](https://github.com/dvdhrm/docs/blob/master/drm-howto/modeset.c)
+[modeset-double-buffered](https://github.com/dvdhrm/docs/blob/master/drm-howto/modeset-double-buffered.c)
+[modeset-vsync](https://github.com/dvdhrm/docs/blob/master/drm-howto/modeset-vsync.c)

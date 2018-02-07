@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 通过远程桌面连接虚拟机内的win10
-tag: [virtualbox,linux,remote-desktop]
+tag: [VirtualBox,Linux,Remote-Desktop]
 ---
 
 Virtualbox自身在“显示”中存在一个远程桌面 ，也是使用的3389端口。但是，这个远程桌面使用的是Virtualbox的VRDP服务，而不是Win10自身的远程桌面服务。因此，它是没有用户验证的，也就是说，任何人只要知道了机器的IP地址，就可以访问这台Win10。

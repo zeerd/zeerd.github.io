@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Timeout while attempting to communicate with bitbake server
-tag: [yocto,linux]
+tag: [Yocto,Linux]
 ---
 
 Yocto编译，一直报如下错误：

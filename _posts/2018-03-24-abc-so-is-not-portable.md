@@ -1,13 +1,15 @@
 ---
 layout: post
-title: Fix: abc.so is not portable
+title: Fix abc.so is not portable
 tag: [GCC]
 ---
 
 gcc 编译时遇到如下Warning：
 
+```
 *** Warning: Linking the executable xxxxx against the loadable module
 *** yyyyy.so is not portable!
+```
 
 <!--break-->
 

@@ -25,6 +25,13 @@ tag: [Linux,Wayland,Weston,Input]
 
 ![Input](../public/2018/07/weston-input-input.svg)
 
+**标准输入：**
+
+当然，上面的描述是基于输入法的。所以才会涉及到一些复杂的流程。
+
+如果仅仅是标准键盘输入，那么可以直接使用input-method协议的key和modifiers这两个request来实现。前者用于发送keycode，后者用于标记Shift/Ctrl/Alt等功能按键的状态。
+
+
 **删除字符时的基本时序：**
 
 删除分两种情况。

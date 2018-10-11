@@ -28,7 +28,7 @@ tags: [Android,Device]
  * So our device_path would be 1-4.2.3 which says my device is connected
  * to port 3 of a hub on port 2 of a hub on port 4 of bus 1 (per
  * http://www.linux-usb.org/FAQ.html).
-  * */
+ * */
 
 
 #include <stdio.h>
@@ -57,7 +57,7 @@ int readInfos(const char* from, info_t* info){
 
     struct stat s;
     if(lstat(from, &s) < 0) {
-		printf("Usage:\\n\\t%s <block path or char path>\\n\\n", argv[0]);
+		printf("Usage:\n\t%s <block path or char path>\n\n", argv[0]);
         return -1;
     }
     
@@ -80,13 +80,13 @@ int readInfos(const char* from, info_t* info){
 int main(int argc, char **argv)
 {
 	if(argc != 2){
-		printf("Usage:\\n\\t%s <path>\\n\\n", argv[0]);
+		printf("Usage:\n\t%s <path>\n\n", argv[0]);
 	} else {
 		info_t info;
 		if(readInfos(argv[1], &info) < 0){
-			printf("parameter error!\\n");
+			printf("parameter error!\n");
 		} else {
-			printf("path:%s\\nidProduct:%s\\nidVendor:%s\\nSerial:%s\\n",
+			printf("path:%s\nidProduct:%s\nidVendor:%s\nSerial:%s\n",
 				argv[1], info.product, info.vendor, info.serial);
 		}
 	}

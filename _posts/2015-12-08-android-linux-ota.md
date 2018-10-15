@@ -3,13 +3,11 @@ layout: post
 title: Linux下实现增量升级（差分升级）
 tag: [Android,Linux,OTA,bsdiff]
 ---
-Android手机的差分升级功能很让人羡慕，其实调查一下就会发现，原理非常简单。<br>
-<!--break-->
 Android手机的差分升级功能很让人羡慕，其实调查一下就会发现，原理非常简单。
+<!--break-->
 
 下面我来给出一些Linux下的Shell脚本，演示一下怎么样使用bsdiff实现简单的差分升级功能。
 
- 
 
 首先，需要做成差分升级包。
 

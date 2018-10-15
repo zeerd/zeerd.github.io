@@ -106,9 +106,9 @@ fi
 
 做成差分包之后就是如何使用差分包来升级了。
 
-
-#!/bin/bash
 ```shell
+#!/bin/bash
+
 BSPATCH=./bsdiff-4.3/bspatch
 
 function patchfunc()

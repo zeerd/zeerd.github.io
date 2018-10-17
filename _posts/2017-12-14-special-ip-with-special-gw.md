@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 通过指定路由访问指定IP
-tag: [Linux,route]
+tag: [Linux,Route]
 ---
 
 网络环境比较复杂，有两大块网络组成。
@@ -15,6 +15,8 @@ tag: [Linux,route]
 
 解决方法：
 在这台电脑上配置一条路由，类似如下：
+```shell
 # sudo route add 192.168.1.100 gw 10.1.10.1 eth2
+```
 
 这样，所有指向192.168.1.100的网络访问就都会走网卡2的网关了。

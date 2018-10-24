@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 在 C++中统计动态内存分配情况
-tag: [c++,malloc]
+tag: [C++,malloc]
 ---
 
 一段用于在C++中统计动态内存分配情况的测试代码。

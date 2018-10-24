@@ -1,0 +1,104 @@
+---
+layout: post
+title: CommonAPI基本流程
+tag: [GENIVI,CAPI,CommonAPI,IPC]
+---
+
+以GENIVI官方的[E01HelloWorld](https://github.com/GENIVI/capicxx-core-tools/tree/master/CommonAPI-Examples/E01HelloWorld)为例。
+
+<!--break-->
+
+
+# Session : Server Init
+
+```mermaid
+sequenceDiagram
+
+    Server ->> +Runtime : get
+    Runtime ->> -Runtime : init
+    Server ->> E01HelloWorldStubImpl : E01HelloWorldStubImpl
+    activate Runtime
+    Server ->> Runtime : registerService
+    Runtime ->> Runtime : registerStub
+    Runtime ->> Runtime : getLibrary
+    Note right of Runtime: get the name of the library
+    Runtime ->> Runtime : loadLibrary
+    Runtime ->> +DBusFactory : FactoryInit
+    Note left of DBusFactory : run FactoryInit as constructor
+    Runtime ->> E01HelloWorldDBusStubAdapter : registerE01HelloWorldDBusStubAdapter
+    Note left of E01HelloWorldDBusStubAdapter : run registerE01HelloWorldDBusStubAdapter as constructor
+    Runtime ->> Runtime : registerStubHelper
+    Runtime ->> +DBusFactory : registerStub
+    DBusFactory ->> E01HelloWorldDBusStubAdapter : init
+    DBusFactory ->> -DBusFactory : registerStubAdapter
+    deactivate Runtime
+```
+
+# Session : Client Init
+
+```mermaid
+sequenceDiagram
+
+    Client ->> +Runtime : get
+    Runtime ->> -Runtime : init
+    Client ->> +ProxyManager : buildProxy
+    ProxyManager ->> -Runtime : createProxy
+    activate Runtime
+    Runtime ->> Runtime : getLibrary
+    Note right of Runtime: get the name of the library
+    Runtime ->> Runtime : loadLibrary
+    Runtime ->> +DBusFactory : FactoryInit
+    Note left of DBusFactory : run FactoryInit as constructor
+    activate E01HelloWorldDBusProxy
+    Runtime ->> E01HelloWorldDBusProxy : registerE01HelloWorldDBusProxy
+    Note left of E01HelloWorldDBusProxy : run registerE01HelloWorldDBusProxy as constructor
+    E01HelloWorldDBusProxy ->> DBusFactory : registerProxyCreateMethod
+    deactivate E01HelloWorldDBusProxy
+    DBusFactory ->> -Runtime : registerFactory
+    Runtime ->> Runtime : createProxyHelper
+    activate DBusFactory
+    Runtime ->> DBusFactory: createProxy
+    DBusFactory ->> E01HelloWorldDBusProxy : init
+    deactivate DBusFactory
+    deactivate Runtime
+```
+
+# Session : sayHello
+
+（为了界面整洁性，后面使用X替换掉E01HelloWorld）
+
+客户端调用接口函数sayHello()发送请求：
+```mermaid
+sequenceDiagram
+Client(XClient) ->> XProxy : sayHello
+XProxy ->> XDBusProxy : sayHello
+XDBusProxy ->> DBusProxyHelper : callMethodWithReply
+DBusProxyHelper ->> DBusConnection : sendDBusMessageWithReplyAndBlock
+DBusConnection ->> dbus : dbus_connection_send_with_reply_and_block
+```
+
+调用请求被通过dbus转给了服务端：
+```mermaid
+sequenceDiagram
+dbus ->> DBusConnection : onLibdbusObjectPathMessage
+DBusConnection ->> DBusStubAdapterHelper : onInterfaceDBusMessage
+DBusStubAdapterHelper ->> XDBusStubAdapter : sayHelloStubDispatcher
+XDBusStubAdapter ->> server(XStubImpl) : sayHello
+server(XStubImpl) ->> server(XStubImpl) : _reply
+```
+
+服务端处理完请求之后，将结果送回给客户端：
+
+```mermaid
+sequenceDiagram
+participant dbus
+participant DBusConnection
+participant DBusStubAdapterHelper
+server(XStubImpl) ->> DBusStubAdapterHelper : sendReply
+DBusStubAdapterHelper ->> DBusConnection : sendDBusMessage
+DBusConnection ->> dbus : dbus_connection_send
+```
+
+最终，请求结果被通过dbus转回给客户端，通过函数参数返回，过程与第一个Sequence相逆，这里不再描画。
+
+

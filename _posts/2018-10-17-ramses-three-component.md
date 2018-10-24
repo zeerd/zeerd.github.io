@@ -1,7 +1,7 @@
 ---
 layout: post
 title: RAMSES的三大组件
-tag: [RAMSES,Graphic]
+tag: [GENIVI,RAMSES,Graphic]
 ---
 
 <!--break-->

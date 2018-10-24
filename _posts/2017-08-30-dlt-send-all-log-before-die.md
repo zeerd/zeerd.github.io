@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 在进程崩溃退出前输出所有DLT LOG
-tag: [GENIVI,automotive-dlt,dlt]
+tag: [GENIVI,Automotive-DLT,DLT]
 ---
 
 dlt提供了一个函数叫做dlt_user_atexit_blow_out_user_buffer()。这个函数的解释如下：

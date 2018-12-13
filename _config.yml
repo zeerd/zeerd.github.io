@@ -62,13 +62,9 @@ github:
 gems:
   - jekyll-sitemap
   - jekyll-paginate
-  - jekyll-mermaid
 
 # Conversion
 excerpt_separator: "<!--break-->"
-
-mermaid:
-  src: 'js/mermaid.js'
 
 kramdown:
   auto_ids: true

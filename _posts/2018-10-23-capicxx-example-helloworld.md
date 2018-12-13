@@ -4,7 +4,7 @@ title: CommonAPI基本流程
 tag: [GENIVI,CAPI,CommonAPI,IPC]
 ---
 
-以GENIVI官方的[X](https://github.com/GENIVI/capicxx-core-tools/tree/master/CommonAPI-Examples/X)为例。
+以GENIVI官方的[E01HelloWorld](https://github.com/GENIVI/capicxx-core-tools/tree/master/CommonAPI-Examples/E01HelloWorld)为例。
 
 <!--break-->
 （为了界面整洁性，后面使用X替换掉E01HelloWorld）

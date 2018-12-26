@@ -29,6 +29,13 @@ sequenceDiagram
     Note left of E01HelloWorldDBusStubAdapter : run registerE01HelloWorldDBusStubAdapter as constructor
     Runtime ->> Runtime : registerStubHelper
     Runtime ->> +DBusFactory : registerStub
+    activate DBusFactory
+    DBusFactory ->> DBusFactory : getConnection
+    activate DBusConnection
+    DBusFactory ->> DBusConnection : connect
+    DBusConnection ->> dbus : dbus_bus_get_private
+    deactivate DBusConnection
+    deactivate DBusFactory
     DBusFactory ->> E01HelloWorldDBusStubAdapter : init
     DBusFactory ->> -DBusFactory : registerStubAdapter
     deactivate Runtime
@@ -37,8 +44,8 @@ sequenceDiagram
 # Session : Client Init
 
 ```mermaid
-sequenceDiagram
-
+    sequenceDiagram
+    
     Client ->> +Runtime : get
     Runtime ->> -Runtime : init
     Client ->> +ProxyManager : buildProxy
@@ -49,16 +56,23 @@ sequenceDiagram
     Runtime ->> Runtime : loadLibrary
     Runtime ->> +DBusFactory : FactoryInit
     Note left of DBusFactory : run FactoryInit as constructor
-    activate E01HelloWorldDBusProxy
-    Runtime ->> E01HelloWorldDBusProxy : registerE01HelloWorldDBusProxy
-    Note left of E01HelloWorldDBusProxy : run registerE01HelloWorldDBusProxy as constructor
-    E01HelloWorldDBusProxy ->> DBusFactory : registerProxyCreateMethod
-    deactivate E01HelloWorldDBusProxy
+    activate XDBusProxy
+    Runtime ->> XDBusProxy : registerXDBusProxy
+    Note left of XDBusProxy : run registerXDBusProxy as constructor
+    XDBusProxy ->> DBusFactory : registerProxyCreateMethod
+    deactivate XDBusProxy
     DBusFactory ->> -Runtime : registerFactory
     Runtime ->> Runtime : createProxyHelper
     activate DBusFactory
     Runtime ->> DBusFactory: createProxy
-    DBusFactory ->> E01HelloWorldDBusProxy : init
+    activate DBusFactory
+    DBusFactory ->> DBusFactory : getConnection
+    activate DBusConnection
+    DBusFactory ->> DBusConnection : connect
+    DBusConnection ->> dbus : dbus_bus_get_private
+    deactivate DBusConnection
+    deactivate DBusFactory
+    DBusFactory ->> XDBusProxy : init
     deactivate DBusFactory
     deactivate Runtime
 ```

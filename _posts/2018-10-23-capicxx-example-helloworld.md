@@ -7,6 +7,7 @@ tag: [GENIVI,CAPI,CommonAPI,IPC]
 以GENIVI官方的[E01HelloWorld](https://github.com/GENIVI/capicxx-core-tools/tree/master/CommonAPI-Examples/E01HelloWorld)为例。
 
 <!--break-->
+（为了界面整洁性，后面使用X替换掉E01HelloWorld）
 
 
 # Session : Server Init
@@ -16,7 +17,7 @@ sequenceDiagram
 
     Server ->> +Runtime : get
     Runtime ->> -Runtime : init
-    Server ->> E01HelloWorldStubImpl : E01HelloWorldStubImpl
+    Server ->> XStubImpl : XStubImpl
     activate Runtime
     Server ->> Runtime : registerService
     Runtime ->> Runtime : registerStub
@@ -25,8 +26,8 @@ sequenceDiagram
     Runtime ->> Runtime : loadLibrary
     Runtime ->> +DBusFactory : FactoryInit
     Note left of DBusFactory : run FactoryInit as constructor
-    Runtime ->> E01HelloWorldDBusStubAdapter : registerE01HelloWorldDBusStubAdapter
-    Note left of E01HelloWorldDBusStubAdapter : run registerE01HelloWorldDBusStubAdapter as constructor
+    Runtime ->> XDBusStubAdapter : registerXDBusStubAdapter
+    Note left of XDBusStubAdapter : run registerXDBusStubAdapter as constructor
     Runtime ->> Runtime : registerStubHelper
     Runtime ->> +DBusFactory : registerStub
     activate DBusFactory
@@ -36,7 +37,7 @@ sequenceDiagram
     DBusConnection ->> dbus : dbus_bus_get_private
     deactivate DBusConnection
     deactivate DBusFactory
-    DBusFactory ->> E01HelloWorldDBusStubAdapter : init
+    DBusFactory ->> XDBusStubAdapter : init
     DBusFactory ->> -DBusFactory : registerStubAdapter
     deactivate Runtime
 ```
@@ -79,7 +80,6 @@ sequenceDiagram
 
 # Session : sayHello
 
-（为了界面整洁性，后面使用X替换掉E01HelloWorld）
 
 客户端调用接口函数sayHello()发送请求：
 ```mermaid
@@ -114,5 +114,3 @@ DBusConnection ->> dbus : dbus_connection_send
 ```
 
 最终，请求结果被通过dbus转回给客户端，通过函数参数返回，过程与第一个Sequence相逆，这里不再描画。
-
-

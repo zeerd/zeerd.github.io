@@ -4,113 +4,245 @@ title: CommonAPI基本流程
 tag: [GENIVI,CAPI,CommonAPI,IPC]
 ---
 
-以GENIVI官方的[E01HelloWorld](https://github.com/GENIVI/capicxx-core-tools/tree/master/CommonAPI-Examples/E01HelloWorld)为例。
 
+
+以GENIVI官方的[E01HelloWorld](https://github.com/GENIVI/capicxx-core-tools/tree/master/CommonAPI-Examples/E01HelloWorld)为例。为了界面整洁性，后面使用X替换掉E01HelloWorld。
+
+图中的Y表示Binding，可能是DBus，也可能是SomeIP，也可能是GENIVI新推出的Wamp，或者其他以后会推出的新东西。
 <!--break-->
-（为了界面整洁性，后面使用X替换掉E01HelloWorld）
 
+[TOC]
 
-# Session : Server Init
+# Session : Init
+
+## Common Sequence
+
+### Server
 
 ```mermaid
 sequenceDiagram
-
     Server ->> +Runtime : get
     Runtime ->> -Runtime : init
     Server ->> XStubImpl : XStubImpl
-    activate Runtime
     Server ->> Runtime : registerService
+    activate Runtime
     Runtime ->> Runtime : registerStub
-    Runtime ->> Runtime : getLibrary
-    Note right of Runtime: get the name of the library
-    Runtime ->> Runtime : loadLibrary
-    Runtime ->> +DBusFactory : FactoryInit
-    Note left of DBusFactory : run FactoryInit as constructor
-    Runtime ->> XDBusStubAdapter : registerXDBusStubAdapter
-    Note left of XDBusStubAdapter : run registerXDBusStubAdapter as constructor
-    Runtime ->> Runtime : registerStubHelper
-    Runtime ->> +DBusFactory : registerStub
-    activate DBusFactory
-    DBusFactory ->> DBusFactory : getConnection
-    activate DBusConnection
-    DBusFactory ->> DBusConnection : connect
-    DBusConnection ->> dbus : dbus_bus_get_private
-    deactivate DBusConnection
-    deactivate DBusFactory
-    DBusFactory ->> XDBusStubAdapter : init
-    DBusFactory ->> -DBusFactory : registerStubAdapter
+    activate Runtime
+    Runtime ->> Runtime : library init
+    Runtime ->> +Runtime : registerStubHelper
+    Runtime ->> -Factory : registerStub
     deactivate Runtime
+    deactivate Runtime
+    Factory ->> Factory : getConnection
+    Factory ->> YStubAdapter : init
+    Factory ->> Factory : registerStubAdapter
 ```
 
-# Session : Client Init
+###Client
 
 ```mermaid
-    sequenceDiagram
-    
+sequenceDiagram
     Client ->> +Runtime : get
     Runtime ->> -Runtime : init
-    Client ->> +ProxyManager : buildProxy
-    ProxyManager ->> -Runtime : createProxy
+    Client ->> +XProxy : buildProxy
     activate Runtime
-    Runtime ->> Runtime : getLibrary
-    Note right of Runtime: get the name of the library
-    Runtime ->> Runtime : loadLibrary
-    Runtime ->> +DBusFactory : FactoryInit
-    Note left of DBusFactory : run FactoryInit as constructor
-    activate XDBusProxy
-    Runtime ->> XDBusProxy : registerXDBusProxy
-    Note left of XDBusProxy : run registerXDBusProxy as constructor
-    XDBusProxy ->> DBusFactory : registerProxyCreateMethod
-    deactivate XDBusProxy
-    DBusFactory ->> -Runtime : registerFactory
-    Runtime ->> Runtime : createProxyHelper
-    activate DBusFactory
-    Runtime ->> DBusFactory: createProxy
-    activate DBusFactory
-    DBusFactory ->> DBusFactory : getConnection
-    activate DBusConnection
-    DBusFactory ->> DBusConnection : connect
-    DBusConnection ->> dbus : dbus_bus_get_private
-    deactivate DBusConnection
-    deactivate DBusFactory
-    DBusFactory ->> XDBusProxy : init
-    deactivate DBusFactory
+    XProxy ->> -Runtime : createProxy
+    activate Runtime
+    Runtime ->> Runtime : library init
+    Runtime ->> +Runtime : createProxyHelper
+    Runtime ->> -Factory: createProxy
     deactivate Runtime
+    deactivate Runtime
+    Factory ->> Factory : getConnection
+    Factory ->> YProxy : init
 ```
+
+## Details
+
+### Library Init
+
+```mermaid
+sequenceDiagram
+    Runtime ->> Runtime : getLibrary
+    Note right of Runtime: get the name <br/> of the library
+    Runtime ->> Runtime : loadLibrary
+    Runtime ->> +Factory : FactoryInit
+    Note left of Factory : run FactoryInit <br/> as constructor
+    Factory ->> -Runtime : registerFactory
+
+    Runtime ->> +XYProxy : registerYProxy
+    Note left of XYProxy : run registerXYProxy <br/> as constructor
+    XYProxy ->> +Factory : registerProxyCreateMethod
+    Factory ->> -Factory : method saved
+    deactivate XYProxy
+    
+    Runtime ->> +XYStubAdapter : registerXYStubAdapter
+    Note left of XYStubAdapter : run registerXYStubAdapter <br/> as constructor
+    XYStubAdapter ->> +Factory : registerStubAdapterCreateMethod
+    Factory ->> -Factory : method saved
+    deactivate XYStubAdapter
+```
+
+### Get Connection
+
+#### SOME/IP
+
+```mermaid
+sequenceDiagram
+    participant Factory as DBus::Factory
+    participant Connection as SomeIP::Connection
+    participant Y as vsomeip
+    Factory ->> Factory : getConnection
+    activate Connection
+    Factory ->> Connection : make_shared
+    Connection ->> Y : create_application
+    Factory ->> Connection : connect
+    Connection ->> Y : init
+    Connection ->> Y : register_state_handler
+    deactivate Connection
+```
+
+#### DBus
+
+```mermaid
+sequenceDiagram
+    participant Factory as DBus::Factory
+    participant Connection as DBus::Connection
+    participant Y as dbus
+    Factory ->> Factory : getConnection
+    activate Connection
+    Factory ->> Connection : connect
+    Connection ->> Y : dbus_bus_get_private
+    deactivate Connection
+```
+
+
 
 # Session : sayHello
 
+## Common Sequence
+
+### Client to Binding
 
 客户端调用接口函数sayHello()发送请求：
+
 ```mermaid
 sequenceDiagram
 Client(XClient) ->> XProxy : sayHello
-XProxy ->> XDBusProxy : sayHello
-XDBusProxy ->> DBusProxyHelper : callMethodWithReply
-DBusProxyHelper ->> DBusConnection : sendDBusMessageWithReplyAndBlock
-DBusConnection ->> dbus : dbus_connection_send_with_reply_and_block
+XProxy ->> XYProxy : sayHello
+XYProxy ->> YProxyHelper : callMethodWithReply
+YProxyHelper ->> YConnection : sendYMessageWithReplyAndBlock
+YConnection ->> Y : Send with Reply and Block
 ```
 
-调用请求被通过dbus转给了服务端：
+
+
+### Binding to Server
+
+调用请求被通过Y转给了服务端：
+
 ```mermaid
 sequenceDiagram
-dbus ->> DBusConnection : onLibdbusObjectPathMessage
-DBusConnection ->> DBusStubAdapterHelper : onInterfaceDBusMessage
-DBusStubAdapterHelper ->> XDBusStubAdapter : sayHelloStubDispatcher
-XDBusStubAdapter ->> server(XStubImpl) : sayHello
+Y ->> YConnection : onReceive
+YConnection ->> YStubAdapterHelper : onInterfaceYMessage
+YStubAdapterHelper ->> XYStubAdapter : sayHelloStubDispatcher
+XYStubAdapter ->> server(XStubImpl) : sayHello
 server(XStubImpl) ->> server(XStubImpl) : _reply
 ```
+
+### Server back to Binding
 
 服务端处理完请求之后，将结果送回给客户端：
 
 ```mermaid
 sequenceDiagram
+participant Y
+participant YConnection
+participant YStubAdapterHelper
+server(XStubImpl) ->> YStubAdapterHelper : sendReply
+YStubAdapterHelper ->> YConnection : sendYMessage
+YConnection ->> Y : Reply for Sent
+```
+
+
+
+### Binding return to Client
+
+最终，请求结果被通过dbus转回给客户端，通过函数参数返回，过程与第一个Sequence相逆，这里不再描画。
+
+
+## Details
+
+
+### Send with Reply and Block
+
+#### DBus
+
+```mermaid
+sequenceDiagram
+YConnection ->> dbus : dbus_connection_send_with_reply_and_block
+```
+
+#### SOME/IP
+
+```mermaid
+sequenceDiagram
+    participant YConnection
+    participant vsomeip as vsomeip::application
+    note over YConnection,vsomeip : client thread
+    YConnection ->> vsomeip : send
+    YConnection ->> YConnection : wait condition
+    note over YConnection,vsomeip : capi thread
+    vsomeip ->> YConnection : send
+    YConnection ->> +YConnection : handleProxyReceive
+    YConnection ->> -YConnection : notify condition
+    note right of YConnection : client thread <br/> will continue <br/> to run
+```
+
+
+
+### On Receive
+
+#### DBus
+
+```mermaid
+sequenceDiagram
+dbus ->> DBusConnection : onLibdbusObjectPathMessage
+DBusConnection ->> DBusStubAdapterHelper : onInterfaceDBusMessage
+```
+
+#### SOME/IP
+
+```mermaid
+sequenceDiagram
+vsomeip ->> Connection : receive
+alt requests
+Connection ->> +Connection : handleStubReceive
+Connection ->> -StubManager : handleMessage
+StubManager ->> StubAdapterHelper : onInterfaceMessage
+else
+Connection ->> +Connection : handleProxyReceive
+end
+```
+
+
+### Reply for Sent
+
+#### DBus
+
+```mermaid
+sequenceDiagram
 participant dbus
 participant DBusConnection
-participant DBusStubAdapterHelper
-server(XStubImpl) ->> DBusStubAdapterHelper : sendReply
-DBusStubAdapterHelper ->> DBusConnection : sendDBusMessage
 DBusConnection ->> dbus : dbus_connection_send
 ```
 
-最终，请求结果被通过dbus转回给客户端，通过函数参数返回，过程与第一个Sequence相逆，这里不再描画。
+#### SOME/IP
+
+```mermaid
+sequenceDiagram
+participant vsomeip as vsomeip::application
+participant DBusConnection
+DBusConnection ->> vsomeip : send
+```
+

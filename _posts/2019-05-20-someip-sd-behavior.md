@@ -1,8 +1,15 @@
+---
+layout: post
+title: SOME/IP SD的行为介绍
+tag: [SOME/IP]
+---
 
 
 本文用于介绍SOME/IP-SD的Communication Behavior[^1]。
 
 SOME/IP的Service Instance或者Event Group的启动过程可以分成三个阶段，分别是：Initial Wait Phase、Repetition Phase、Main Phase。
+
+<!--break-->
 
 [TOC]
 

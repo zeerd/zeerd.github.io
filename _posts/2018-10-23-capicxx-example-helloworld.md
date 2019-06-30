@@ -246,3 +246,9 @@ participant DBusConnection
 DBusConnection ->> vsomeip : send
 ```
 
+## Serialize
+
+CommonAPI提供了一组类，InputStream和OutputStream，来实现数据的编串和解串。不同的Binding需要根据实际需求来封装这些类。
+
+比如在SOME/IP中，对于各种不同数据类型的封装是有严格的说明的。所以在someip部分的代码的hpp和cpp文件中，就可以看到大量的代码用于实现这部分内容。
+

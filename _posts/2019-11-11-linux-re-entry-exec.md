@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux下重新封装可执行文件的入口
-tag: [Linux,Gcc,Debug]
+tag: [Linux,GCC,Debug]
 ---
 
 

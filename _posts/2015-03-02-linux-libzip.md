@@ -48,7 +48,7 @@ void search_dir ( const char * name )
     strcpy(pathBak, path);
     strncat( path, name, sizeof( path ));
 
-    if (DBG_SEQ) LOGI( "searching %s\\n", path );
+    if (DBG_SEQ) LOGI( "searching %s\n", path );
 
     if( stat( path, &_stbuf ) == 0 ) {
 
@@ -60,7 +60,7 @@ void search_dir ( const char * name )
 
             if( _dir ) {
                 
-                if (DBG_SEQ) LOGD("find folder %s\\n", path);
+                if (DBG_SEQ) LOGD("find folder %s\n", path);
 
                 //Caution : no need to do this unless there is a empty folder
                 //zip_dir_add(z, name, ZIP_FL_ENC_GUESS); 
@@ -76,11 +76,11 @@ void search_dir ( const char * name )
                 closedir( _dir );
             }
             else {
-                LOGE( "open dir failed: %s\\n", path );
+                LOGE( "open dir failed: %s\n", path );
             }
         }
         else {
-            if (DBG_SEQ) LOGD("find file %s\\n", path);
+            if (DBG_SEQ) LOGD("find file %s\n", path);
 
             struct zip_source *s = zip_source_file(z, path, 0, -1);
             if(s != NULL) {
@@ -92,13 +92,13 @@ void search_dir ( const char * name )
                 //so don't free the zip_source here.
                 //zip_source_free(s); 
             } else {
-                LOGE( "zip_source_file failed for %s with the reason %s\\n",
+                LOGE( "zip_source_file failed for %s with the reason %s\n",
                     path, zip_strerror(z) );
             }
         }
     }
     else {
-        LOGE( "stat failed\\n" );
+        LOGE( "stat failed\n" );
     }
 
     /* remove parsed name */
@@ -113,9 +113,9 @@ int main(int argc, char *argv[])
 
     if (argc < 3) {
         printf(
-            "\\nArchive a folder to a zip file.\\n"
-            "Usage:\\n\\t%s <path> <zip>\\n"
-            "Example:\\n\\t%s /home/foo/foo /home/foo/foo.zip\\n\\n",
+            "\nArchive a folder to a zip file.\n"
+            "Usage:\n\t%s <path> <zip>\n"
+            "Example:\n\t%s /home/foo/foo /home/foo/foo.zip\n\n",
             argv[0], argv[0]);
         return -1;
     }
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
 
     if (err != 0) {
         zip_error_to_str(strerr, 1024, err, errno);
-        LOGE("operated zip fail for %s\\n", strerr);
+        LOGE("operated zip fail for %s\n", strerr);
     }
 
     return 0;
@@ -202,9 +202,9 @@ int main(int argc, char *argv[])
 
     if (argc < 2) {
         printf(
-            "\\nUn-Archive a zip file to the current path.\\n"
-            "Usage:\\n\\t%s <zip>\\n"
-            "Example:\\n\\t%s foo.zip\\n\\n",
+            "\nUn-Archive a zip file to the current path.\n"
+            "Usage:\n\t%s <zip>\n"
+            "Example:\n\t%s foo.zip\n\n",
             argv[0], argv[0]);
         return -1;
     }
@@ -215,12 +215,12 @@ int main(int argc, char *argv[])
         zip_int64_t i, c = zip_get_num_entries(z, ZIP_FL_UNCHANGED);
         for (i=0; i<c ; i++) {
             const char * name = zip_get_name(z, i, ZIP_FL_ENC_GUESS);
-            LOGI("find %s\\n", name);
+            LOGI("find %s\n", name);
             char *d = strdup(name);
             if (d != NULL) {
                 char *p = strrchr(d, '/');
                 if(p != NULL) {
-                    *p = '\\0';
+                    *p = '\0';
                     pmkdir(d);
                 }
                 free(d);
@@ -239,14 +239,14 @@ int main(int argc, char *argv[])
                     zip_fclose(f);
                 }
             } else {
-                LOGE("memory low\\n");
+                LOGE("memory low\n");
             }
         }
 
         err = zip_close(z);
     } else {
         zip_error_to_str(strerr, 1024, err, errno);
-        LOGE("operated zip fail for %s\\n", strerr);
+        LOGE("operated zip fail for %s\n", strerr);
     }
 
     return 0;

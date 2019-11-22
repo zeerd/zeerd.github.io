@@ -15,7 +15,7 @@ char * html2utf8(
 {
     unsigned int i, j, k,l;
 
-    char last_ch = '\\0';
+    char last_ch = '\0';
     char html_num[10] = "";
     bool_t find_head = FALSE;
 
@@ -55,7 +55,7 @@ char * html2utf8(
                         
                         if(str != NULL){
                             char* it = str;
-                            for(;*it!='\\0';it++){
+                            for(;*it!='\0';it++){
                                 utf8[j++] = *it;
                             }
                             g_free(str);
@@ -75,7 +75,7 @@ char * html2utf8(
         }
         last_ch = html[i];
         if(j >= utf8_size){
-            utf8[j-1] = '\\0';
+            utf8[j-1] = '\0';
             break;
         }
     }
@@ -101,7 +101,7 @@ const char* html[] = {
 
     for(i=0;i<ARRAY_SIZE(html);i++){
         html2utf8(html[i], strlen(html[i]), utf8, sizeof(utf8));
-        printf("%s[%s]\\n", html[i], utf8);
+        printf("%s[%s]\n", html[i], utf8);
         memset(utf8, 0, sizeof(utf8));
     }
 ```

@@ -3,6 +3,103 @@ layout: post
 title: C语言中将HTML的Unicode转换成UTF8编码的文字
 tags: [HTML,Unicode,Utf8,Encoding]
 ---
-随着网络应用的逐渐普及，各种基于HTML的输入也逐步进入了C语言和其他各种语种编程人员的视线。<br>本文提供一个算法，用于将从html中获取的unicode字符串转换成通常的utf-8字符串。<br>
+随着网络应用的逐渐普及，各种基于HTML的输入也逐步进入了C语言和其他各种语种编程人员的视线。
+本文提供一个算法，用于将从html中获取的unicode字符串转换成通常的utf-8字符串。
 <!--break-->
-<br>所谓的基于html的Unicode字符串，也就是类似“&#xxxx;”这样的字符串。<br><br><pre class="brush: c; gutter: true; first-line: 1; highlight: []; html-script: false"><br>char * html2utf8(<br>	const char* html, unsigned int html_size, char* utf8, unsigned int utf8_size)<br>{<br>	unsigned int i, j, k,l;<br><br>	char last_ch = &#039;\\0&#039;;<br>	char html_num[10] = &quot;&quot;;<br>	bool_t find_head = FALSE;<br><br>	j=0;<br>	memset(utf8, 0, utf8_size);<br>	for(i=0;i&lt;html_size;i++){<br>		if((html[i] == &#039;#&#039;) &amp;&amp; (last_ch == &#039;&amp;&#039;)){<br>			find_head = TRUE;<br>			k = 0;<br>			memset(html_num, 0, sizeof(html_num));<br>			if(j&gt;0){<br>				j--;<br>			}<br>		}<br>		else{<br>			if(find_head){<br>				if(html[i] == &#039;;&#039;){<br>					unsigned int code = 0;<br>					if(html_num[0] == &#039;x&#039;){<br>						code = hex2dec(&amp;html_num[1]);<br>					}<br>					else{<br>						code = atoi(html_num);<br>					}<br>					char s_code[10] = &quot;&quot;;<br>					l=0;<br>					if(code &lt;= 0xFF){<br>						utf8[j++] = code;<br>					}<br>					else if(code &lt;= 0xFFFF){<br>						s_code[l++] = (code&gt;&gt;8)&amp;0x00FF;<br>						s_code[l++] = code&amp;0x00FF;<br>						char* str = g_convert(<br>										s_code, strlen(s_code), <br>										&quot;utf-8&quot;, &quot;UCS-2BE&quot;, <br>										NULL, NULL, NULL);<br>						<br>						if(str != NULL){<br>							char* it = str;<br>							for(;*it!=&#039;\\0&#039;;it++){<br>								utf8[j++] = *it;<br>							}<br>							g_free(str);<br>						}<br>					}<br>					else{<br>					}<br>					find_head = FALSE;<br>				}<br>				else{<br>					html_num[k++] = html[i];<br>				}<br>			}<br>			else{<br>				utf8[j++] = html[i];<br>			}<br>		}<br>		last_ch = html[i];<br>		if(j &gt;= utf8_size){<br>			utf8[j-1] = &#039;\\0&#039;;<br>			break;<br>		}<br>	}<br><br>    return utf8;<br>}</pre><br><br>测试代码：<br><pre class="brush: c; gutter: true; first-line: 1; highlight: []; html-script: false"><br>const char* html[] = {<br>	&quot;&amp;#32431;&amp;#20013;&amp;#25991;&quot;,<br>	&quot;&amp;#20013;&amp;#25991;&amp;#24102;English&quot;,<br>	&quot;Englist&amp;#21152;&amp;#20013;&amp;#25991;&quot;,<br>	&quot;12345ABCD&quot;,<br>	&quot;ABCD12345&quot;,<br>	&quot;123&amp;#21152;&amp;#20013;&amp;#25991;&quot;,<br>	&quot;&amp;#20013;&amp;#25991;&amp;#24102;123&quot;,<br>	&quot;&amp;#25530;&amp;#26434;Englist&amp;#30340;&amp;#20013;&amp;#25991;&quot;,<br>	&quot;&amp;#25530;&amp;#26434;123&amp;#30340;&amp;#20013;&amp;#25991;&quot;};<br><br>	for(i=0;i&lt;ARRAY_SIZE(html);i++){<br>		html2utf8(html[i], strlen(html[i]), utf8, sizeof(utf8));<br>		printf(&quot;%s[%s]\\n&quot;, html[i], utf8);<br>		memset(utf8, 0, sizeof(utf8));<br>	}<br></pre><br><br>参考：<br><a href="http://en.wikipedia.org/wiki/Unicode_and_HTML" title="Unicode and HTML" target="_blank">Unicode and HTML</a>
+所谓的基于html的Unicode字符串，也就是类似“&#xxxx;”这样的字符串。
+
+```c
+char * html2utf8(
+	const char* html, unsigned int html_size, char* utf8, unsigned int utf8_size)
+{
+	unsigned int i, j, k,l;
+
+	char last_ch = '\\0';
+	char html_num[10] = "";
+	bool_t find_head = FALSE;
+
+	j=0;
+	memset(utf8, 0, utf8_size);
+	for(i=0;i<html_size;i++){
+		if((html[i] == '#') && (last_ch == '&')){
+			find_head = TRUE;
+			k = 0;
+			memset(html_num, 0, sizeof(html_num));
+			if(j>0){
+				j--;
+			}
+		}
+		else{
+			if(find_head){
+				if(html[i] == ';'){
+					unsigned int code = 0;
+					if(html_num[0] == 'x'){
+						code = hex2dec(&html_num[1]);
+					}
+					else{
+						code = atoi(html_num);
+					}
+					char s_code[10] = "";
+					l=0;
+					if(code <= 0xFF){
+						utf8[j++] = code;
+					}
+					else if(code <= 0xFFFF){
+						s_code[l++] = (code>>8)&0x00FF;
+						s_code[l++] = code&0x00FF;
+						char* str = g_convert(
+										s_code, strlen(s_code), 
+										"utf-8", "UCS-2BE", 
+										NULL, NULL, NULL);
+						
+						if(str != NULL){
+							char* it = str;
+							for(;*it!='\\0';it++){
+								utf8[j++] = *it;
+							}
+							g_free(str);
+						}
+					}
+					else{
+					}
+					find_head = FALSE;
+				}
+				else{
+					html_num[k++] = html[i];
+				}
+			}
+			else{
+				utf8[j++] = html[i];
+			}
+		}
+		last_ch = html[i];
+		if(j >= utf8_size){
+			utf8[j-1] = '\\0';
+			break;
+		}
+	}
+
+    return utf8;
+}
+```
+
+测试代码：
+
+```c
+const char* html[] = {
+	"&#32431;&#20013;&#25991;",
+	"&#20013;&#25991;&#24102;English",
+	"Englist&#21152;&#20013;&#25991;",
+	"12345ABCD",
+	"ABCD12345",
+	"123&#21152;&#20013;&#25991;",
+	"&#20013;&#25991;&#24102;123",
+	"&#25530;&#26434;Englist&#30340;&#20013;&#25991;",
+	"&#25530;&#26434;123&#30340;&#20013;&#25991;"};
+
+	for(i=0;i<ARRAY_SIZE(html);i++){
+		html2utf8(html[i], strlen(html[i]), utf8, sizeof(utf8));
+		printf("%s[%s]\\n", html[i], utf8);
+		memset(utf8, 0, sizeof(utf8));
+	}
+```

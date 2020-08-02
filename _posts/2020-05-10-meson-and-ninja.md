@@ -74,11 +74,11 @@ $ sudo DESTDIR=/path/to/install ninja -C arm64-build install
 Meson是使用Python编写的，这个软件本身不需要安装。直接执行就可以了。例如：
 
 ```
-user@coc:~/tools$ git clone https://github.com/mesonbuild/meson.git
-user@coc:~/tools$ pwd
-/home/coc/tools/
-user@coc:~/tools$ cd /path/to/libavtp
-user@coc:/path/to/libavtp$ /home/coc/tools/meson/meson.py build
+user@user:~/tools$ git clone https://github.com/mesonbuild/meson.git
+user@user:~/tools$ pwd
+/home/user/tools/
+user@user:~/tools$ cd /path/to/libavtp
+user@user:/path/to/libavtp$ /home/user/tools/meson/meson.py build
 ```
 
 ## 其他

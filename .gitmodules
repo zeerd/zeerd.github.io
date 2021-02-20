@@ -1,0 +1,9 @@
+[submodule "tools/lemon-php"]
+	path = tools/lemon-php
+	url = https://github.com/wez/lemon-php.git
+[submodule "tools/jlexphp"]
+	path = tools/jlexphp
+	url = https://github.com/wez/JLexPHP.git
+[submodule "tools/asciitosvg"]
+	path = tools/asciitosvg
+	url = https://github.com/dhobsd/asciitosvg.git

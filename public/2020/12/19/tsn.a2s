@@ -6,7 +6,7 @@
                                 |        .-----------------.  | | Per Stream Filtering & Policing
                               | |        |[1]Reliability   |<-+=+ reliability
          Bounded low latency: : |        .-----------------.  | :
-        ---------------------=+ |  .-------------------.      | 
+        ---------------------=+ |  .-------------------.      |
           Credit Based Shaper +=+=>|[1]   Latency      |      | |
              Frame Preemption : |  .-------------------.      | : Dedicated resources & API:
             Scheduled Traffic | |        .-----------------.  | +=---------------------------
@@ -14,7 +14,7 @@
  Asynchronous Traffic Shaping | |        .-----------------.  | : TSN configuration
                               | |                             | | YANG
                               | #-----------------------------# | Link local Reservation Protocol
-                              |                                 | 
+                              |                                 |
                               +=---> Zero congestion loss <----=+
                               :                                 :
 

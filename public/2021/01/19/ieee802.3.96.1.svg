@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with ASCIIToSVG (https://github.com/dhobsd/asciitosvg/) -->
+<svg width="514px" height="560px" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="dsFilterNoBlur" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feBlend in="SourceGraphic" in2="matrixOut" mode="normal"/>
+    </filter>
+    <filter id="dsFilter" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="3"/>
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+    </filter>
+    <marker id="iPointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      fill="black"
+      orient="auto">
+      <path d="M 10 0 L 10 10 L 0 5 z" />
+    </marker>
+    <marker id="Pointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      fill="black"
+      orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
+<g id="group0">
+	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 211.5 40 L 472.5 40 L 472.5 72 L 211.5 72 Z" />
+	<text x="269.1" y="60.8" id="text6" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >HIGHER LAYERS </text>
+
+</g>
+<g id="group2">
+	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 211.5 72 L 472.5 72 L 472.5 120 L 211.5 120 Z" />
+	<text x="224.1" y="92.8" id="text7" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >LLC (LOGICAL LINK CONTROL) </text>
+
+	<text x="251.1" y="108.8" id="text9" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OR OTHER MAC CLIENT </text>
+
+</g>
+<g id="group4">
+	<path id="path4" filter="url(#dsFilter)" fill="#fff" d="M 4.5 88 L 130.5 88 L 130.5 120 L 4.5 120 Z" />
+	<text x="17.1" y="108.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >APPLICATION </text>
+
+</g>
+<g id="group6">
+	<path id="path6" filter="url(#dsFilter)" fill="#fff" d="M 4.5 120 L 130.5 120 L 130.5 152 L 4.5 152 Z" />
+	<text x="17.1" y="140.8" id="text10" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >PRESENTATION </text>
+
+</g>
+<g id="group8">
+	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 211.5 120 L 472.5 120 L 472.5 152 L 211.5 152 Z" />
+	<text x="224.1" y="140.8" id="text11" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >MAC (MEDIA ACCESS CONTROL) </text>
+
+</g>
+<g id="group10">
+	<path id="path10" filter="url(#dsFilter)" fill="#fff" d="M 4.5 152 L 130.5 152 L 130.5 184 L 4.5 184 Z" />
+	<text x="17.1" y="172.8" id="text12" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >SESSION </text>
+
+</g>
+<g id="group17">
+	<path id="path17" filter="url(#dsFilter)" fill="#fff" d="M 4.5 184 L 130.5 184 L 130.5 216 L 4.5 216 Z" />
+	<text x="17.1" y="204.8" id="text14" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >TRANSPORT </text>
+
+</g>
+<g id="group23">
+	<path id="path23" filter="url(#dsFilter)" fill="#fff" d="M 4.5 216 L 130.5 216 L 130.5 248 L 4.5 248 Z" />
+	<text x="17.1" y="236.8" id="text16" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >NETWORK </text>
+
+</g>
+<g id="group25">
+	<path id="path25" filter="url(#dsFilter)" fill="#fff" d="M 265.5 232 L 418.5 232 L 418.5 264 L 265.5 264 Z" />
+	<text x="323.1" y="252.8" id="text17" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >PCS </text>
+
+</g>
+<g id="group30">
+	<path id="path30" filter="url(#dsFilter)" fill="#fff" d="M 4.5 248 L 130.5 248 L 130.5 280 L 4.5 280 Z" />
+	<text x="17.1" y="268.8" id="text18" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >DATA LINK </text>
+
+</g>
+<g id="group32">
+	<path id="path32" filter="url(#dsFilter)" fill="#fff" d="M 265.5 264 L 418.5 264 L 418.5 296 L 265.5 296 Z" />
+	<text x="323.1" y="284.8" id="text20" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >PMA </text>
+
+</g>
+<g id="group34">
+	<path id="path34" filter="url(#dsFilter)" fill="#fff" d="M 4.5 280 L 130.5 280 L 130.5 312 L 4.5 312 Z" />
+	<text x="17.1" y="300.8" id="text21" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >PHYSICAL </text>
+
+</g>
+<g id="group46">
+	<path id="path46" filter="url(#dsFilter)" fill="#fff" d="M 292.5 328 L 436.5 328 L 436.5 360 L 292.5 360 Z" />
+	<text x="341.1" y="348.8" id="text23" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >MEDIUM </text>
+
+</g>
+</g>
+<g id="lines" stroke="black" stroke-width="2" fill="none" >
+<g id="group630">
+	<path id="path630" stroke-dasharray="5 5" d="M 148.5 280 L 166.5 280 L 166.5 152 L 193.5 152 " />
+</g>
+<g id="group632">
+	<path id="path632" stroke-dasharray="5 5" d="M 148.5 312 L 184.5 312 L 184.5 328 L 274.5 328 " />
+</g>
+<g id="group1077">
+	<path id="path1077" d="M 265.5 152 L 265.5 184 L 328.5 184 L 355.5 184 L 418.5 184 L 418.5 152 " />
+</g>
+<g id="group1325">
+	<path id="path1325" d="M 328.5 184 L 328.5 232 " />
+</g>
+<g id="group1333">
+	<path id="path1333" d="M 328.5 296 L 328.5 328 " />
+</g>
+<g id="group1432">
+	<path id="path1432" d="M 355.5 184 L 355.5 232 " />
+</g>
+<g id="group1440">
+	<path id="path1440" d="M 355.5 296 L 355.5 328 " />
+</g>
+<g id="group1506">
+	<path id="path1506" marker-start="url(#iPointer)" d="M 373.5 216 L 391.5 216 " />
+</g>
+<g id="group1512">
+	<path id="path1512" marker-start="url(#iPointer)" d="M 373.5 312 L 391.5 312 " />
+</g>
+<g id="group1787">
+	<path id="path1787" marker-start="url(#iPointer)" marker-end="url(#Pointer)" d="M 445.5 232 L 463.5 232 L 463.5 296 L 445.5 296 " />
+</g>
+</g>
+<g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
+<text x="53.1" y="12.8" id="text0" fill="#000" >OSI </text>
+<text x="296.1" y="12.8" id="text1" fill="#000" >ETHERNET</text>
+<text x="26.1" y="28.8" id="text2" fill="#000" >REFERENCE </text>
+<text x="305.1" y="28.8" id="text3" fill="#000" >LAYERS</text>
+<text x="44.1" y="44.8" id="text4" fill="#000" >MODEL </text>
+<text x="35.1" y="60.8" id="text5" fill="#000" >LAYERS </text>
+<text x="278.1" y="172.8" id="text13" fill="#000" >RECONCILIATION </text>
+<text x="404.1" y="220.8" id="text15" fill="#000" >MII*</text>
+<text x="476.1" y="268.8" id="text19" fill="#000" >PHY</text>
+<text x="404.1" y="316.8" id="text22" fill="#000" >MDI</text>
+<text x="287.1" y="380.8" id="text24" fill="#000" >100 Mb/s link segment</text>
+<text x="8.1" y="412.8" id="text25" fill="#000" >MDI = MEDIUM DEPENDENT INTERFACE</text>
+<text x="8.1" y="428.8" id="text26" fill="#000" >MII = MEDIA INDEPENDENT INTERFACE</text>
+<text x="8.1" y="444.8" id="text27" fill="#000" >PCS = PHYSICAL CODING SUBLAYER</text>
+<text x="8.1" y="460.8" id="text28" fill="#000" >PMA = PHYSICAL MEDIUM ATTACHMENT</text>
+<text x="8.1" y="476.8" id="text29" fill="#000" >PHY = PHYSICAL LAYER DEVICE</text>
+<text x="8.1" y="492.8" id="text30" fill="#000" >PMD = PHYSICAL MEDIUM DEPENDENT</text>
+<text x="8.1" y="508.8" id="text31" fill="#000" >*</text>
+<text x="26.1" y="508.8" id="text32" fill="#000" >Physical instantiation of MII is optional.</text>
+<text x="8.1" y="540.8" id="text33" fill="#000" >Figure 96–1—Architectural positioning of 100BASE-T1</text>
+</g>
+</svg>

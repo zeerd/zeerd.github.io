@@ -1,0 +1,34 @@
+      OSI                        ETHERNET
+   REFERENCE                      LAYERS
+     MODEL             #----------------------------#
+    LAYERS             |      HIGHER LAYERS         |
+                       #----------------------------#
+#-------------#        | LLC (LOGICAL LINK CONTROL) |
+| APPLICATION |        |    OR OTHER MAC CLIENT     |
+#-------------#        #----------------------------#
+| PRESENTATION|        | MAC (MEDIA ACCESS CONTROL) |
+#-------------#   +--= #-----+----------------+-----#
+| SESSION     |   |          | RECONCILIATION |
+#-------------#   |          +------+--+------+
+| TRANSPORT   |   |                 |  |
+#-------------#   |                 |  | <-- MII*
+| NETWORK     |   |          #------+--+------#  <-#
+#-------------#   |          |      PCS       |    |
+| DATA LINK   |   |          #----------------#    | PHY
+#-------------# =-+          |      PMA       |    |
+| PHYSICAL    |              #------+--+------#  <-#
+#-------------# =---+               |  | <-- MDI
+                    +---------= #---+--+--------#
+                                |     MEDIUM    |
+                                #---------------#
+                                100 Mb/s link segment
+
+ MDI = MEDIUM DEPENDENT INTERFACE
+ MII = MEDIA INDEPENDENT INTERFACE
+ PCS = PHYSICAL CODING SUBLAYER
+ PMA = PHYSICAL MEDIUM ATTACHMENT
+ PHY = PHYSICAL LAYER DEVICE
+ PMD = PHYSICAL MEDIUM DEPENDENT
+ * Physical instantiation of MII is optional.
+
+ Figure 96–1—Architectural positioning of 100BASE-T1

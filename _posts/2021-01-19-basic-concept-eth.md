@@ -31,6 +31,6 @@ tag: [Ethernet]
 
 ## 参考
 
-* [[https://www.cnblogs.com/jason-lu/articles/3195473.html|网口扫盲三:以太网芯片MAC和PHY的关系]]
-* [[https://blog.csdn.net/ZCShouCSDN/article/details/80090802|Ethernet（以太网）之一 详解 MAC、MII、PHY]]
-* [[https://www.zhihu.com/question/22175660|驱动与固件的区别是什么？]]
+* [网口扫盲三:以太网芯片MAC和PHY的关系](https://www.cnblogs.com/jason-lu/articles/3195473.html)
+* [Ethernet（以太网）之一 详解 MAC、MII、PHY](https://blog.csdn.net/ZCShouCSDN/article/details/80090802)
+* [驱动与固件的区别是什么？](https://www.zhihu.com/question/22175660)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Yocto环境编译QT5
+title: 测试PlantUML图片显示机制
 tag: [UML,PlantUML]
 ---
 

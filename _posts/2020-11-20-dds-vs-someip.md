@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [翻译]DDS与SOME/IP
+title: 【翻译】DDS与SOME/IP
 tag: [DDS,SOME/IP]
 ---
 

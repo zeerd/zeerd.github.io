@@ -1,0 +1,37 @@
+@startmindmap
+<style>
+node {
+  LineColor white
+  MaximumWidth 100
+}
+arrow {
+  LineStyle 4
+  LineThickness 1
+  LineColor red
+}
+</style>
+
++[#lightblue] AVB & TSN Components
+
+++[#4488ff] Ultra reliability
++++_ Frame Replication & Elimination Path Control
++++_ Per Stream Filtering & Policing reliability
+
+++[#4488ff] Dedicated resources & API
++++_ Stream Reservation Protocol
++++_ TSN configuration
++++_ YANG
++++_ Link local Reservation Protocol
++++_ Zero congestion loss
+
+--[#4488ff] Time Synchronization
+---_ Timing and Synchronization
+
+--[#4488ff] Bounded low latency
+---_ Credit Based Shaper
+---_ Frame Preemption
+---_ Scheduled Traffic
+---_ Cyclic Queueing & Forwarding
+---_ Asynchronous Traffic Shaping
+---_ Zero congestion loss
+@endmindmap

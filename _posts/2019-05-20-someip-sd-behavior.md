@@ -11,8 +11,6 @@ SOME/IP的Service Instance或者Event Group的启动过程可以分成三个阶�
 
 <!--break-->
 
-[TOC]
-
 # Behavior
 
 ## Startup

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: WI-FI&WI-FI Direct 简介及实现
-tag: [WIFI,WIFI Direct]
+tag: [WIFI,WIFI-Direct]
 ---
 
 <!--break-->
@@ -100,7 +100,7 @@ aa:bb:cc:dd:ee:ff 2432 94 [WPA2-PSK-TKIP+CCMP][ESS] testing
 wpa的WI-FI连接过程是基于网络ID（Network ID）实现的。因此，首先需要通过wpa\_cli命令获取一个ID：
 
 ```
-wpa\_cli -p/tmp/wlan0 -iwlan0 add\_network
+wpa_cli -p/tmp/wlan0 -iwlan0 add_network
 ```
 
 这个命令会返回一个ID号。获取ID号之后，需要向这个网络ID传入连接参数：

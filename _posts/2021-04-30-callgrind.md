@@ -27,7 +27,7 @@ $ dot -Tpng valgrind.dot -o valgrind.png
 如果系统上没有dot和gprof2dot，可以通过一下方式安装：
 
 ```bash
-# apt-get install python3 graphviz
+$ apt-get install python3 graphviz
 $ pip3 install gprof2dot
 
 ```

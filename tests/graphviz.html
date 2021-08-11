@@ -1,0 +1,34 @@
+<script type="text/javascript" src="../js/index.js"></script>
+<script type="text/javascript" src="../js/mermaid.min.js"></script>
+
+<pre>
+<code class="language-graphviz">
+digraph "STAP-A -&gt; FU-A" {
+    node [shape=record];
+    graph [ splines = line ];
+    SA  [label="{STAP-A Type
+              | {&lt;f&gt; F |&lt;n&gt; NRI |&lt;t&gt; Type } }
+              | {&lt;d1&gt; STAP-A Data 1}
+              | {&lt;dx&gt; STAP-A Data ...}
+              | {&lt;dn&gt; STAP-A Data N}"
+        ];
+    FU  [label="{&lt;i&gt; N}| {FU-A Indicator | {&lt;f&gt; F |&lt;n&gt; NRI | Type(28) } } | {FU-A Header | {&lt;s&gt; S(1) | E(0) | R(0) | &lt;t&gt; Type } }| {&lt;p&gt; FU-A Payload}"];
+    FUx [label="{&lt;i&gt; N + ...} | {FU-A Indicator | {&lt;f&gt; F |&lt;n&gt; NRI | Type(28) } } | {FU-A Header | {S(0) | E(0) | R(0) | &lt;t&gt; Type } } | {&lt;p&gt; FU-A Payload}"];
+    FUn [label="{&lt;i&gt; N + n} | {FU-A Indicator | {&lt;f&gt; F |&lt;n&gt; NRI | Type(28) } } | {FU-A Header | {S(0) |&lt;e&gt; E(1) | R(0) | &lt;t&gt; Type } } | {&lt;p&gt; FU-A Payload}"];
+    FU:i -&gt; FUx:i;
+    FUx:i -&gt; FUn:i;
+    SA:f -&gt; FU:f [color="DodgerBlue" ];
+    SA:f -&gt; FUx:f [color="DodgerBlue" ];
+    SA:f -&gt; FUn:f [color="DodgerBlue" ];
+    SA:n -&gt; FU:n [color="Blue" ];
+    SA:n -&gt; FUx:n [color="Blue" ];
+    SA:n -&gt; FUn:n [color="Blue" ];
+    SA:t -&gt; FU:t [color="Green" ];
+    SA:t -&gt; FUx:t [color="Green" ];
+    SA:t -&gt; FUn:t [color="Green" ];
+    SA:d1 -&gt; FU:p [label="第一段" color="Red" ];
+    SA:dx -&gt; FUx:p [label="第...段" color="Red" ];
+    SA:dn -&gt; FUn:p [label="最后一段" color="Red" ];
+}
+</code>
+</pre>

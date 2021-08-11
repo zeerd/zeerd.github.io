@@ -8,3 +8,16 @@ setInterval(() => {
 //  }
 }, 1000)
 
+setTimeout(() => {
+    const prefix = "http://graphviz.zeerd.com/?";
+    // const prefix = "https://g.gravizo.com/svg?";
+    var elements = document.getElementsByClassName('language-graphviz');
+    for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
+        encoded = encodeURI(prefix + elements[i].innerHTML);
+        //elements[i].innerHTML = "<img src='" + encoded + "'>";
+        elements[i].innerHTML = "<object type='image/svg+xml' data='"
+                              + encoded + "'></object>";
+        elements[i].className = "graphviz";
+        elements[i].outerHTML = elements[i].outerHTML.replace(/code/g,"div");
+    }
+}, 1000)

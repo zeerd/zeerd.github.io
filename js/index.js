@@ -9,8 +9,8 @@ setInterval(() => {
 }, 1000)
 
 setTimeout(() => {
-    // const prefix = "http://graphviz.zeerd.com/?";
-    const prefix = "https://g.gravizo.com/svg?";
+    const prefix = "http://graphviz.zeerd.com/?";
+    // const prefix = "https://g.gravizo.com/svg?";
     var elements = document.getElementsByClassName('language-graphviz');
     for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
         encoded = encodeURI(prefix + elements[i].innerHTML);

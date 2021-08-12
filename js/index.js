@@ -8,7 +8,7 @@ setInterval(() => {
 //  }
 }, 1000)
 
-setTimeout(() => {
+setInterval(() => {
     const prefix = "https://graphviz.zeerd.com/?";
     // const prefix = "https://g.gravizo.com/svg?";
     var elements = document.getElementsByClassName('language-graphviz');

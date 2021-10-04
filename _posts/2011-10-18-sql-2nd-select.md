@@ -7,7 +7,8 @@ tags: [SQL]
 <!--break-->
 <p>通常来说，可以通过游标实现。但是，据说这玩意效率有些问题。于是，有个替代方案。</p>
 <p>创建一个带有索引值的临时表。然后通过索引值遍历临时表。</p>
-<pre>
+
+```sql
 Select id = indentity(int,0,1) , tmp.xxfield into #temptable
     From(
 	    Select xxxfield from dbo.table1
@@ -21,4 +22,4 @@ Select @iMax = count(*) from #temptable
 	Set @i = @i + 1
 End
 Drop table #temptable
-</pre>
+```

@@ -108,22 +108,22 @@ function get_client_ip()
 <?php
 
 if($user_name == ""){
-    echo "<form action=\\"user.php\\" method=\\"post\\">";
+    echo "<form action=\"user.php\" method=\"post\">";
         echo "你的IP地址是：";
-        echo "<input type=\\"text\\" name=\\"user_ip\\" readonly=true value=\\"".get_client_ip()."\\"/>";
+        echo "<input type=\"text\" name=\"user_ip\" readonly=true value=\"".get_client_ip()."\"/>";
         echo "<br/>";
         echo "请输入你的真实姓名：";
-        echo "<input type=\\"text\\" name=\\"user_name\\" />";
-        echo "<input type=\\"submit\\" name=\\"submit\\" value=\\"提交\\" />";
+        echo "<input type=\"text\" name=\"user_name\" />";
+        echo "<input type=\"submit\" name=\"submit\" value=\"提交\" />";
     echo "</form>";
 }
 else{
-    echo "<form action=\\"user.php\\" method=\\"post\\">";
+    echo "<form action=\"user.php\" method=\"post\">";
         echo "你好，".$user_name."！";
-        echo "<input type=\\"hidden\\" name=\\"user_ip\\" readonly=true value=\\"".get_client_ip()."\\"/>";
+        echo "<input type=\"hidden\" name=\"user_ip\" readonly=true value=\"".get_client_ip()."\"/>";
         echo "（实际上，我是";
-        echo "<input type=\\"text\\" name=\\"user_name\\" />";
-        echo "<input type=\\"submit\\" name=\\"submit\\" value=\\"更名\\" />";
+        echo "<input type=\"text\" name=\"user_name\" />";
+        echo "<input type=\"submit\" name=\"submit\" value=\"更名\" />";
         echo "）";
     echo "</form>";
     echo "<hr/>";
@@ -158,16 +158,16 @@ else{
                 $row = $result->fetchArray();
                 $book_user = $row['book_user'];
                 if($book_user == ""){
-                    echo "<form action=\\"book.php\\" method=\\"post\\">";
-                    echo "<input type=\\"hidden\\" name=\\"user\\" value=\\"".$user_name."\\"/>";
-                    echo "<input type=\\"hidden\\" name=\\"data\\" value=\\"".date("Y-m-d", $data)."\\"/>";
-                    echo "<input type=\\"hidden\\" name=\\"time\\" value=\\"".$time_value."\\"/>";
-                    echo "<input type=\\"hidden\\" name=\\"equip\\" value=\\"".$value."\\"/>";
-                    echo "<input type=\\"submit\\" name=\\"submit\\" value=\\"预定\\" />";
+                    echo "<form action=\"book.php\" method=\"post\">";
+                    echo "<input type=\"hidden\" name=\"user\" value=\"".$user_name."\"/>";
+                    echo "<input type=\"hidden\" name=\"data\" value=\"".date("Y-m-d", $data)."\"/>";
+                    echo "<input type=\"hidden\" name=\"time\" value=\"".$time_value."\"/>";
+                    echo "<input type=\"hidden\" name=\"equip\" value=\"".$value."\"/>";
+                    echo "<input type=\"submit\" name=\"submit\" value=\"预定\" />";
                     echo "</form>";
                 }
                 else if($book_user == $user_name){
-                    echo $book_user."(<a href=\\"cancel.php?user=".$user_name."&data=".date("Y-m-d", $data)."&time=".$time_value."&equip=".$value."\\">取消</a>)";
+                    echo $book_user."(<a href=\"cancel.php?user=".$user_name."&data=".date("Y-m-d", $data)."&time=".$time_value."&equip=".$value."\">取消</a>)";
                 }
                 else{
                     echo "<b>".$book_user."</b>";
@@ -212,7 +212,7 @@ $sql = "replace into users values('".$_POST['user_ip']."', '"
 //echo $sql;
 $db->query($sql);
 
-echo "<a href=\\"index.php\\">返回</a>";
+echo "<a href=\"index.php\">返回</a>";
 
 ?>
 </body>
@@ -280,7 +280,7 @@ else{
 }
 
 if($book_user_count != 0){
-    echo "<a href=\\"index.php\\">你已经预订了";
+    echo "<a href=\"index.php\">你已经预订了";
     for($i=0;$i<$book_user_count;$i++){
         echo "[“".$booked_times[$i]."”的“".$booked_sets[$i]."”]";
     }
@@ -305,10 +305,10 @@ else{
     $db->query("commit transaction");
 
     if($book_user == ""){
-        echo "<a href=\\"index.php\\">返回</a>";
+        echo "<a href=\"index.php\">返回</a>";
     }
     else{
-        echo "<a href=\\"index.php\\">晚了一步。已经被".$book_user."预订了。</a>";
+        echo "<a href=\"index.php\">晚了一步。已经被".$book_user."预订了。</a>";
     }
 }
 
@@ -338,7 +338,7 @@ $sql = "delete from records where book_user='".$_GET['user']
 //echo $sql;
 $db->query($sql);
 
-echo "<a href=\\"index.php\\">返回</a>";
+echo "<a href=\"index.php\">返回</a>";
 ?>
 </body>
 </html>

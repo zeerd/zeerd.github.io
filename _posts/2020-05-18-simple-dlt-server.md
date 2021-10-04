@@ -8,6 +8,9 @@ tag: [GENIVI,DLT]
 
 <!--break-->
 
+要读懂下面代码的话，可能需要先阅读一下AUTOSAR的DLT标准协议。
+注释中标注的类似宏定义的大写字母单词都是来自于AUTOSAR协议的，可以直接使用它们进行搜索。
+
 
 ```cpp
 //
@@ -79,9 +82,22 @@ public:
     {
         say_connected();
         do_read();
+
+        /**
+         * This timer used to send a demo-message to DLT-Viewer.
+         * It's not a part of the core.
+         */
+        timer_->expires_from_now(std::chrono::seconds(1));
+        timer_->async_wait(std::bind(&session::do_dlt_demo,
+                    shared_from_this(), std::placeholders::_1));
     }
 
 private:
+    /**
+     * The DLT Viewer might want to get some information of our DLT server.
+     * The do_read() function used to receive the requests from DLT viewer
+     * and give callbacks.
+     */
     void do_read()
      {
         auto self(shared_from_this());
@@ -106,6 +122,7 @@ private:
                                 get_log_info();
                             }
                             else {
+                                // Do not support any other requests.
                                 memcpy(dlt, &data_[offset], 0x1a);
                                 dlt[ 2] = 0;
                                 dlt[ 3] = _WORD_BYTE0(27);
@@ -118,15 +135,14 @@ private:
                         offset += length;
                     }
 
-                    timer_->expires_from_now(std::chrono::seconds(1));
-                    timer_->async_wait(std::bind(&session::do_dlt_demo,
-                                shared_from_this(), std::placeholders::_1));
-
                     do_read();
                 }
             });
     }
 
+    /**
+     * Send data from DLT-Server on ECU to DLT-Viewer on PC.
+     */
     void do_write(char *_data, std::size_t length)
     {
         boost::recursive_mutex::scoped_lock lock(g_rec_mutex_);
@@ -134,15 +150,19 @@ private:
         boost::asio::async_write(socket_, boost::asio::buffer(_data, length),
             [this, self](boost::system::error_code ec, std::size_t /*length*/) {
                 if (!ec) {
+                    // Do something when error occur.
                 }
             });
     }
 
+    /**
+     * Send a DLT-Log with random log level.
+     */
     void do_dlt_demo(const boost::system::error_code &_error)
     {
         if(_error.value() == boost::system::errc::errc_t::success) {
 
-            send_dlt_message("Hello, DLT!");
+            send_dlt_message((random() % 6), "Hello, DLT!");
 
             timer_->expires_from_now(std::chrono::seconds(1));
             timer_->async_wait(std::bind( &session::do_dlt_demo,
@@ -150,6 +170,10 @@ private:
         }
     }
 
+    /**
+     * This information is not defined from the AUTOSAR.
+     * It mIght be defined by GENIVI for DLT-Viewer Only.
+     */
     void say_connected()
     {
         char dlt[max_length] = {0};
@@ -183,6 +207,9 @@ private:
         do_write(dlt, 32);
     }
 
+    /**
+     * Tell The DLT-Viewer who we are, if it asked.
+     */
     void get_ecu_software_version()
     {
         char dlt[max_length] = {0};
@@ -219,6 +246,11 @@ private:
         do_write(dlt, o);
     }
 
+    /**
+     * Send all the registered application and contents to DLT-Viewer.
+     * We got only one application and only one content here, so it's simple.
+     * Need more loops for more application and more contents.
+     */
     void get_log_info()
     {
         char dlt[max_length] = {0};
@@ -263,7 +295,10 @@ private:
         do_write(dlt, o);
     }
 
-    void send_dlt_message(const char * _msg)
+    /**
+     * Core function to send a log.
+     */
+    void send_dlt_message(int level, const char * _msg)
     {
         char dlt[max_length] = {0};
 
@@ -287,7 +322,7 @@ private:
         dlt[o++] = _LONG_BYTE2(timestamp);
         dlt[o++] = _LONG_BYTE1(timestamp);
         dlt[o++] = _LONG_BYTE0(timestamp);
-        dlt[o++] = 0x11 + ((random() % 6) << 4); // (DLT_LOG_xxx by random)
+        dlt[o++] = 0x11 + (level << 4); // (DLT_LOG_xxx by random)
                                                  // (Dlt Log Message) (Verbose)
         dlt[o++] = 0x01; // Number of Arguments = 1
         memcpy(&dlt[o], apid, 4); o += 4;
@@ -327,6 +362,11 @@ private:
     int counter;
 };
 
+/**
+ * DLT-Server iS a TCP server. DLT-Viewer is a TCP Client.
+ * Those codes come from the example of boost TCP server:
+ * async_tcp_echo_server.cpp
+ */
 class server
 {
 public:

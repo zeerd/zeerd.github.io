@@ -88,5 +88,4 @@ sudo apt install xrdp
 
 Xfce4中的设置权限存在问题，需要从命令行启动“Language Support”，运行`sudo /usr/bin/gnome-language-selector`。在其中按着常规操作添加中文即可。
 
-如果环境下不能自动启动输入法程序，则需要在命令行手动执行`ibus-daemon -d`来启动输入法。同样的，默认的输入法可能只有英文，在状态栏的“EN”上点击右键，选择“Preferences”，添加拼音输入法。输入法通常是早已经安装好了的，和Unity桌面下的相同。如果没有的话，可以考虑安装`sunpinyin`。
-
+如果环境下不能自动启动输入法程序，则需要在命令行手动执行`ibus-daemon -d`来启动输入法。同样的，默认的输入法可能只有英文，在状态栏的“EN”上点击右键，选择“Preferences”，添加拼音输入法。输入法通常是早已经安装好了的，和Unity桌面下的相同。如果没有的话，可以考虑安装`sunpinyin`， [参考](/support-CN-under-xfce/)。

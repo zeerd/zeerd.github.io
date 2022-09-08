@@ -10,7 +10,7 @@ setInterval(() => {
 
 setInterval(() => {
     // const prefix = "https://graphviz.zeerd.com/?";
-    const prefix = "https://www.gravizo.com/svg?";
+    const prefix = "https://g.gravizo.com/svg?";
     var elements = document.getElementsByClassName('language-graphviz');
     for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
         // encoded = encodeURI(elements[i].innerHTML);

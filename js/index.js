@@ -13,8 +13,8 @@ setInterval(() => {
     const prefix = "https://g.gravizo.com/svg?";
     var elements = document.getElementsByClassName('language-graphviz');
     for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
-        encoded = encodeURI(prefix + elements[i].innerHTML);
-        elements[i].innerHTML = "<img src='" + prefix + elements[i].innerHTML + "'>";
+        encoded = encodeURI(elements[i].innerHTML);
+        elements[i].innerHTML = "<img alt='DOT sample with Gravizo' src='" + prefix + encoded + "'>";
         // elements[i].innerHTML = "<object type='image/svg+xml' style='width:100%' data='"
                               + encoded + "'></object>";
         elements[i].className = "graphviz";

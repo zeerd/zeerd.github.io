@@ -6,8 +6,6 @@ tags: [OpenSSL]
 
 <!--break-->
 
-[TOC]
-
 ## 密钥
 
 ```plantuml
@@ -224,22 +222,22 @@ rectangle "其他" as others {
   rectangle os_dh #pink;line:red;line.bold;text:red [
     openssl dhparam;
       -out dh2048.pem 2048;
-    ....;
+    ....
     生成一个DH文件。DH文件仅在服务端使用。;
   ]
 }
 
 json Abstracts {
-  "ASN.1": "Abstract Syntax Notation One",;
-  "CER": ["Canonical Encoding Rules", "规范编码规则"],;
-  "DER": ["Distinguished Encoding Rules", "唯一编码规则"],;
-  "PER": ["Packed Encoding Rules", "压缩编码规则"],;
-  "XER": ["XML Encoding Rules", "XML编码规则"],;
-  "PKCS": "Private-Key Information Syntax Standard",;
-  "PEM": ["Privacy Enhanced Mail", "隐私增强邮件"],;
-  "AES": "Advanced Encryption Standard",;
-  "DES": "Data Encryption Standard",;
-  "3DES": "Triple Data Encryption Algorithm";
+  "ASN.1": "Abstract Syntax Notation One",
+  "CER": ["Canonical Encoding Rules", "规范编码规则"],
+  "DER": ["Distinguished Encoding Rules", "唯一编码规则"],
+  "PER": ["Packed Encoding Rules", "压缩编码规则"],
+  "XER": ["XML Encoding Rules", "XML编码规则"],
+  "PKCS": "Private-Key Information Syntax Standard",
+  "PEM": ["Privacy Enhanced Mail", "隐私增强邮件"],
+  "AES": "Advanced Encryption Standard",
+  "DES": "Data Encryption Standard",
+  "3DES": "Triple Data Encryption Algorithm"
 }
 
 ```

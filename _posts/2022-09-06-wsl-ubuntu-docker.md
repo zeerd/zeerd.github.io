@@ -26,3 +26,19 @@ sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 
 sudo dockerd &
 ```
+
+## Meld
+
+meld是一个很好用的图形化比较工具。但是安装之后不能显示文件列表。原因是缺少主题主要是图标。
+
+可以看到类似如下的错误提示：
+
+```
+gi.repository.GLib.GError: gtk-icon-theme-error-quark: Icon 'folder' not present in theme Yaru (0)
+```
+
+所以，安装：
+
+```
+apt install yaru-theme-icon
+```

@@ -61,6 +61,7 @@ _convert($_REQUEST['uml']);
 
 ## 使用
 
+添加javascript脚本：
 
 ```javascript
 setInterval(() => {
@@ -82,8 +83,10 @@ setInterval(() => {
 }, 1000)
 ```
 
-```markdown
+在md中按着如下格式编写：
+
+<pre>
 ```plantuml
 a -> b : c
 ```
-```
+</pre>

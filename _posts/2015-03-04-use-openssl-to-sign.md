@@ -25,26 +25,26 @@ tag: [Linux,OpenSSL,Sign]
 #undef BUFSIZE
 #define BUFSIZE	(1024*8)
 
-#define apps_startup() \\
-	do { \\
-        CRYPTO_malloc_init(); \\
-		ERR_load_crypto_strings(); \\
-        OpenSSL_add_all_algorithms(); \\
+#define apps_startup() \
+	do { \
+        CRYPTO_malloc_init(); \
+		ERR_load_crypto_strings(); \
+        OpenSSL_add_all_algorithms(); \
     } while(0)
-#define apps_shutdown() \\
-	do { \\
-		OBJ_cleanup(); \\
-        EVP_cleanup(); \\
-		CRYPTO_cleanup_all_ex_data(); \\
-        ERR_remove_thread_state(NULL); \\
-		ERR_free_strings(); \\
+#define apps_shutdown() \
+	do { \
+		OBJ_cleanup(); \
+        EVP_cleanup(); \
+		CRYPTO_cleanup_all_ex_data(); \
+        ERR_remove_thread_state(NULL); \
+		ERR_free_strings(); \
     } while(0)
 
-#define LOG_INIT() \\
-    if ((bio_err=BIO_new(BIO_s_file())) != NULL) \\
+#define LOG_INIT() \
+    if ((bio_err=BIO_new(BIO_s_file())) != NULL) \
         BIO_set_fp(bio_err,stderr,BIO_NOCLOSE|BIO_FP_TEXT);
-#define LOGE(args...) \\
-    BIO_printf(bio_err, ##args);\\
+#define LOGE(args...) \
+    BIO_printf(bio_err, #args);\
     ERR_print_errors(bio_err);
 
 static BIO *bio_err;
@@ -57,7 +57,7 @@ static EVP_PKEY *load_key(const char *file)
     key = BIO_new(BIO_s_file());
     if (key != NULL) {
         if (BIO_read_filename(key,file) <= 0) {
-            LOGE("Error opening %s\\n", file);
+            LOGE("Error opening %s\n", file);
         } else {
             pkey=PEM_read_bio_PrivateKey(key,NULL, NULL, NULL);
         }
@@ -75,7 +75,7 @@ static int do_sign(const char *infile, BIO *bmd, const char *outfile)
     size_t len = BUFSIZE;
 
     if ((buf=(unsigned char *)OPENSSL_malloc(BUFSIZE)) == NULL) {
-        LOGE("out of memory\\n");
+        LOGE("out of memory\n");
     } else {
 
 #if _INPUT_FILE_
@@ -98,7 +98,7 @@ static int do_sign(const char *infile, BIO *bmd, const char *outfile)
                         and places the data in buf. */
                     i = BIO_read(inp, (char *)buf, BUFSIZE);
                     if(i < 0) {
-                        LOGE("Read Error in input file\\n");
+                        LOGE("Read Error in input file\n");
                         return 1;
                     }
                 }
@@ -112,13 +112,13 @@ static int do_sign(const char *infile, BIO *bmd, const char *outfile)
                 BIO_get_md_ctx(inp, &ctx);
                 /* signs the data in ctx, places the signature in buf. */
                 if(EVP_DigestSignFinal(ctx, buf, &len) == 0) {
-                    LOGE("Error Signing Data\\n");
+                    LOGE("Error Signing Data\n");
                     return -1;
                 }
 
                 BIO *out = BIO_new_file(outfile, "wb");
                 if(out == NULL) {
-                    LOGE("Error opening output file %s\\n",
+                    LOGE("Error opening output file %s\n",
                         outfile);
                 } else {
                     BIO_write(out, buf, len);
@@ -147,11 +147,11 @@ int main(int argc, char **argv)
 
     if ( argc < 4) {
         printf(
-            "\\nUsage:\\n\\t%s <pem> <in> <out>\\n"
+            "\nUsage:\n\t%s <pem> <in> <out>\n"
 #if _INPUT_FILE_
-            "Example:\\n\\t%s privkey.pem foo.png foo.png.sig\\n\\n",
+            "Example:\n\t%s privkey.pem foo.png foo.png.sig\n\n",
 #else
-            "Example:\\n\\t%s privkey.pem \\"abcdef\\" foo.sig\\n\\n",
+            "Example:\n\t%s privkey.pem \"abcdef\" foo.sig\n\n",
 #endif
             argv[0], argv[0]);
         return -1;
@@ -182,14 +182,14 @@ int main(int argc, char **argv)
             } else {
                 /* get the digest BIOs context from bmd into mctx. */
                 if (!BIO_get_md_ctx(bmd, &mctx)) {
-                    LOGE("Error getting context\\n");
+                    LOGE("Error getting context\n");
                 } else {
                     /* sets up signing context mctx to use digest type(md) from
                      private key sigkey. */
                     int r = EVP_DigestSignInit(
                                 mctx, NULL, md, NULL, sigkey);
                     if (r == 0) {
-                        LOGE("Error setting context\\n");
+                        LOGE("Error setting context\n");
                     } else {
                         do_sign(infile, bmd, outfile);
                     }
@@ -199,7 +199,7 @@ int main(int argc, char **argv)
             }
             EVP_PKEY_free(sigkey);
         } else {
-            LOGE("unable to load key file\\n");
+            LOGE("unable to load key file\n");
         }
     }
 
@@ -228,26 +228,26 @@ int main(int argc, char **argv)
 #undef BUFSIZE
 #define BUFSIZE	(1024*8)
 
-#define apps_startup() \\
-	do { \\
-        CRYPTO_malloc_init(); \\
-		ERR_load_crypto_strings(); \\
-        OpenSSL_add_all_algorithms(); \\
+#define apps_startup() \
+	do { \
+        CRYPTO_malloc_init(); \
+		ERR_load_crypto_strings(); \
+        OpenSSL_add_all_algorithms(); \
     } while(0)
-#define apps_shutdown() \\
-	do { \\
-		OBJ_cleanup(); \\
-        EVP_cleanup(); \\
-		CRYPTO_cleanup_all_ex_data(); \\
-        ERR_remove_thread_state(NULL); \\
-		ERR_free_strings(); \\
+#define apps_shutdown() \
+	do { \
+		OBJ_cleanup(); \
+        EVP_cleanup(); \
+		CRYPTO_cleanup_all_ex_data(); \
+        ERR_remove_thread_state(NULL); \
+		ERR_free_strings(); \
     } while(0)
 
-#define LOG_INIT() \\
-    if ((bio_err=BIO_new(BIO_s_file())) != NULL) \\
+#define LOG_INIT() \
+    if ((bio_err=BIO_new(BIO_s_file())) != NULL) \
         BIO_set_fp(bio_err,stderr,BIO_NOCLOSE|BIO_FP_TEXT);
-#define LOGE(args...) \\
-    BIO_printf(bio_err, ##args);\\
+#define LOGE(args...) \
+    BIO_printf(bio_err, ##args);\
     ERR_print_errors(bio_err);
 
 static BIO *bio_err;
@@ -260,7 +260,7 @@ static EVP_PKEY *load_pubkey(const char *file)
     key=BIO_new(BIO_s_file());
     if (key != NULL) {
         if (BIO_read_filename(key,file) <= 0) {
-            LOGE("Error opening %s\\n", file);
+            LOGE("Error opening %s\n", file);
         }
         pkey=PEM_read_bio_PUBKEY(key,NULL, NULL, NULL);
     } else {
@@ -276,7 +276,7 @@ static int do_verify(BIO *bmd, const char* infile,
 {
     unsigned char *buf = NULL;
     if ((buf=(unsigned char *)OPENSSL_malloc(BUFSIZE)) == NULL) {
-        LOGE("out of memory\\n");
+        LOGE("out of memory\n");
     } else {
 #if _INPUT_FILE_
        BIO *in = BIO_new(BIO_s_file());
@@ -293,7 +293,7 @@ static int do_verify(BIO *bmd, const char* infile,
                 while(i > 0) {
                     i=BIO_read(bp,(char *)buf,BUFSIZE);
                     if(i < 0) {
-                        LOGE("Read Error in input file\\n");
+                        LOGE("Read Error in input file\n");
                         return 1;
                     }
                 }
@@ -310,16 +310,16 @@ static int do_verify(BIO *bmd, const char* infile,
 
                     BIO *out = BIO_new_file(outfile, "wb");
                     if(out == NULL) {
-                        LOGE("Error opening output file %s\\n",
+                        LOGE("Error opening output file %s\n",
                                    outfile);
                     } else {
                         if(r > 0) {
-                            BIO_printf(out, "Verified OK\\n");
+                            BIO_printf(out, "Verified OK\n");
                         } else if(r == 0) {
-                            BIO_printf(out, "Verification Failure\\n");
+                            BIO_printf(out, "Verification Failure\n");
                             return 1;
                         } else {
-                            BIO_printf(out, "Error Verifying Data\\n");
+                            BIO_printf(out, "Error Verifying Data\n");
                             return 1;
                         }
                         BIO_free_all(out);
@@ -350,11 +350,11 @@ int main(int argc, char **argv)
 
     if ( argc < 5) {
         printf(
-            "\\nUsage:\\n\\t%s <pem> <sign> <in> <out>\\n"
+            "\nUsage:\n\t%s <pem> <sign> <in> <out>\n"
 #if _INPUT_FILE_
-            "Example:\\n\\t%s pubkey.pem foo.png.sig foo.png result.log\\n\\n",
+            "Example:\n\t%s pubkey.pem foo.png.sig foo.png result.log\n\n",
 #else
-            "Example:\\n\\t%s pubkey.pem foo.sig \\"abcdef\\" result.log\\n\\n",
+            "Example:\n\t%s pubkey.pem foo.sig \"abcdef\" result.log\n\n",
 #endif
             argv[0], argv[0]);
         return -1;
@@ -371,7 +371,7 @@ int main(int argc, char **argv)
 
     md = EVP_sha1();
     if (md == NULL) {
-        LOGE("get sha1 digest fail\\n");
+        LOGE("get sha1 digest fail\n");
     } else {
 
         bmd=BIO_new(BIO_f_md());
@@ -385,25 +385,25 @@ int main(int argc, char **argv)
                 EVP_MD_CTX *mctx = NULL;
 
                 if (!BIO_get_md_ctx(bmd, &mctx)) {
-                    LOGE("Error getting context\\n");
+                    LOGE("Error getting context\n");
                 } else {
                     int r = EVP_DigestVerifyInit(
                                 mctx, NULL, md, NULL, pubkey);
                     if (r == 0) {
-                        LOGE("Error setting context\\n");
+                        LOGE("Error setting context\n");
                     } else {
 
                         siglen = EVP_PKEY_size(pubkey);
                         sigbuf = OPENSSL_malloc(siglen);
                         BIO *sigbio = BIO_new_file(sigfile, "rb");
                         if(sigbio == NULL) {
-                            LOGE("Error opening signature file %s\\n",
+                            LOGE("Error opening signature file %s\n",
                                 sigfile);
                         } else {
                             siglen = BIO_read(sigbio, sigbuf, siglen);
                             BIO_free(sigbio);
                             if(siglen <= 0) {
-                                LOGE("Error reading signature file %s\\n",
+                                LOGE("Error reading signature file %s\n",
                                     sigfile);
                             } else {
                                 do_verify(bmd, infile, 
@@ -416,7 +416,7 @@ int main(int argc, char **argv)
                 (void)BIO_reset(bmd);
                 EVP_PKEY_free(pubkey);
             } else {
-                LOGE("unable to load key file\\n");
+                LOGE("unable to load key file\n");
             }
             BIO_free(bmd);
         }

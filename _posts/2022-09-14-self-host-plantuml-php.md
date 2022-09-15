@@ -6,7 +6,7 @@ tags: [PlantUML,PHP]
 
 Self-Hosted Plantuml Web Server.
 
-一个简易的、可以帮助Github Pages显示Plantuml图片的转换网站。
+自己搭建，一个简易的、可以帮助Github Pages显示Plantuml图片的转换网站。
 
 
 <!--break-->
@@ -61,8 +61,7 @@ setInterval(() => {
     const prefix = "https://www.zeerd.com/plantuml.php?uml=";
     var elements = document.getElementsByClassName('language-plantuml');
     for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
-        encoded = encodeURI(prefix + "@startuml\n" + elements[i].innerHTML 
-        	                       + "\n@enduml");
+        encoded = encodeURI(prefix + elements[i].innerHTML);
         encoded = encoded.replace(/#/g, "%23");
         // elements[i].innerHTML = "<img alt='DOT sample with Gravizo' src='" 
         //                       + encoded + "'>";

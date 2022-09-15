@@ -6,8 +6,6 @@ tags: [TLS,OpenSSL]
 
 <!--break-->
 
-[TOC]
-
 ## 交互时序（规范）
 
 ### TLS v1.2

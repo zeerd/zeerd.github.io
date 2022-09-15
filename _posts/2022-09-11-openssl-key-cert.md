@@ -44,7 +44,8 @@ rectangle "对称密钥" as key {
       -e -pbkdf2 -md sha256 -P
       -k 1234
     ....
-    OpenSSL提供了一个方法，通过一个密码（-k）随机生成一组Salt、IV、Key。
+    OpenSSL提供了一个方法，通过一个密码（-k）
+    随机生成一组Salt、IV、Key。
   ]
   rectangle os_enc_ps #pink;line:red;line.bold;text:red [
     openssl aes-256-cbc

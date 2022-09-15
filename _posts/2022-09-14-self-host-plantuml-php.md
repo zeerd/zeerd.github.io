@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 自搭建的Plantuml描画网页服务
-tags: [Plantuml,PHP]
+tags: [PlantUML,PHP]
 ---
 
 Self-Hosted Plantuml Web Server.
@@ -18,42 +18,35 @@ Self-Hosted Plantuml Web Server.
 
 // plantuml.php?uml=a+->+b+%3A+c
 
-function _convert($data) {
+$java = '/usr/bin/java';
+$plantuml = '/path/to/plantuml.jar';
+$remote_url = 'https://www.plantuml.com/plantuml/';
 
-    $in = $_SERVER['DOCUMENT_ROOT']
-        . '/cache/'
-        . hash('md5', $_SERVER["REQUEST_URI"]);
-    $in = str_replace("?", '-', $in);
-    $in = str_replace("*", '-', $in);
+$in = $_SERVER['DOCUMENT_ROOT'].'/cache/'.hash('md5', $_SERVER["REQUEST_URI"]);
 
-    if(false !== ($f = @fopen($in, 'w'))) {
-      fwrite($f, "@startuml\n");
-      fwrite($f, urldecode($data));
-      fwrite($f, "\n@enduml\n");
-      fclose($f);
-    }
-    $command = '/usr/bin/java';
-    $command .= ' -Djava.awt.headless=true';
-    $command .= ' -Dfile.encoding=UTF-8';
-    $command .= ' -jar /home/wwwroot/www.zeerd.com/plantuml-1.2022.7.jar';
-    $command .= ' -charset UTF-8';
-    $command .= ' -encodeurl';
-    $command .= ' ' . escapeshellarg($in);
-    $command .= ' 2>&1';
-
-    $encoded = exec($command, $output, $return_value);
-
-    $remote_url = 'https://www.plantuml.com/plantuml/';
-    $base_url = preg_replace('/(.+?)\/$/', '$1', $remote_url);
-
-    $url = "$base_url/svg/".$encoded;
-
-    $ch = curl_init($url);
-    curl_exec($ch);
-    curl_close($ch);
+if(false !== ($f = @fopen($in, 'w'))) {
+  fwrite($f, "@startuml\n");
+  fwrite($f, urldecode($_REQUEST['uml']));
+  fwrite($f, "\n@enduml\n");
+  fclose($f);
 }
 
-_convert($_REQUEST['uml']);
+$command  = $java;
+$command .= ' -Djava.awt.headless=true';
+$command .= ' -Dfile.encoding=UTF-8';
+$command .= ' -jar ' . $plantuml;
+$command .= ' -charset UTF-8';
+$command .= ' -encodeurl';
+$command .= ' ' . escapeshellarg($in);
+$command .= ' 2>&1';
+$encoded = exec($command, $output, $return_value);
+
+$base_url = preg_replace('/(.+?)\/$/', '$1', $remote_url);
+$url = "$base_url/svg/$encoded";
+
+$ch = curl_init($url);
+curl_exec($ch);
+curl_close($ch);
 
 ?>
 

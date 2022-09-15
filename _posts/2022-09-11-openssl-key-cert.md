@@ -4,14 +4,67 @@ title: OpenSSL和密钥、证书
 tags: [OpenSSL]
 ---
 
+简单总结一下密钥、证书，以及如何通过OpenSSL生成密钥和证书。
+
 <!--break-->
 
 ## 密钥
 
 ```plantuml
-allowmixing
+rectangle "对称密钥" as key {
+  rectangle symKey [
+    对称密钥
+    ....
+    如：DES、3DES、AES
+    ----
+    速度快，但是安全性相对差
+  ]
 
-rectangle "密钥" as key {
+  rectangle os_enc_key #pink;line:red;line.bold;text:red [
+    openssl aes-256-cbc
+      -e -pbkdf2 -in input.txt -base64 -md sha256
+      -K 123 -iv 456 -S 789
+      > output.txt
+    ....
+    对称加密（-e）没有所谓的密钥文件，只有类似密钥的东西.
+    也就是Salt(-S)、IV(-iv)、Key(-K)。
+    注意：示例使用了123、456、789。真实的密钥要非常复杂。
+    实际上这么简单的密钥几乎和没有加密是一样的。
+  ]
+  rectangle os_dec_key #pink;line:red;line.bold;text:red [
+    openssl aes-256-cbc
+      -d -pbkdf2 -in output.txt -base64 -md sha256
+      -K 123 -iv 456 -S 789
+      > input.txt
+    ....
+    使用同样的Salt(-S)、IV(-iv)、Key(-K)解密（-d）。
+  ]
+  rectangle os_enc_p2k #pink;line:red;line.bold;text:red [
+    openssl aes-256-cbc
+      -e -pbkdf2 -md sha256 -P
+      -k 1234
+    ....
+    OpenSSL提供了一个方法，通过一个密码（-k）随机生成一组Salt、IV、Key。
+  ]
+  rectangle os_enc_ps #pink;line:red;line.bold;text:red [
+    openssl aes-256-cbc
+      -e -pbkdf2 -in input.txt -base64 -md sha256
+      -k 1234
+      > output.txt
+    ....
+    同样的，也可以直接使用密码加（-e）解（-d）密。
+  ]
+}
+
+symKey --> os_enc_key
+os_enc_key --> os_dec_key
+
+symKey --> os_enc_p2k
+os_enc_p2k --> os_enc_ps
+```
+
+```plantuml
+rectangle "非对称密钥" as key {
   rectangle "ASN.1" as ASN1
 
   rectangle CER
@@ -20,14 +73,6 @@ rectangle "密钥" as key {
   rectangle XER
 
   rectangle PEM
-
-  rectangle symKey [
-    对称密钥
-    ....
-    如：DES、3DES、AES
-    ----
-    速度快，但是安全性相对差
-  ]
 
   rectangle asymKey [
     非对称密钥
@@ -81,40 +126,6 @@ rectangle "密钥" as key {
       -pass pass:1234
       -des-ede3-cbc
   ]
-  rectangle os_enc_key #pink;line:red;line.bold;text:red [
-    openssl aes-256-cbc
-      -e -pbkdf2 -in input.txt -base64 -md sha256
-      -K 123 -iv 456 -S 789
-      > output.txt
-    ....
-    对称加密（-e）没有所谓的密钥文件，只有类似密钥的东西.
-    也就是Salt(-S)、IV(-iv)、Key(-K)。
-    注意：示例使用了123、456、789。真实的密钥要非常复杂。
-    实际上这么简单的密钥几乎和没有加密是一样的。
-  ]
-  rectangle os_dec_key #pink;line:red;line.bold;text:red [
-    openssl aes-256-cbc
-      -d -pbkdf2 -in output.txt -base64 -md sha256
-      -K 123 -iv 456 -S 789
-      > input.txt
-    ....
-    使用同样的Salt(-S)、IV(-iv)、Key(-K)解密（-d）。
-  ]
-  rectangle os_enc_p2k #pink;line:red;line.bold;text:red [
-    openssl aes-256-cbc
-      -e -pbkdf2 -md sha256 -P
-      -k 1234
-    ....
-    OpenSSL提供了一个方法，通过一个密码（-k）随机生成一组Salt、IV、Key。
-  ]
-  rectangle os_enc_ps #pink;line:red;line.bold;text:red [
-    openssl aes-256-cbc
-      -e -pbkdf2 -in input.txt -base64 -md sha256
-      -k 1234
-      > output.txt
-    ....
-    同样的，也可以直接使用密码加（-e）解（-d）密。
-  ]
 }
 
 asymKey --> ASN1
@@ -135,23 +146,14 @@ PEM --> privKey
 privKey --> p1
 privKey --> p8
 
-symKey --> os_enc_key
-os_enc_key --> os_dec_key
-
-symKey --> os_enc_p2k
-os_enc_p2k --> os_enc_ps
-
 p1 --> os_rsa
 os_rsa --> os_rsa_pub
 p8 --> os_key
-
 ```
 
 ## 证书
 
 ```plantuml
-allowmixing
-
 rectangle "证书" as cert {
   rectangle CERT #palegreen;line:green;line.dashed;text:green [
     证书编码
@@ -210,7 +212,6 @@ CERT --> p7b
 
 x509 --> os_req
 x509 --> os_x509
-
 ```
 
 ## 其他
@@ -239,7 +240,6 @@ json Abstracts {
   "DES": "Data Encryption Standard",
   "3DES": "Triple Data Encryption Algorithm"
 }
-
 ```
 
 ## 参照

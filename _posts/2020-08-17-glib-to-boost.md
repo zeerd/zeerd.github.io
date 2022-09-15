@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 从glib到boost从
+title: 从glib到boost
 tag: [glib,Boost]
 ---
 

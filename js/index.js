@@ -27,9 +27,9 @@ setInterval(() => {
     const prefix = "https://www.zeerd.com/plantuml.php?uml=";
     var elements = document.getElementsByClassName('language-plantuml');
     for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
-        encoded = encodeURI(prefix + "@startuml\n" + elements[i].innerHTML + "\n@enduml");
+        encoded = encodeURI(prefix + elements[i].innerHTML);
         encoded = encoded.replace(/#/g, "%23");
-        // elements[i].innerHTML = "<img alt='DOT sample with Gravizo' src='" + encoded + "'>";
+        // elements[i].innerHTML = "<img alt='DOT sample with plantuml' src='" + encoded + "'>";
         elements[i].innerHTML = "<object type='image/svg+xml' style='width:100%;height:100%' data='"
                               + encoded + "'></object>";
         elements[i].className = "plantuml";

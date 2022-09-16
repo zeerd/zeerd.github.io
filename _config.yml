@@ -94,3 +94,13 @@ picture:
       source_default:
         width: "640"
 
+plugins:
+  - jekyll-spaceship
+
+jekyll-spaceship:
+  plantuml-processor:
+    syntax:
+      code: 'plantuml'
+  mermaid-processor:
+    syntax:
+      code: 'mermaid'

@@ -202,12 +202,13 @@ rectangle "证书" as cert {
       -CA ca.crt -CAkey ca.key -CAcreateserial
       -out server.crt -days 20000
     ....
-    通常，可以通过 req 命令的 -x509 参数直接生成自签名的 X.509 证书。
+    通常，可以通过 req 命令的 -x509 参数直接生成自签
+    名的 X.509 证书。
     需要通过 CA 颁发证书时则需要使用 x509 命令。
   ]
 }
 
-CERT --> x509
+CERT ---> x509
 CERT --> p12
 CERT --> p7b
 

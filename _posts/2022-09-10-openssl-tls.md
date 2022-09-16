@@ -31,15 +31,16 @@ note right
 end note
 Server -\ Client : Certificate
 note right
-  //(半箭头表示可选发送的消息或者根据实际境况决定是否发送的消息)//
   服务器端发送服务端证书给客户端
 end note
 opt 仅需要时
   Server -\ Client : ServerKeyExchange
   note right
-    仅当服务器证书消息（如果已发送）不包含足够的数据以允许客户端交换预主密钥时，
-    服务器才会发送 ServerKeyExchange 消息。
-    通常，只有使用 DHE_DSS 、 DHE_RSA 、  DH_anon 时会发生。
+    仅当服务器证书消息（如果已发送）不包含足够
+    的数据以允许客户端交换预主密钥时，服务器才
+    会发送 ServerKeyExchange 消息。
+    通常，只有使用 DHE_DSS 、 DHE_RSA 、
+    DH_anon 时会发生。
   end note
 end
 opt 双向验证
@@ -60,14 +61,15 @@ opt 双向验证
 end
 Client -> Server : ClientKeyExchange
 note left
-  客户端使用服务器端的公钥，对客户端公钥和密钥种子进行加密，
-  再发送给服务器端。
+  客户端使用服务器端的公钥，对客户端公钥和密钥
+  种子进行加密，再发送给服务器端。
 end note
 opt 双向验证
   Client -\ Server : CertificateVerify
   note left
     客户端用本地私钥生成数字签名，
-    并发送给服务器端，让其通过收到的客户端公钥进行身份验证。
+    并发送给服务器端，让其通过收到的客户端公钥
+    进行身份验证。
   end note
 end
 Client -> Client : ChangeCipherSpec
@@ -80,7 +82,8 @@ note left
 end note
 Server -> Server : ChangeCipherSpec
 note right
-  服务器端通知客户端已将通讯方式切换到加密模式。
+  服务器端通知客户端已将
+  通讯方式切换到加密模式。
 end note
 Server -> Client : Finished
 note right
@@ -88,6 +91,9 @@ note right
 end note
 Client <-> Server : Application Data
 ```
+
+* 半箭头表示可选发送的消息或者根据实际境况决定是否发送的消息
+
 
 ### TLS v1.3
 
@@ -104,11 +110,13 @@ note left
       //key_share// :
         终端的加密参数
       //signature_algorithms// ：
-        希望服务器通过证书验证自己的客户端必须发送“signature_algorithms”
+        希望服务器通过证书验证自己的客户端必须
+        发送“signature_algorithms”
       //psk_key_exchange_modes// ：
         使用预共享密钥时，必须发送
       //pre_shared_key// ：
-        用于协商预共享密钥的身份，以用于与 PSK 密钥建立相关的给定握手。
+        用于协商预共享密钥的身份，以用于与 PSK
+        密钥建立相关的给定握手。
 end note
 Server -> Client : ServerHello
 note right
@@ -117,7 +125,8 @@ note right
       //key_share// :
         终端的加密参数
       //pre_shared_key// ：
-        用于协商预共享密钥的身份，以用于与 PSK 密钥建立相关的给定握手。
+        用于协商预共享密钥的身份，以用于与 PSK
+        密钥建立相关的给定握手。
     服务端参数：
       EncryptedExtensions ：
         用来发送加密扩展信息。
@@ -192,11 +201,12 @@ OpenSSL 3.0以后，使用 SSL_CTX_set0_tmp_dh_pkey() 加载
 
 ```plantuml
 activate Client
-Client -> Server : connect
+Client --> Server : connect
 note left : POSIX connect
 Client -> Client : SSL_new
 Client -> Client : SSL_set_fd
 Client -> Server : SSL_connect
+note left : SSL connect
 deactivate Client
 ```
 
@@ -210,16 +220,18 @@ activate Client
 Client --> Server : connect
 note left : POSIX connect
 activate Server
-Server -> Server : accept()
+Server --> Server : accept()
 deactivate Server
 note right : POSIX accept
 Client --> Client : SSL_new
 Client --> Client : SSL_set_fd
 Client --> Server : SSL_connect
+note left : SSL connect
 activate Server
 Server -> Server : SSL_new
 Server -> Server : SSL_set_fd
 Server -> Server : SSL_accept
+note right : SSL accept
 deactivate Server
 deactivate Client
 ```
@@ -235,7 +247,7 @@ deactivate Client
 
 ### 证书的做成
 
-我用下面的方法做出了可用的证书，但是不确定是否合理。例子中使用了“ abcd ”作为密码。
+我用下面的方法做出了可用的证书。例子中使用了“ abcd ”作为密码。
 
 ```bash
 openssl genrsa -aes256 -passout pass:abcd -out server.key 2048

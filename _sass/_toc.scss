@@ -17,3 +17,16 @@
   }
 }
 
+@media (min-width: 48em) {
+  .toc {
+    position: fixed;
+    top:  5.1rem;
+    bottom:  5rem;
+    right: 0.8rem;
+    display: block;
+    padding: .25rem .75rem;
+    border-radius: .25rem;
+    overflow-y: auto;
+    height:70%;
+  }
+}

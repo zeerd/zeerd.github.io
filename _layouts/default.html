@@ -34,6 +34,7 @@
         {{ content }}
 
         <footer class="footer">
+          <hr/>
           <small>
 	    &copy; 2009 - <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
 	  </small>
@@ -43,8 +44,8 @@
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 	  
-    <script type="text/javascript" src="{{site.baseurl}}/js/index.js"></script>
-    <script type="text/javascript" src="{{site.baseurl}}/js/mermaid.min.js"></script>
+    <script type="text/javascript" src="{{site.url}}/js/index.js"></script>
+    <script type="text/javascript" src="{{site.url}}/js/mermaid.min.js"></script>
     <script>
       (function(document) {
         var toggle = document.querySelector('.sidebar-toggle');

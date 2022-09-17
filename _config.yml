@@ -1,5 +1,5 @@
 
-theme: jekyll-theme-midnight
+remote_theme: pages-themes/midnight@v0.2.0
 
 # Permalinks
 #
@@ -10,31 +10,15 @@ highlighter: rouge
 
 timezone: Asia/Shanghai
 
-# Default YAML frontmatter settings
-##defaults:re
-##  -
-##    scope:
-##      path: ""
-##      type: "posts"
-##    values:
-##      comments: true
-
 # Tagging settings
 tag_title_prefix:   "Posts tagged #"
 tag_title_suffix:   ""
-
-# Facebook settings
-#fb_admins:          606660677
-#avatar:             "/public/images/me_hires.png"
-#locale:             en_US
 
 # Image settings
 image_base:          /public/images/
 
 # Do not copy these file to the output directory
-exclude: [README.md,Gemfile,tools]
-
-#fb_appid:           337414769782635
+exclude: [README.md,Gemfile,tools,gen-a2s.sh,LICENSE.md]
 
 # Setup
 title:               zeerd's blog
@@ -61,11 +45,6 @@ version:             1.0.0
 github:
   repo:              https://github.com/zeerd/zeerd.github.io
 
-# Google sitemap generation
-gems:
-  - jekyll-sitemap
-  - jekyll-paginate
-
 # Conversion
 excerpt_separator: "<!--break-->"
 
@@ -74,33 +53,13 @@ kramdown:
 
 pages_list:
   Search: '/search/'
-  About: '/about/'
   Tags: '/tags/'
-  Pebble: '/pebble/'
-  Feed: '/atom.xml'
-
-picture:
-  source: "_assets/imgs/_fullsize"
-  output: "generated"
-  markup: "picture"
-  presets:
-    default:
-      ppi: [1, 1.5, 2]
-      source_medium:
-        media: "(min-width: 40em)"
-        width: "640"
-      source_small:
-        height: "100"
-      source_default:
-        width: "640"
+  Feed: '/feed.xml'
 
 plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
   - jekyll-spaceship
-
-jekyll-spaceship:
-  plantuml-processor:
-    syntax:
-      code: 'plantuml'
-  mermaid-processor:
-    syntax:
-      code: 'mermaid'
+  - jekyll-remote-theme

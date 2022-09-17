@@ -187,10 +187,10 @@ OpenSSL 3.0以后，使用 SSL_CTX_set0_tmp_dh_pkey() 加载
 | 端 | 参数 | 解释 |
 | -- | ---- | --- |
 | 客户端 | SSL_VERIFY_NONE | 客户端不验证服务器证书， 但是服务器必须提供证书 |
-| ^ | SSL_VERIFY_PEER | 客户端验证服务器证书 |
+| ^^ | SSL_VERIFY_PEER | 客户端验证服务器证书 |
 | 服务器 | SSL_VERIFY_NONE | 服务器不验证客户端证书， 客户端可以不提供证书 |
-| ^ | SSL_VERIFY_PEER | 服务器验证客户端证书（如果有） |
-| ^ | SSL_VERIFY_PEER \| SSL_VERIFY_FAIL_IF_NO_PEER_CERT | 客户端必须提供证书 |
+| ^^ | SSL_VERIFY_PEER | 服务器验证客户端证书（如果有） |
+| ^^ | SSL_VERIFY_PEER \| SSL_VERIFY_FAIL_IF_NO_PEER_CERT | 客户端必须提供证书 |
 
 这里的情况会比较复杂，需要设计合理的接口来配置，或者干脆分模型编译。
 

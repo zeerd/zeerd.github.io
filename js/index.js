@@ -1,5 +1,3 @@
-let path = null
-
 setInterval(() => {
 //  if (path !== window.location.pathname) {
     path = window.location.pathname

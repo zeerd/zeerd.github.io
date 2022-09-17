@@ -3,4 +3,4 @@ Gemfile.lock
 _site/
 .tmp/
 key
-
+.jekyll-cache/

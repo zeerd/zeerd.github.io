@@ -10,24 +10,8 @@
 
   <nav class="sidebar-nav">
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/search">Search</a>
-    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/about">About</a>
-    <!--- <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/hobbies">Hobby projects</a> --->
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/tags">Tags</a>
-    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/atom.xml">Feed</a>
-    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Latest posts</a>
-
-    <ul class="posts">  
-	{% for post in site.posts limit:20 %}  
-	   <li>  
-		   <span>{{ post.date | date_to_string }}</span> &raquo;  
-		   <a href="{{site.baseurl}}{{ post.url }}">  
-		   {{ post.title }}</a>  
-	   </li>  
-	{% endfor %}  
-   </ul>
-   
-   <a class="sidebar-nav-item" href="{{ site.baseurl }}/">Recent Visitors</a>
-   <ul class="ds-recent-visitors" data-num-items="10" data-avatar-size="25"></ul>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/feed.xml">Feed</a>
 
     {% comment %}
       The code below dynamically generates a sidebar nav of pages with
@@ -43,11 +27,25 @@
         {% endif %}
       {% endif %}
     {% endfor %}
+
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Latest posts</a>
+    <ul class="posts">
+  {% for post in site.posts limit:20 %}
+     <li>
+       <span>{{ post.date | date_to_string }}</span> &raquo;
+       <a href="{{site.baseurl}}{{ post.url }}">
+       {{ post.title }}</a>
+     </li>
+  {% endfor %}
+   </ul>
+
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/about">About</a>
   </nav>
+
 
   <div class="sidebar-item">
     <p>
-      &copy; <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
+      &copy; 2009-<time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
     </p>
   </div>
 </div>

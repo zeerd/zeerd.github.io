@@ -32,15 +32,29 @@ title: Home
   {% endfor %}
 </div>
 
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>
+<!-- jekyll-paginate -->
+{% if include.paginator %}
+  {% assign paginator = include.paginator %}
+{% endif %}
+
+{% if paginator.posts.size > 0 %}
+  <div class="paginator">
+    <span class="previous">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">Prev</a>
+    {% else %}
+      <span>Prev</span>
+    {% endif %}
+    </span>
+
+    <span class="indicator"> {{ paginator.page }}/{{ paginator.total_pages }}</span>
+
+    <span class="next">
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">Next</a>
+    {% else %}
+      <span>Next</span>
+    {% endif %}
+    </span>
+  </div>
+{% endif %}

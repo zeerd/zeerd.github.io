@@ -6,6 +6,8 @@ permalink: tags/
 
 <h2>{{page.title}}</h2>
 
+{% include toc.html html=tags %}
+
 {% capture tags %}
   {% for tag in site.tags %}
     {{ tag[0] }}

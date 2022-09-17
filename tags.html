@@ -6,14 +6,19 @@ permalink: tags/
 
 <h2>{{page.title}}</h2>
 
-{% include toc.html html=tags %}
 
 {% capture tags %}
   {% for tag in site.tags %}
     {{ tag[0] }}
   {% endfor %}
 {% endcapture %}
-{% assign sortedtags = tags | split:' ' | sort %}
+{% assign sortedtags = tags | split:' ' | sort_natural %}
+
+<ul class='toc'>
+{% for tag in sortedtags %}
+  <li><a href="#{{ tag }}">{{ tag }} [{{ site.tags[tag].size }}]</a></li>
+{% endfor %}
+</ul>
 
 {% for tag in sortedtags %}
   <h3 id="{{ tag | escape }}">{{ tag }}</h3>

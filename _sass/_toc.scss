@@ -4,9 +4,16 @@
   background:transparent;
   float:right;
   border-left:double;
-  border-right:double;
-  border-top:double;
-  border-bottom:double;
+  //border-right:double;
+  //border-top:double;
+  //border-bottom:double;
   font-size:small;
+  margin-left:10px;
+
+  .toctitle {
+    margin-left:10px;
+    margin-right:10px;
+    border-bottom:groove;
+  }
 }
 

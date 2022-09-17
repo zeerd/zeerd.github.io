@@ -18,14 +18,14 @@
             <small>
               &nbsp;&nbsp;&nbsp; 
               <!---<small><a href="https://article.zeerd.com">Article</a></small>--->
-	      {% for page in site.pages_list %}
+              {% for page in site.pages_list %}
                 &nbsp;&nbsp;&nbsp;
                   <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
               {% endfor %}
-	    </small>
-	  </h3>
+            </small>
+          </h3>
           <h3 class="masthead-title">
-            <small>{{ site.tagline }}</small>
+            <strong>{{ site.tagline }}</strong>
           </h3>
         </div>
       </div>
@@ -36,14 +36,14 @@
         <footer class="footer">
           <hr/>
           <small>
-	    &copy; 2009 - <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
-	  </small>
+            &copy; 2009 - <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
+          </small>
         </footer>
       </div>
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-	  
+
     <script type="text/javascript" src="{{site.url}}/js/index.js"></script>
     <script type="text/javascript" src="{{site.url}}/js/mermaid.min.js"></script>
     <script>

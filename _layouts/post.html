@@ -8,7 +8,7 @@ layout: default
   {% include tagsforpost.html tags=page.tags %}</p>
   <hr>
   <div class='toc'>
-    Contents:
+    <div class='toctitle'>Contents:</div>
     {% include toc.html html=content %}
   </div>
   {{ content | replace: '<!--break-->', '<a class="anchor" id="read-more"></a>' }}

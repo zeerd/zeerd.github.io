@@ -2,6 +2,7 @@
 layout: post
 title: Unity 3D DllNotFoundException的一个解决方法
 tags: [Unity3D,Bug]
+categories: [Program]
 ---
 客户提供了一个a.dll，我有封装了一个b.dll给unity3d调用。
 <!--break-->

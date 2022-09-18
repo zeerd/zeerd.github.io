@@ -1,0 +1,18 @@
+{% comment %}
+<!-- Getting and sorting categories alphabetically -->
+{% endcomment %}
+
+{% capture mycategories %}
+  {% for category in include.categories %}
+    {{ category }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedcategories = mycategories | split:' ' | sort_natural %}
+
+{% comment %}
+<!-- Tags output: Name + link to the page with list of all the posts with the same category -->
+{% endcomment %}
+
+{% for category in sortedcategories %}
+<a href="{{ site.baseurl }}/categories/#{{category}}">@{{category}}</a>
+{% endfor %}

@@ -2,6 +2,7 @@
 layout: post
 title: 从glib到boost
 tag: [glib,Boost]
+categories: [Program]
 ---
 
 # Start

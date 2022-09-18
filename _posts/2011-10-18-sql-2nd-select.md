@@ -2,6 +2,7 @@
 layout: post
 title: sql server实现循环利用检索结果进行二次操作
 tags: [SQL]
+categories: [Program]
 ---
 <p>有一个需求，从table1里面搜索满足condition1的记录。然后，针对每一条记录进行操作。</p>
 <!--break-->

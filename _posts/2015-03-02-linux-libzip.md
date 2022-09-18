@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 基于libzip的简易压缩(zip)/解压缩(unzip)程序
-tags: [Linux,Zip,libzip]
+tags: [Zip,libzip]
+categories: [Linux]
 ---
 
 简要的提示一下接口调用的流程：

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 参照PHP探针编写的系统信息获取API
-tag: [PHP,Linux,Sysinfo]
+tag: [PHP,Sysinfo]
+categories: [Website,Linux]
 ---
 
 <!--break-->

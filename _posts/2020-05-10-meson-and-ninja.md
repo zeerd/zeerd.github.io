@@ -2,6 +2,7 @@
 layout: post
 title: Meson & Ninja
 tag: [Meson,Ninja]
+categories: [Program]
 ---
 
 

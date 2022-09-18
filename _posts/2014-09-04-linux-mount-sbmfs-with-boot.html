@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 通过修改/etc/fstab实现在开机时自动mount一个smbfs的共享目录到本地路径
-tags: [Linux,mount]
+tags: [mount]
+categories: [Linux]
 ---
 <!--break-->
 首先，创建密码文件。执行下面命令：<br>cd<br>echo username=mywindowsusername > .smbpasswd<br>echo password=mywindowspassword >> .smbpasswd<br>chmod 600 .smbpasswd<br>给文件加上600属性是为了保护密码信息。此时仅有root账户可以看到文件的内容。<br><br>然后，修改/etc/fstab文件，在文件的最后加上如下内容：<br>//servername/sharename /mountdirectory cifs credentials=/home/myhomedirectory/.smbpasswd,uid=1000,gid=1000 0 0<br>其中的1000需要手动替换。<br>执行cat /etc/passwd，查看自己用户名的id是多少，然后将上面的1000替换掉。<br><br>修改之后，执行sudo mount -a使修改生效。<br>如果此时提示失败，可以通过“dmesg | tail”命令查看错误原因。<br>如果失败的原因是“CIFS VFS: No username specified”，则说明缺少一个必要的支持包。<br>执行“sudo apt-get install cifs-utils”进行安装即可。

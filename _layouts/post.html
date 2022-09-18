@@ -5,7 +5,9 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <p align=right><span class="post-date"><a href="{{site.author.url}}" target="_blank">{{site.author.name}}</a> @ {{ page.date | date_to_string }}</span>
-  {% include tagsforpost.html tags=page.tags %}</p>
+    {% include tagsforpost.html tags=page.tags %}
+    {% include categoriesforpost.html categories=page.categories %}
+  </p>
   <hr>
   <div class='toc'>
     <div class='toctitle'>Contents:</div>

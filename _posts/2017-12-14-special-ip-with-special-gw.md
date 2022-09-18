@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 通过指定路由访问指定IP
-tag: [Linux,Route]
+tag: [Route]
+categories: [Linux]
 ---
 
 网络环境比较复杂，有两大块网络组成。

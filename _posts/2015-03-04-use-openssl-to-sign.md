@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 使用openssl进行文件或字符串的签名和认证
-tag: [Linux,OpenSSL,Sign]
+tag: [OpenSSL,Sign]
+categories: [Linux]
 ---
 
 <!--break-->

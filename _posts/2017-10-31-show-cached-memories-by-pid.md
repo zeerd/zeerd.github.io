@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 根据进程ID获取Cached Memory情况
-tag: [maps,Cached,Memory,Linux]
+tag: [maps,Cached,Memory]
+categories: [Linux]
 ---
 
 

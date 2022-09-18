@@ -2,6 +2,7 @@
 layout: post
 title: SOME/IP SD的行为介绍
 tag: [SOME/IP]
+categories: [Ethernet]
 ---
 
 

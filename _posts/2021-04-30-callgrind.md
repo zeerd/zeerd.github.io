@@ -2,6 +2,7 @@
 layout: post
 title: 使用Valgrind和Callgrind动态生成调用堆栈
 tag: [valgrind,callgrind,KCacheGrind]
+categories: [Program]
 ---
 
 <!--break-->

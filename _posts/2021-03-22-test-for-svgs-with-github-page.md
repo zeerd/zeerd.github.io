@@ -2,6 +2,7 @@
 layout: post
 title: 测试SVG图片显示机制
 tag: [UML,PlantUML,Dot,Graphviz,Gravizo]
+categories: [Website]
 ---
 
 <!--break-->

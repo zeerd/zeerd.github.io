@@ -2,6 +2,7 @@
 layout: post
 title: 在Jenkins中借助Gerrit-trigger插件实现自动标注CppCheck结果到Gerrit的Patchset
 tag: [Jenkins,Gerrit]
+categories: [SystemIntegration]
 ---
 
 [Gerrit](https://www.gerritcodereview.com/)存在如下的REST API，可以让用户通过curl提交Review结果到Gerrit的Patchset。基于这个API，我们可以实现在[Jenkins](https://jenkins.io/)中借助[Gerrit-trigger](http://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Trigger)插件自动标注[CppCheck](http://cppcheck.sourceforge.net/)结果到Gerrit的Patchset。

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Dlt Viewer For Android
-tag: [DLT,GENIVI,Android]
+tag: [DLT,GENIVI]
+categories: [Android]
 ---
 
 <!--break-->

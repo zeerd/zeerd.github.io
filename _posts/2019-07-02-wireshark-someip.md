@@ -2,6 +2,7 @@
 layout: post
 title: 给Wireshark添加基于Lua的SOME/IP解析插件
 tag: [SOME/IP,WireShark]
+categories: [Ethernet]
 ---
 
 下面是一个简单的示例，仅支持最简单的SOME/IP数据解析。

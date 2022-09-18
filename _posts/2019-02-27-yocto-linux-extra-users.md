@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Yocto下为Linux系统添加任意账户
-tag: [Yocto,Linux]
+tag: [Yocto]
+categories: [SystemIntegration]
 ---
 
 

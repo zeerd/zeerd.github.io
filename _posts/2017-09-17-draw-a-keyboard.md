@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 一份用于描画软件盘的代码片断
-tag: [uinput,Cairo,Linux]
+tag: [uinput,Cairo]
+categories: [Linux]
 ---
 
 

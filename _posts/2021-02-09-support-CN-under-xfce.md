@@ -2,6 +2,7 @@
 layout: post
 title: Support Chinese under Ubuntu XFCE
 tag: [Ubuntu,XFCE]
+categories: [OperatingSystem]
 ---
 
 <!--break-->

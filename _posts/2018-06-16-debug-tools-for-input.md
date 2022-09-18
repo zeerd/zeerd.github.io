@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Some debug tools for input device on Linux
-tag: [Linux, Debug]
+tag: [Debug]
+categories: [Linux]
 ---
 
 <!--break-->

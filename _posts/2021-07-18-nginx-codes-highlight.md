@@ -2,6 +2,7 @@
 layout: post
 title: Nginx show codes directly with highlight
 tags: [Nginx,Highlight]
+categories: [Website]
 ---
 <!--break-->
 

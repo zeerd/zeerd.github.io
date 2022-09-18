@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 使用addr2line工具在不方便生成coredump的系统中追溯应用程序崩溃记录
-tag: [Linux, Backtrace, Coredump]
+tag: [Backtrace, Coredump]
+categories: [Program]
 ---
 
 很多时候，出于各种原因，我们需要在Linux系统发行时关掉coredump的生成机制。这就导致，一旦出现程序崩溃问题，回溯起来就会非常麻烦。

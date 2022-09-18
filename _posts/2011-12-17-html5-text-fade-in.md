@@ -2,6 +2,7 @@
 layout: post
 title: 使用HTML5实现文字渐出
 tag: [HTML5]
+categories: [Website]
 ---
 
 其实没什么技术含量，就是计算好位置，然后用计时器一个一个字的显示出来。

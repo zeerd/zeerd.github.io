@@ -1,7 +1,8 @@
 ---
 layout: post
 title: C++中的static陷阱
-tags: [C++,Bug]
+tags: [C/C++,Bug]
+categories: [Program]
 comments: true
 ---
 通常，讲述C++的书籍资料中，都会提到class的static类型成员变量的问题。但是后少有人会提到如果在成员函数中定义了静态成员变量会发生什么事情。<br>

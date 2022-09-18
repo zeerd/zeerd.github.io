@@ -2,6 +2,7 @@
 layout: post
 title: 自搭建的Plantuml描画网页服务
 tags: [PlantUML,PHP]
+categories: [Website]
 ---
 
 Self-Hosted Plantuml Web Server.

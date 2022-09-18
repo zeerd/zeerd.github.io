@@ -1,7 +1,8 @@
 ---
 layout: post
 title: “非惊群”的服务端技术框架
-tag: [Linux,IPC,Broadcast]
+tag: [IPC,Broadcast]
+categories: [Program]
 ---
 
 目前Linux最常用的可支持群发的总线系统是DBUS，但是DBUS存在一个“惊群效应”。即不管对方客户端是否关注这条信息，都会发送给所有客户端。这样，就会导致在服务端群发消息是引发一次CPU峰值。影响系统运行效率。

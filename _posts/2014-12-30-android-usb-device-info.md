@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 根据/dev/bus/usb在不打开设备的情况下获取USB信息
-tags: [Android,Device]
+tags: [Device]
+categories: [Android]
 ---
 在Android中，我们通常在上层只能获取到类似/dev/bus/usb/001/002这样的设备名称。<br>通过这个名称，可以打开设备并且进行相关的操作。<br><br>但是，有时候我们可能因为某些原因无法打开设备。那么，下面的方法可以参考用来获取一些设备信息。<br>
 <!--break-->

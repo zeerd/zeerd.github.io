@@ -13,7 +13,11 @@ title: Home
     </h1>
 
     <!-- <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time> -->
-    <small>{{ post.date | date_to_string }} {% include tagsforpost.html tags=post.tags %}</small><br>
+    <small>
+      {{ post.date | date_to_string }}
+      {% include categoriesforpost.html categories=post.categories %}
+      {% include tagsforpost.html tags=post.tags %}
+    </small><br>
     
 
       {{ post.excerpt }}

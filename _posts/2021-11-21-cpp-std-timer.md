@@ -2,6 +2,7 @@
 layout: post
 title: C++ Timer With Single thread
 tags: [Timer]
+categories: [Program]
 ---
 
 一个简单的类似Boost的Timer代码。

@@ -1,0 +1,39 @@
+---
+layout: default
+title: Categories
+permalink: categories/
+---
+
+<h2>{{page.title}}</h2>
+
+{% capture categories %}
+  {% for category in site.categories %}
+    {{ category[0] }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedcategories = categories | split:' ' | sort_natural %}
+
+<ul class='toc'>
+{% for category in sortedcategories %}
+  <li><a href="#{{ category }}">{{ category }} [{{ site.categories[category].size }}]</a></li>
+{% endfor %}
+<li><a href="#others">Others [-]</a></li>
+</ul>
+
+{% for category in sortedcategories %}
+  <h3 id="{{ category | escape }}">{{ category }}</h3>
+  <ul>
+  {% for post in site.categories[category] %}
+    <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+  </ul>
+{% endfor %}
+
+<h3 id="others">Others</h3>
+<ul>
+{% for post in site.posts %}
+  {% if post.categories.size == 0 %}
+  <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>

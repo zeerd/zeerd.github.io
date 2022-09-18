@@ -1,10 +1,12 @@
 ---
 layout: post
 title: 在 C++中统计动态内存分配情况（扩展）
-tag: [C++,malloc]
+tag: [C/C++,malloc]
+categories: [Program]
 ---
 
 之前，在 [在 C++中统计动态内存分配情况](http://blog.zeerd.com/summary-cpp-new-delete/) 中展示过一段用于在C++中统计动态内存分配情况的测试代码。最近对这段代码进行了一些扩充。
+
 <!--break-->
 
 新的代码将对new/delete的重载inline函数的方式 放入到了头文件中。便于将这个测试程序编译成库提供给其他开发者使用。

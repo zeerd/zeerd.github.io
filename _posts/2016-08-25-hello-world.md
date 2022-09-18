@@ -2,6 +2,7 @@
 layout: post
 title: 你好，Github Pages
 tag: [hello]
+categories: [Website]
 ---
 
 我的第一篇基于Github Pages的文章。
@@ -9,7 +10,7 @@ tag: [hello]
 <!--break-->
 
 原来搭建在GoDaddy上的Blog终于在五年后的几天前寿终正寝了————被不知名骇客入侵并且破坏掉了所有页面下的主要文件。
-现在去Google搜索“site:http://blog.zeerd.com”还可以看到“此网站可能遭到黑客入侵”的提示。
+现在去Google搜索“`site:http://blog.zeerd.com`”还可以看到“此网站可能遭到黑客入侵”的提示。
 去Google申请了重新审核，可能需要等待以周为单位的时间才能够完全恢复。
 
 其实每年续费前一、两个月，我都会在换个坑重新搭建还是赖在这里续费凑合用之间犹豫良久。

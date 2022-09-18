@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 以太网的PHY、MAC、固件、驱动
-tag: [Ethernet]
+tag: [Terminology]
+categories: [Ethernet]
 ---
 
 <!--break-->

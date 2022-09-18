@@ -2,6 +2,7 @@
 layout: post
 title: Wayland中的输入法框架初探
 tag: [Wayland,Weston,InputMethod]
+categories: [Linux]
 ---
 <!--break-->
 

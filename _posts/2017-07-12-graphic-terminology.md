@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 整理一些显示系统相关名词
-tag: [Linux,Graphic,Terminology]
+tag: [Graphic,Terminology]
+categories: [Linux]
 ---
 
 <!--break-->

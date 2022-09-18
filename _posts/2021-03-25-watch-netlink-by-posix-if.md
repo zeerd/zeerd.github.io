@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 使用标准Linux的接口实现监控网卡状态
-tag: [Netlink,Linux]
+tag: [Netlink]
+categories: [Linux,Ethernet]
 ---
 
 通过AF_NETLINK监控网卡的UP/DOWN状态。

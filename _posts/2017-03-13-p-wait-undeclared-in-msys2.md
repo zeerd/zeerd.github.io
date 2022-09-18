@@ -2,6 +2,7 @@
 layout: post
 title: MSYS2 环境中编译程序提示“_P_WAIT”错误
 tag: [MSYS2,Automake]
+categories: [Program]
 ---
 
 今天，在MSYS2环境下编译libxml2时，提示了一系列类似如下的错误：

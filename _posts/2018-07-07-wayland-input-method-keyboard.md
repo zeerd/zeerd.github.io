@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Weston输入法/软键盘的基本时序
-tag: [Linux,Wayland,Weston,Input]
+tag: [Wayland,Weston,Input]
+categories: [Linux]
 ---
 
 本文基于Weston-1.10.0整理完成。后续版本可能会有变动。但原理应该大同小异。

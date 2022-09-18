@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Linux下允许MySQL被远程访问
-tag: [MySQL,Linux]
+tag: [MySQL]
+categories: [Linux]
 ---
 
 在Windows上安装MySQL，折腾了无数次，随后都是失败。无奈找了一台旧机器装个Linux，运行MySQL。但是却发现，默认的MySQL只能本地访问。

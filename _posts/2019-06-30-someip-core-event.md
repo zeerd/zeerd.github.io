@@ -2,6 +2,7 @@
 layout: post
 title: SOME/IP的核心消息
 tag: [SOME/IP]
+categories: [Ethernet]
 ---
 
 SOME/IP中的核心消息主要分成两大类，分别是服务发现类消息和一般通讯类消息。

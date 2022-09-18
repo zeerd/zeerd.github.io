@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 通过截取signal输出程序崩溃时的backtrace
-tag: [Linux,Debug,Backtrace]
+tag: [Debug,Backtrace]
+categories: [Program]
 ---
 主要是参考了Android的实现方法。做成了一个简单的lib库。
 <!--break-->

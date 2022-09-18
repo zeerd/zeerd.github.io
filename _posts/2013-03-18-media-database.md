@@ -2,6 +2,7 @@
 layout: post
 title: 利用taglib和sqlite实现简易的媒体数据库
 tag: [TagLib,Sqlite]
+categories: [Program]
 ---
 现在的各种媒体播放器及用户，已经不再满足于仅将文件系统中的目录结构罗列出来以供听众选择的传统操作方式了。越来越多的媒体播放器开始支持按着演唱者（artist）、专辑名称（album）来进行歌曲的归类和播放。
 

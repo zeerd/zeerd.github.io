@@ -2,6 +2,7 @@
 layout: post
 title: Weston输入框架简析
 tag: [Weston,Input]
+categories: [Linux]
 ---
 
 

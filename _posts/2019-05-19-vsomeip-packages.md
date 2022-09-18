@@ -2,6 +2,7 @@
 layout: post
 title: SOME/IP Packages
 tag: [SOME/IP]
+categories: [Ethernet]
 ---
 
 

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 在QNX中直接基于数据链路层接收裸数据
-tag: [QNX,Ethernet,Raw]
+tag: [Ethernet,Raw]
+categories: [QNX]
 ---
 
 本示例用于演示如何在QNX中直接基于数据链路层接收裸数据。

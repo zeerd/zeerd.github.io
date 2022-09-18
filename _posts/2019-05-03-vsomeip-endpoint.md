@@ -2,6 +2,7 @@
 layout: post
 title: vSomeIP Endpoints
 tag: [vSomeIP,SOME/IP,GENIVI]
+categories: [Ethernet]
 ---
 
 <!--break-->

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 通过Yocto整理工程依赖关系与授权信息
-tag: [Yocto,License,Linux]
+tag: [Yocto,License]
+categories: [SystemIntegration]
 ---
 
 如果需要知道Yocto生成的images里面的软件包的依赖关系及授权信息，则可以通过Yocto自身的两个功能来实现。

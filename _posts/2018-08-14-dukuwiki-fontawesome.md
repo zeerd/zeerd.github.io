@@ -2,6 +2,7 @@
 layout: post
 title: Add fontawesome into Dokuwiki
 tag: [Dokuwiki,FontAwesome]
+categories: [Website]
 ---
 
 <!--break-->

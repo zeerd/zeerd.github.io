@@ -2,6 +2,7 @@
 layout: post
 title: 在WSL2中安装和使用Ubuntu
 tags: [WSL2,Ubuntu,Docker]
+categories: [OperatingSystem]
 ---
 
 记录一些遇到的问题。以后可能会实时更新。

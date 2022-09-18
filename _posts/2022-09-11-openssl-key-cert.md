@@ -2,6 +2,7 @@
 layout: post
 title: OpenSSL和密钥、证书
 tags: [OpenSSL]
+categories: [Ethernet]
 ---
 
 简单总结一下密钥、证书，以及如何通过OpenSSL生成密钥和证书。

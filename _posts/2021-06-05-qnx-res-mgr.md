@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 在QNX中设备文件的编写
-tag: [QNX,ResMgr]
+tag: [ResMgr]
+categories: [QNX]
 ---
 
 本示例用于演示如何在QNX中编写设备文件。

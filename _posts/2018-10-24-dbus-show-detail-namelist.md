@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 查看DBus的sender属于哪个进程
-tag: [Linux,DBus]
+tag: [DBus]
+categories: [Linux]
 ---
 
 将数字化的sender name转换成进程名称。

@@ -2,6 +2,7 @@
 layout: post
 title: 安装Ubuntu16.04过程中找不到CD-ROM
 tag: [Ubuntu]
+categories: [OperatingSystem]
 ---
 
 今天打算在一台安装了Windows10专业版的笔记本上安装Ubuntu 16.04的服务器版。

@@ -2,6 +2,7 @@
 layout: post
 title: 借助VNC实现Ubuntu系统的远程桌面
 tag: [VNC,Ubuntu]
+categories: [OperatingSystem]
 ---
 
 <!--break-->

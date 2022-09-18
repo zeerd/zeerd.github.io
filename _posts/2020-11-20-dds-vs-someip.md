@@ -2,6 +2,7 @@
 layout: post
 title: 【翻译】DDS与SOME/IP
 tag: [DDS,SOME/IP]
+categories: [Ethernet]
 ---
 
 翻译[自](https://stackoverflow.com/questions/51182471/whats-the-difference-between-dds-and-some-ip)。

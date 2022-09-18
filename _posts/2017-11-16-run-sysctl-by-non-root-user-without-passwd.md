@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Linux中非root账户免密执行高权限命令
-tag: [sysctl,Sudo,Non-Root,Jenkins,Linux]
+tag: [sysctl,Sudo,Non-Root,Jenkins]
+categories: [Linux]
 ---
 
 最近在Jenkins中编译Yocto工程，经常发生内存不足导致的编译失败的情况。而每次只要执行一下

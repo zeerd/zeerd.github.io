@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 一些常见的Linux基础组件
-tag: [Linux]
+tag: [Package]
+categories: [SystemIntegration]
 ---
 
 整理了一些常见组件的信息。记录一下，备忘。

@@ -2,6 +2,7 @@
 layout: post
 title: Fix abc.so is not portable
 tag: [GCC]
+categories: [Linux]
 ---
 
 gcc 编译时遇到如下Warning：

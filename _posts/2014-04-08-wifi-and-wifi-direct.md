@@ -2,6 +2,7 @@
 layout: post
 title: WI-FI&WI-FI Direct 简介及实现
 tag: [WIFI,WIFI-Direct]
+categories: [Linux]
 ---
 
 <!--break-->

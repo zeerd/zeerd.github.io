@@ -4,7 +4,7 @@ layout: default
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <p align=right><span class="post-date"><a href="{{site.author.url}}" target="_blank">{{site.author.name}}</a> @ {{ page.date | date_to_string }}</span>
+  <p align=right><span class="post-date"><a href="{{site.author.url}}" target="_blank">{{site.author.name}}</a> @ {{ page.date | date: "%Y-%m-%d" }}</span>
     {% include tagsforpost.html tags=page.tags %}
     {% include categoriesforpost.html categories=page.categories %}
   </p>
@@ -34,7 +34,7 @@ layout: default
         <h3>
           <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
+            <small>{{ post.date | date: "%Y-%m-%d" }}</small>
           </a>
         </h3>
       </li>

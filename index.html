@@ -12,9 +12,9 @@ title: Home
       </a>
     </h1>
 
-    <!-- <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time> -->
+    <!-- <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date: "%Y-%m-%d" }}</time> -->
     <small>
-      {{ post.date | date_to_string }}
+      {{ post.date | date: "%Y-%m-%d" }}
       {% include categoriesforpost.html categories=post.categories %}
       {% include tagsforpost.html tags=post.tags %}
     </small><br>

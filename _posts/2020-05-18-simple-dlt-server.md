@@ -2,6 +2,7 @@
 layout: post
 title: 一个简易的DLT服务
 tag: [GENIVI,DLT]
+categories: [Program]
 ---
 
 当目标系统不支持Dlt时，可以作为一个备选方案。

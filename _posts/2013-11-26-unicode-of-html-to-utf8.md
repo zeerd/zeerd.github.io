@@ -2,6 +2,7 @@
 layout: post
 title: C语言中将HTML的Unicode转换成UTF8编码的文字
 tags: [HTML,Unicode,Utf8,Encoding]
+categories: [Program]
 ---
 随着网络应用的逐渐普及，各种基于HTML的输入也逐步进入了C语言和其他各种语种编程人员的视线。
 本文提供一个算法，用于将从html中获取的unicode字符串转换成通常的utf-8字符串。

@@ -2,6 +2,7 @@
 layout: post
 title: 批量生成带TAG信息的MP3测试文件
 tags: [TAG]
+categories: [Program]
 ---
 
 下面这个shell脚本，可以批量生成带有指定长度TAG字符串的mp3文件。用于进行各种容量方面的测试。

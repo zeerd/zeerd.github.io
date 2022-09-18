@@ -1,9 +1,0 @@
----
-layout: post
-title: strict-aliasing rules
-tag: [GCC]
-categories: [Program]
----
-很多人都在纠结这个Warning：<br><br>warning： dereferencing type-punned pointer will break strict-aliasing rules<br>
-<!--break-->
-<br>简单说明：<br><br>1、不同类型的指针互相强制转换是不被允许的。<br><br>比如：long a=1; short *p=(short*)&amp;a;*p=2;<br><br>这个操作并不能一定改变a的值，甚至可能一定不会改变a的值。取决于你还做了其他什么事情。<br><br>2、如果你最终又把它转回去了，则没有问题。<br><br>比如：long a=1; void *p=(void*)&amp;a; long *b=(long *)p;*b=2;<br><br>这个操作是安全的。<br><br>详细一些的说明：<br><br>这是在C99中引入的一个新的概念（好吧，十多年了，不新了）。<br><br>粗略的理解，就是编译器会对指针的使用进行执行效率方面的优化。<br><br>在进行这种优化时，C99破坏了一些C99之前约定俗成的东西。<br><br>即，C99认为，在开启strict-aliasing规则的情况下，两个不同的类型的指针必然不会指向同一位置。<br>举个简单的例子：<br>int v=0x12345678;<br>1. int main()<br>2. {<br>3.     int a = v;<br>4.     short *p = (short *)&amp;a;<br>5.     short temp;<br>6.     temp = *p;<br>7.     *p = *(p+1);<br>8.     *(p+1) = temp;<br>9.     printf("%x\\n", a);<br>a. }<br>$gcc -O2 test.c<br>$./a.exe<br>程序的作用是将a的高低位互换位置，猜猜结果是什么？然后再用鼠标拖动选择【】看看实际的结果是什么？<br>【<font color=black>12345678</font>】<br><br>实际的情况，因为开启strict-aliasing规则的C99认为a和p是不同类定的指针，他们必然不会指向同一个位置。<br>因此，第4行到第8行的代码虽然在努力的工作着。但是他们的工作与a没有任何关系。所有中间结果都在寄存器中缓存、然后被丢弃了。<br>下面是汇编结果：<br>call ___main<br>movzwl -2(%ebp), %eax<br>movswl -4(%ebp),%edx<br>movl $305419896, -4(%ebp)<br>movl $LC0, (%esp)          《====将参数1（%x\\n）入栈<br>movw %ax, -4(%ebp)<br>movl $305419896, %eax      《====将$305419896地址下的数值放入eax寄存器，$305419896是一个地址，指向的是立即数0x12345678<br>movw %dx, -2(%ebp)<br>movl %eax, 4(%esp)         《=====将参数2（eax寄存器内的数值）入栈<br>call _printf               《====== 打印<br>可以看到，print直接使用了立即数，根本没管p和temp忙了些什么。<br>免责声明：<br>以上是我今天不到2个小时之内从网络上获取的思路和个人的理解，不敢保全对。所以，如果你很较真，我建议你查找一下C99标准文档。<br>参考：<br>http://hi.baidu.com/junru/blog/item/14589545b9bc6f23cffca3dd.html<br>http://blog.csdn.net/world_hello_100/article/details/7677622

@@ -2,6 +2,7 @@
 layout: post
 title: 基于PHP和Sqlite3的简易设备预订系统
 tags: [PHP,Sqlite,SQL]
+categories: [Website]
 ---
 
 <!--break-->

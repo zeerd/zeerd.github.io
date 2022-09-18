@@ -22,4 +22,3 @@ milestone可用的tun.ko的下载地址： http://code.google.com/p/sbdtools/dow
 <p>最后补充几点：<br>
 在所有软件备齐之后，运行时可能还会出现类似“linux ifconfig failed could not execute external program”。这是因为openvpn会去/system/xbin/bb下面查找系统命令，而实际上安装busybox之后，这些系统命令在/system/bin目录下。<br>
 执行“ln -s /system/bin/ifconfig /system/xbin/bb/ifconfig”即可链接过去。仔细查看屏幕输出的log，可能不止缺少ifconfig，但是只要缺了，就按着上面命令格式添加类似的link即可。 </p>
-<p>{{ page.date | date_to_string }}</p>

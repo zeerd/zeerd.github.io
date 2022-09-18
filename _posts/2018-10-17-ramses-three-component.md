@@ -2,6 +2,7 @@
 layout: post
 title: RAMSES的三大组件
 tag: [GENIVI,RAMSES,Graphic]
+categories: [Linux]
 ---
 
 <!--break-->

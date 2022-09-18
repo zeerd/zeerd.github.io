@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 旧文整理：MinGW写的简易记事本 Ver0.02
+title: MinGW写的简易记事本 Ver0.02
 tags: [MinGW,Notepad,Windows]
 categories: [Program]
 ---

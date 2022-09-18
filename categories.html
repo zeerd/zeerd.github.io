@@ -24,7 +24,7 @@ permalink: categories/
   <h3 id="{{ category | escape }}">{{ category }}</h3>
   <ul>
   {% for post in site.categories[category] %}
-    <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+    <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>(<small style='color:gray;'>{{ post.date | date: "%Y-%m-%d" }}</small>)</li>
   {% endfor %}
   </ul>
 {% endfor %}
@@ -33,7 +33,7 @@ permalink: categories/
 <ul>
 {% for post in site.posts %}
   {% if post.categories.size == 0 %}
-  <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+  <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>(<small style='color:gray;'>{{ post.date | date: "%Y-%m-%d" }}</small>)</li>
   {% endif %}
 {% endfor %}
 </ul>

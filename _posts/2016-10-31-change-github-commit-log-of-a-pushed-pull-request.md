@@ -2,6 +2,7 @@
 layout: post
 title: 修改github中已经提交的pull request的patch log（patch title）
 tag: [GitHub,Git]
+categories: [Program]
 ---
 有时候，我们向一些开源项目提交某个Patch，一切看起来都不错，但是，可能会略了一个问题：对方对于Commit Log的格式可能会有一些特殊的[要求](https://github.com/GENIVI/wayland-ivi-extension/pull/3)。比如会有一些前缀。
 <!--break-->

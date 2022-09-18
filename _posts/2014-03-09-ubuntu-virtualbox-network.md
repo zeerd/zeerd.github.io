@@ -2,6 +2,7 @@
 layout: post
 title: Ubuntu下实现virtualbox虚拟机与真机网络互访
 tags: [Ubuntu,VirtualBox,Network]
+categories: [OperatingSystem]
 ---
 
 因为有些时候我们需要在windows和ubuntu之间进行切换，所以一些编译环境可能就需要被创建在一个ubuntu的虚拟机中。

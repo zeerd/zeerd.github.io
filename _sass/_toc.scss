@@ -15,6 +15,7 @@
     margin-right:10px;
     border-bottom:groove;
   }
+
 }
 
 @media (min-width: 48em) {
@@ -28,5 +29,14 @@
     border-radius: .25rem;
     overflow-y: auto;
     height:70%;
+  }
+}
+
+@media (max-width: 48em) {
+  .toc {
+    border-left:double;
+    li {
+      padding-bottom: 5px;
+    }
   }
 }

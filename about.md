@@ -15,7 +15,7 @@ This is a blog based on [poole](https://github.com/poole) and [vrepinblog](https
 
 Some concepts from [jekyll-theme-yat](https://github.com/jeffreytse/jekyll-theme-yat/)
 
-Tables of Contents from [TOC](https://github.com/allejo/jekyll-toc)
+Tables of Contents from [jekyll-toc](https://github.com/allejo/jekyll-toc)
 
 The search function based on [lunr.js](http://jekyll.tips/jekyll-casts/jekyll-search-using-lunr-js/)
 

@@ -22,7 +22,7 @@ setInterval(() => {
 }, 1000)
 
 setInterval(() => {
-    const prefix = "https://www.zeerd.com/plantuml.php?uml=";
+    const prefix = "https://vultr6.zeerd.com/plantuml.php?uml=";
     var elements = document.getElementsByClassName('language-plantuml');
     for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
         encoded = encodeURI(prefix + elements[i].innerHTML);

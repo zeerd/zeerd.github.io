@@ -18,7 +18,7 @@ sudo apt install xfce4 tigervnc-standalone-server
 我不确定是否还有其他依赖，但这两个是需要的。
 
 * 注意：一定要使用tigervnc不要使用tightvnc。后者太古老了，可能会导致display功能失效。
-
+* 安装过程中，会提示选择使用的窗口管理器。如果后续打算使用xfce4为本地的窗口管理系统，则需要选择“lightdm”，否则选择默认的"gdm3"。后续也可以通过sudo dpkg-reconfigure gdm3命令修改。
 
 ## 配置修改
 

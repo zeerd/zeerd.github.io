@@ -2,7 +2,6 @@
 layout: post
 title: TLS技术简介
 tags: [TLS,OpenSSL]
-categories: [Ethernet]
 ---
 
 <!--break-->
@@ -188,10 +187,10 @@ OpenSSL 3.0以后，使用 SSL_CTX_set0_tmp_dh_pkey() 加载
 | 端 | 参数 | 解释 |
 | -- | ---- | --- |
 | 客户端 | SSL_VERIFY_NONE | 客户端不验证服务器证书， 但是服务器必须提供证书 |
-| ^^ | SSL_VERIFY_PEER | 客户端验证服务器证书 |
+| ^ | SSL_VERIFY_PEER | 客户端验证服务器证书 |
 | 服务器 | SSL_VERIFY_NONE | 服务器不验证客户端证书， 客户端可以不提供证书 |
-| ^^ | SSL_VERIFY_PEER | 服务器验证客户端证书（如果有） |
-| ^^ | SSL_VERIFY_PEER \| SSL_VERIFY_FAIL_IF_NO_PEER_CERT | 客户端必须提供证书 |
+| ^ | SSL_VERIFY_PEER | 服务器验证客户端证书（如果有） |
+| ^ | SSL_VERIFY_PEER \| SSL_VERIFY_FAIL_IF_NO_PEER_CERT | 客户端必须提供证书 |
 
 这里的情况会比较复杂，需要设计合理的接口来配置，或者干脆分模型编译。
 
@@ -309,6 +308,13 @@ Transport Layer Security
 TLS v1.3的比较麻烦。从
 [协议标准](https://www.rfc-editor.org/rfc/rfc8446#section-7.4)
 来看，是支持DH的。但是，目前没有找到好的办法验证DH功能到底生效了没有。
+
+### 扩展
+
+对照 IANA 的 [扩展列表](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml) 和 [RFC8446](https://www.rfc-editor.org/rfc/rfc8446#section-4.2) 。可以看到，后者中并没有覆盖所有的扩展。
+可能正是基于这个原因，OpenSSL也没有实现所有的扩展。
+
+如果确实需要，则可以通过“[SSL_CTX_add_custom_ext](https://www.openssl.org/docs/manmaster/man3/SSL_CTX_add_custom_ext.html)”接口来添加。具体的使用方法可以参照OpenSSL提供的测试程序“[sslapitest.c](https://github.com/openssl/openssl/blob/openssl-3.0/test/sslapitest.c#L5668)”
 
 ## 参照
 

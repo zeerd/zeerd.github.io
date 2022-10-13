@@ -6,8 +6,6 @@ remote_theme: pages-themes/midnight@v0.2.0
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink: "/:title/"
 
-highlighter: rouge
-
 timezone: Asia/Shanghai
 
 # Tagging settings
@@ -51,8 +49,16 @@ excerpt_separator: "<!--break-->"
 
 google_analytics_id: UA-24328633-1
 
+markdown: kramdown
+highlighter: rouge
 kramdown:
+  # automatic header ID generation
   auto_ids: true
+  # Github Flavored Markdown
+  input: GFM
+  syntax_highlighter_opts:
+    default_lang: html
+    css_class   : 'syntax'
 
 pages_list:
   Search: '/search/'

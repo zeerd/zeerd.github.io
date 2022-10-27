@@ -85,6 +85,13 @@ sudo apt install xrdp
 
 如果在display中找不到适合自己显示器的分辨率，可以修改Ubuntu机器上“`~/.config/xfce4/xfconf/xfce-perchannel-xml/displays.xml`”中的分辨率。然后重启vncsever。
 
+# 快捷键
+
+可以在`设置`->`键盘`中补充常用快捷键。
+
+* `dm-tool lock` ： 锁屏。
+* `wmctrl -r ":ACTIVE:" -b "toggle,maximized_vert,maximized_horz"` ： 当前激活窗口最大化。
+
 # 中文支持
 
 Xfce4中的设置权限存在问题，需要从命令行启动“Language Support”，运行`sudo /usr/bin/gnome-language-selector`。在其中按着常规操作添加中文即可。

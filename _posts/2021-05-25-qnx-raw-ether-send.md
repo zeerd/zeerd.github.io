@@ -117,3 +117,5 @@ int main(int argc, char *argv[])
 
 除了ethertype被我们人为替换成了0x1234（覆盖了原本的0x0c0d）,
 其他部分就是for循环中灌入的连续数字。
+
+如果需要获取本地的MAC地址，可以参考这篇文章： https://forums.openqnx.com/t/topic/8097/2

@@ -22,7 +22,7 @@ sudo apt install xfce4 tigervnc-standalone-server
 
 ## 配置修改
 
-修改 ~/.vnc/xstartup:
+修改 `~/.vnc/xstartup`:
 
 ```
 #!/bin/bash

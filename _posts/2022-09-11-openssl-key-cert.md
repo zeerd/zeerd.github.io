@@ -229,7 +229,7 @@ rectangle "其他" as others {
     ....
     生成一个DH文件。DH文件仅在服务端使用。
   ]
-  rectangle os_dh #pink;line:red;line.bold;text:red [
+  rectangle os_show #pink;line:red;line.bold;text:red [
     openssl x509 -text -in input.crt
     ....
     查看证书内容。

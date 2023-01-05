@@ -9,6 +9,8 @@ categories: [Website]
 
 首先是要准备一个数据库，参照下面的sql语句创建：
 
+<b>book.sql</b>
+
 ```sql
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
@@ -39,6 +41,13 @@ INSERT INTO "times" VALUES('13:00 - 18:00',2);
 CREATE VIEW "record_all" AS select records.*, times.id as book_time_id from records left join times on times.time_section=records.book_time;
 CREATE UNIQUE INDEX unique_index_ip_in_users on users (ip ASC);
 COMMIT;
+```
+
+使用方法：
+
+```bash
+install -d db
+sqlite3 db/equip_booking.db < book.sql
 ```
 
 
@@ -343,4 +352,10 @@ echo "<a href=\"index.php\">返回</a>";
 ?>
 </body>
 </html>
+```
+
+运行环境：
+
+```bash
+apt install nginx-light php-fpm php-sqlite3
 ```

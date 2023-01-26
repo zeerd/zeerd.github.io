@@ -105,3 +105,5 @@ a -> b : c
 当然，也可能是 SSL 相关的问题。总之，同样的配置， HTTP 可以正常使用。 HTTPS 莫名其妙不好用。
 
 因此，如果找不到解决方案的话，还是需要关注一下 PlantUML 内容的长度。
+
+另外，基于某些原因，本站使用的是“ [spaceship](https://github.com/jeffreytse/jekyll-spaceship) ”来实现描画UML而不是本文的内容（至少更新本文时还是如此）。

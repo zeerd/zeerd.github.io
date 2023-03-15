@@ -90,7 +90,7 @@ setarch `uname -m` -R ./stack
 
 # 参照
 
-[Linux应用程序设计：用一种讨巧方式，来获取线程栈的使用信息](https://zhuanlan.zhihu.com/p/376530885)
-[Address Space Layout Randomization](https://docs.oracle.com/en/operating-systems/oracle-linux/6/security/ol_aslr_sec.html)
-[x86_64 Get Stack Pointer (RSP)](https://blogs.umb.edu/michaelbazzinott001/2014/09/24/x86_64-get-stack-pointer-rsp/)
-[GCC-Inline-Assembly-HOWTO](http://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html)
+* [Linux应用程序设计：用一种讨巧方式，来获取线程栈的使用信息](https://zhuanlan.zhihu.com/p/376530885)
+* [Address Space Layout Randomization](https://docs.oracle.com/en/operating-systems/oracle-linux/6/security/ol_aslr_sec.html)
+* [x86_64 Get Stack Pointer (RSP)](https://blogs.umb.edu/michaelbazzinott001/2014/09/24/x86_64-get-stack-pointer-rsp/)
+* [GCC-Inline-Assembly-HOWTO](http://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html)

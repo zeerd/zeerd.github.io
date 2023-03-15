@@ -73,7 +73,7 @@ void monitor_netlink(int _index, const char *_name)
 
     addr.nl_family = AF_NETLINK;
     addr.nl_pid = getpid();
-    addr.nl_groups = RTMGRP_LINK;
+    addr.nl_groups = RTMGRP_LINK | RTMGRP_IPV4_IFADDR | RTMGRP_IPV6_IFADDR;
 
     if (bind(fd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
         fprintf(stderr, "failed to bind RTMGRP_LINK: %s\n", strerror(errno));
@@ -129,6 +129,27 @@ void monitor_netlink(int _index, const char *_name)
                                 }
                             }
                         }
+                    }
+                    else if (msgHdr->nlmsg_type == RTM_NEWADDR) {
+                        struct ifaddrmsg *ifaddr = NLMSG_DATA(msgHdr);
+                        char ip[256] = { 0 };
+                        char iface[256] = { 0 };
+                        int len = msgHdr->nlmsg_len - NLMSG_SPACE(sizeof(*ifaddr));
+                        struct rtattr *rta = IFA_RTA(ifaddr);
+                        while (RTA_OK(rta, len)) {
+                            if(RTA_DATA(rta) != NULL) {
+                                /* TODO: not sure if IPv6 work */
+                                if(rta->rta_type == IFA_ADDRESS) {
+                                    inet_ntop(ifaddr->ifa_family,
+                                              RTA_DATA(rta), ip, sizeof(ip));
+                                }
+                                if(rta->rta_type == IFA_LABEL) {
+                                    strcpy(iface, RTA_DATA(rta));
+                                }
+                            }
+                            rta = RTA_NEXT(rta, len);
+                        }
+                        printf("%s's IP changed to %s\n", iface, ip);
                     }
                 }
             }

@@ -5,7 +5,7 @@ tag: [Netlink]
 categories: [Linux,Ethernet]
 ---
 
-通过AF_NETLINK监控网卡的UP/DOWN状态。
+通过AF_NETLINK监控网卡的UP/DOWN状态以及IP的变动。
 
 <!--break-->
 
@@ -22,6 +22,7 @@ categories: [Linux,Ethernet]
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
+#include <arpa/inet.h>
 #include <linux/netlink.h>
 #include <linux/rtnetlink.h>
 
@@ -60,7 +61,7 @@ exit_error:
 
 void monitor_netlink(int _index, const char *_name)
 {
-    int link_up_sts = -1;
+    int link_sts_up_last = -1;
 
     int fd  = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);
     if (fd < 0) {
@@ -118,10 +119,14 @@ void monitor_netlink(int _index, const char *_name)
                     else if (msgHdr->nlmsg_type == RTM_NEWLINK) {
                         ifi = (struct ifinfomsg *)NLMSG_DATA(msgHdr);
                         if (ifi->ifi_index == _index) {
-                            bool link_up = ifi->ifi_flags & IFF_RUNNING;
-                            if (link_up != link_up_sts) {
-                                link_up_sts = link_up;
-                                if (link_up) {
+                            /* 物理连接与否（网线插没插） */
+                            bool link_running = ifi->ifi_flags & IFF_RUNNING;
+                            /* 软件控制上有没有UP（ifconfig <iface> up/down） */
+                            bool link_up = ifi->ifi_flags & IFF_UP;
+                            bool link_sts_up = link_up && link_running;
+                            if (link_sts_up != link_sts_up_last) {
+                                link_sts_up_last = link_sts_up;
+                                if (link_sts_up) {
                                     printf("%s : UP\n", _name);
                                 }
                                 else {

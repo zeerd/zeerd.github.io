@@ -117,3 +117,21 @@ done
 ```
 
 可以看到，明显`jq`的脚本比`jshon`的脚本更贴近一般的程序语言一些。可读性自然也就会高一些。
+
+## 中文
+
+无论是`jq`还是`jshon`，都存在同样的问题。即，无法正确的解析json文件中的`UTF-8`中文字符串。
+
+我在网上搜索了一些文章，比如这篇 [How to convert \\uXXXX unicode to UTF-8 using console tools in \*nix](https://www.gangofcoders.net/solution/how-to-convert-uxxxx-unicode-to-utf-8-using-console-tools-in-nix/) ，都提到了很多看起来简单有效的方法。但是，奇怪的是，在我的Ubuntu环境中，这些方法却都无效。
+
+在解析类似`\uXXXX`这种编码格式时，他们都会出现在我的 [关于Linux下的字符编码出现C2、C3的问题(by ffmpeg)](ffmpeg-c2c3-bug) 中提到过的乱码现象。估计是和底层的某些系统配置参数有关。
+
+经过复杂的测试，最后发现，我的系统可以识别`\xHH`这种格式，却不能支持`\uHHHH`这种格式。
+即，它无法正确识别`"\u00E4\u00B8\u00AD\u00E6\u0096\u0087"`，但是可以识别`"\xE4\xB8\xAD\xE6\x96\x87"`。
+
+于是，产生了一个简单迂回的办法：
+
+```bash
+TEXT_T=$(jq -a ".a.b.c" a.json)
+TEXT=$(echo -ne "${TEXT_T//\\u00/$'\x'}")
+```

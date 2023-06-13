@@ -86,7 +86,7 @@ int main(int argc, char*argv[])
 $ g++ a.cpp -pthread -g -fsanitize=address
 ```
 
-直接执行`./a.out`，效果如下图所示：
+直接执行`./a.out`，效果如下文所示：
 
 ```
 00:0/0x7fff23c18870
@@ -204,6 +204,8 @@ Thread T1 created by T0 here:
 简单地说，`sanitizers`发现测试程序在“`a.cpp:13`”修改了“`a.cpp:9`”的栈。然后，我们需要根据看到的现象和自己的知识来推导出修改了`a[0]`导致`b[0]`被修改。
 
 当然，无论如何，修改了`a[0]`处的问题，`b[0]`的问题也就消失了。
+
+PS：Lambda的“引用捕获”真的是个巨坑！
 
 # 参照
 

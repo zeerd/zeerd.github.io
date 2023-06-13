@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 一个简易的DLT服务
-tag: [GENIVI,DLT]
+tag: [COVESA,DLT]
 categories: [Program]
 ---
 
@@ -324,7 +324,7 @@ private:
         dlt[o++] = _LONG_BYTE1(timestamp);
         dlt[o++] = _LONG_BYTE0(timestamp);
         dlt[o++] = 0x11 + (level << 4); // (DLT_LOG_xxx by random)
-                                                 // (Dlt Log Message) (Verbose)
+                                        // (Dlt Log Message) (Verbose)
         dlt[o++] = 0x01; // Number of Arguments = 1
         memcpy(&dlt[o], apid, 4); o += 4;
         memcpy(&dlt[o], ctid, 4); o += 4;
@@ -332,7 +332,7 @@ private:
         dlt[o++] = 0x02;
         dlt[o++] = 0x00;
         dlt[o++] = 0x00; // Bit9=1 : Type String = ASCII
-                       // (String Coding=0, Type Length = not defined)
+                         // (String Coding=0, Type Length = not defined)
         dlt[o++] = _WORD_BYTE0(length);
         dlt[o++] = _WORD_BYTE1(length);
         memcpy(&dlt[o], _msg, length); o += length;

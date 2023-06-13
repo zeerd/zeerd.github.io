@@ -1,7 +1,7 @@
 ---
 layout: post
 title: vSomeIP Endpoints
-tag: [vSomeIP,SOME/IP,GENIVI]
+tag: [vSomeIP,SOME/IP,COVESA]
 categories: [Ethernet]
 ---
 

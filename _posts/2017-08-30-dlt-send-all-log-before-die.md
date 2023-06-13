@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 在进程崩溃退出前输出所有DLT LOG
-tag: [GENIVI,Automotive-DLT,DLT]
+tag: [COVESA,Automotive-DLT,DLT]
 categories: [Program]
 ---
 

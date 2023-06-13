@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CommonAPI基本流程
-tag: [GENIVI,CAPI,CommonAPI,IPC]
+tag: [COVESA,CAPI,CommonAPI,IPC]
 categories: [Ethernet]
 ---
 

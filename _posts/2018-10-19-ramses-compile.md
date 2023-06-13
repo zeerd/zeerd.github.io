@@ -1,7 +1,7 @@
 ---
 layout: post
 title: RAMSES 编译依赖排查
-tag: [GENIVI,RAMSES,Graphic]
+tag: [COVESA,RAMSES,Graphic]
 categories: [Linux]
 ---
 

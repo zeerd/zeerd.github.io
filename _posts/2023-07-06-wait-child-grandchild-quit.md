@@ -82,5 +82,5 @@ waiting for 16008 16008 pts/0 S+ 0:00 sleep 3
 
 参照：
 
-[Wait for a process to finish](https://stackoverflow.com/questions/1058047/wait-for-a-process-to-finish)
-[How do I wait for all child processes but one to finish executing](https://unix.stackexchange.com/questions/167337/how-do-i-wait-for-all-child-processes-but-one-to-finish-executing)
+《 [Wait for a process to finish](https://stackoverflow.com/questions/1058047/wait-for-a-process-to-finish) 》
+《 [How do I wait for all child processes but one to finish executing](https://unix.stackexchange.com/questions/167337/how-do-i-wait-for-all-child-processes-but-one-to-finish-executing) 》

@@ -11,7 +11,7 @@ categories: [Ethernet]
 
 ## 密钥
 
-```plantuml!
+```plantuml
 rectangle "对称密钥" as key {
   rectangle symKey [
     对称密钥
@@ -65,7 +65,7 @@ symKey --> os_enc_p2k
 os_enc_p2k --> os_enc_ps
 ```
 
-```plantuml!
+```plantuml
 rectangle "非对称密钥" as key {
   rectangle "ASN.1" as ASN1
 
@@ -155,7 +155,7 @@ p8 --> os_key
 
 ## 证书
 
-```plantuml!
+```plantuml
 rectangle "证书" as cert {
   rectangle CERT #palegreen;line:green;line.dashed;text:green [
     证书编码
@@ -219,7 +219,7 @@ x509 --> os_x509
 
 ## 其他
 
-```plantuml!
+```plantuml
 allowmixing
 
 rectangle "其他" as others {

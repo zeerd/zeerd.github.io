@@ -16,7 +16,7 @@ categories: [Program]
 在 RFC 5246 的第 [36](https://www.rfc-editor.org/rfc/rfc5246#page-36) 页中，
 给出了 TLS v1.2 的握手流程图。如下图所示：
 
-```plantuml!
+```plantuml
 Client -> Server : ClientHello
 note left
   客户端发送所支持的 SSL/TLS 最高协议版本号
@@ -103,7 +103,7 @@ Client <-> Server : Application Data
 在 RFC 8446 的第 [11](https://www.rfc-editor.org/rfc/rfc8446#page-11) 页中，
 给出了 TLS v1.2 的握手流程图。如下图所示：
 
-```plantuml!
+```plantuml
 Client -> Server : ClientHello
 note left
   包含的信息：
@@ -200,7 +200,7 @@ OpenSSL 3.0以后，使用 SSL_CTX_set0_tmp_dh_pkey() 加载
 在通用的 Socket 连接动作之后，需要再进行一次基于 TLS 的连接。
 这个功能使用 SSL_connect() 接口来完成。
 
-```plantuml!
+```plantuml
 activate Client
 Client --> Server : connect
 note left : POSIX connect
@@ -216,7 +216,7 @@ deactivate Client
 在通用的 Socket Accept 动作之后，需要再进行一次基于 TLS 的 Accept。
 这个功能使用 SSL_accept() 接口来完成。
 
-```plantuml!
+```plantuml
 activate Client
 Client --> Server : connect
 note left : POSIX connect

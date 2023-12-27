@@ -71,5 +71,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
-  - jekyll-spaceship
   - jekyll-remote-theme
+
+# We can not use spaceship directly according to
+#   https://pages.github.com/versions/

@@ -21,28 +21,39 @@ setInterval(() => {
     }
 }, 1000)
 
-function DrawPlantUML(prefix) {
+function DrawPlantUML(type) {
     var elements = document.getElementsByClassName('language-plantuml');
-    for (var i=0, len=elements.length|0; i<len; i=i+1|0) {
-        encoded = encodeURI(prefix + "/plantuml.php?uml=" + elements[i].innerHTML);
-        encoded = encoded.replace(/#/g, "%23");
-        // elements[i].innerHTML = "<img alt='DOT sample with plantuml' src='" + encoded + "'>";
-        elements[i].innerHTML = "<object type='image/svg+xml' style='width:100%;height:100%' data='"
-                              + encoded + "'></object>";
-        elements[i].className = "plantuml";
-        elements[i].outerHTML = elements[i].outerHTML.replace(/code/g,"div");
+    for (var i=elements.length-1, len=elements.length|-1; i>=0; i=i-1|-1) {
+        // if(elements[i] !== undefined) {
+            if(type == "IPv6") {
+                encoded = encodeURI("https://vultr6.zeerd.com/plantuml.php?uml=" + elements[i].innerHTML);
+            }
+            else {
+                encoded = encodeURI("http://vultr.zeerd.com/plantuml.php?uml=" + elements[i].innerHTML);
+            }
+            encoded = encoded.replace(/#/g, "%23");
+            if(type == "IPv6") {
+                elements[i].innerHTML = "<object type='image/svg+xml' style='width:100%;height:100%' "
+                                      + "data='" + encoded + "'></object>";
+            }
+            else {
+                elements[i].innerHTML = "<img alt='PlantUML' src='" + encoded + "'>";
+            }
+            elements[i].outerHTML = elements[i].outerHTML.replace(/code/g,"div");
+            elements[i].className = "plantuml";
+        // }
     }
 }
 
-let img = document.createElement('img');
+var img = document.createElement('img');
 img.src = "https://vultr6.zeerd.com/1x1.png";
 img.onload = function() {
     setInterval(() => {
-        DrawPlantUML("https://vultr6.zeerd.com");
+        DrawPlantUML("IPv6");
     }, 1000)
 };
 img.onerror = function() {
     setInterval(() => {
-        DrawPlantUML("http://vultr.zeerd.com");
+        DrawPlantUML("IPv4");
     }, 1000)
 };

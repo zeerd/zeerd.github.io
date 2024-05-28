@@ -1,0 +1,9 @@
+
+.page-title,
+.post-title,
+.post-title a {
+  text-shadow: 4px 4px 4px lightgray;
+}
+.masthead-title {
+  text-shadow: 4px 4px 4px lightgray;
+}

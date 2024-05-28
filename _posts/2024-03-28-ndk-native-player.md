@@ -148,3 +148,60 @@ public class NativePlayer extends Activity {
     }
 }
 ```
+
+# 对比：直接使用Java接口播放
+
+```java
+public class NativePlayer extends Activity {
+    static final String TAG = "NativePlayer";
+
+    SurfaceView mSurfaceView;
+    SurfaceHolder mSurfaceHolder;
+
+    MediaPlayer mediaPlayer;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        setContentView(R.layout.main);
+
+        mSurfaceView = (SurfaceView) findViewById(R.id.surfaceview);
+        mSurfaceHolder = mSurfaceView.getHolder();
+
+        mSurfaceHolder.addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, 
+                                       int format, int width, int height) {
+            }
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+                Surface surface = holder.getSurface();
+                mediaPlayer.setSurface(surface);
+                mediaPlayer.prepareAsync();
+            }
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+            }
+        });
+
+        mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource("/sdcard/Download/video.mp4");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.start();
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+    }
+}
+```

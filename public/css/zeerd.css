@@ -4,3 +4,11 @@ a {
 h1, h2, h3, h4, h5, h6 {
   text-shadow: 4px 4px 4px lightgray;
 }
+.page-title,
+.post-title,
+.post-title a {
+  text-shadow: 4px 4px 4px lightgray;
+}
+.masthead-title {
+  text-shadow: 4px 4px 4px lightgray;
+}

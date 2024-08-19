@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 ```bash
 gcc wrap_malloc.c -shared -o libwrap.so -ldl -fPIC
 g++ main.cpp -o test `pkg-config gtest gtest_main --cflags --libs`
-LD_PRELOAD=/home/chenhao/x/m/libwrap.so ./test 
+LD_PRELOAD=/path/to/libwrap.so ./test 
 ```
 
 ## 参照：

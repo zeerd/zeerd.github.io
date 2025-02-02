@@ -20,8 +20,8 @@ exclude: [README.md,Gemfile,tools,gen-a2s.sh,LICENSE.md]
 
 # Setup
 title:               zeerd's blog
-tagline:             闲来生雅趣，无事乐逍遥。对窗相望雪，一盏茶香飘。
-description:         闲来生雅趣，无事乐逍遥。对窗相望雪，一盏茶香飘。
+tagline:             闲来添雅趣，无事自逍遥。对窗静望雪，一盏茶香绕。
+description:         闲来添雅趣，无事自逍遥。对窗静望雪，一盏茶香绕。
 url:                 "http://blog.zeerd.com"
 baseurl:             ""
 paginate:            10

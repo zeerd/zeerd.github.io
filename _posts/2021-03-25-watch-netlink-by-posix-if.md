@@ -11,20 +11,18 @@ categories: [Linux,Ethernet]
 
 
 ```c
-#include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
-
-#include <unistd.h>
-#include <errno.h>
-
-#include <net/if.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/ioctl.h>
 #include <arpa/inet.h>
+#include <errno.h>
 #include <linux/netlink.h>
 #include <linux/rtnetlink.h>
+#include <net/if.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 /**
  * Test:
@@ -34,10 +32,10 @@ categories: [Linux,Ethernet]
 
 int get_ifindex_by_ifname(const char *_name)
 {
-    int err = 0;
+    int err     = 0;
     int ifindex = -1;
-    int fd = socket(PF_PACKET, SOCK_DGRAM, 0);
-    if( fd == -1 ) {
+    int fd      = socket(PF_PACKET, SOCK_DGRAM, 0);
+    if (fd == -1) {
         fprintf(stderr, "failed to open socket: %s\n", strerror(errno));
         return -1;
     }
@@ -47,7 +45,7 @@ int get_ifindex_by_ifname(const char *_name)
     strncpy(device.ifr_name, _name, IFNAMSIZ);
 
     err = ioctl(fd, SIOCGIFINDEX, &device);
-    if( err == -1 ) {
+    if (err == -1) {
         fprintf(stderr, "failed for SIOCGIFINDEX: %s\n", strerror(errno));
         goto exit_error;
     }
@@ -59,11 +57,12 @@ exit_error:
     return ifindex;
 }
 
-void monitor_netlink(int _index, const char *_name)
+void monitor_netlink(const char *_name)
 {
+    int index            = -1;
     int link_sts_up_last = -1;
 
-    int fd  = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);
+    int fd = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);
     if (fd < 0) {
         fprintf(stderr, "failed to open AF_NETLINK: %s\n", strerror(errno));
         return;
@@ -73,7 +72,7 @@ void monitor_netlink(int _index, const char *_name)
     memset((void *)&addr, 0, sizeof(addr));
 
     addr.nl_family = AF_NETLINK;
-    addr.nl_pid = getpid();
+    addr.nl_pid    = getpid();
     addr.nl_groups = RTMGRP_LINK | RTMGRP_IPV4_IFADDR | RTMGRP_IPV6_IFADDR;
 
     if (bind(fd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
@@ -83,32 +82,30 @@ void monitor_netlink(int _index, const char *_name)
 
     fd_set fds;
 
-    while(1) {
+    while (1) {
         FD_ZERO(&fds);
         FD_CLR(fd, &fds);
         FD_SET(fd, &fds);
 
-        struct timeval timeout = {0, 500 * 1000}; // 500 ms
-        int retval = select(FD_SETSIZE, &fds, NULL, NULL, &timeout);
+        struct timeval timeout = {0, 500 * 1000};  // 500 ms
+        int retval             = select(FD_SETSIZE, &fds, NULL, NULL, &timeout);
         if (retval == -1) {
-
         }
         else if (retval) {
             char buf[4096];
             struct iovec iov = {buf, sizeof buf};
             struct sockaddr_nl snl;
-            struct msghdr msg = {
-                (void *) &snl, sizeof snl, &iov, 1, NULL, 0, 0};
+            struct msghdr msg = {(void *)&snl, sizeof snl, &iov, 1, NULL, 0, 0};
 
             struct nlmsghdr *msgHdr;
             struct ifinfomsg *ifi;
             memset(buf, 0, sizeof(buf));
 
             int status = recvmsg(fd, &msg, 0);
-            if(status > 0) {
+            if (status > 0) {
                 for (msgHdr = (struct nlmsghdr *)buf;
-                        NLMSG_OK(msgHdr, (unsigned int)status);
-                        msgHdr = NLMSG_NEXT(msgHdr, status)) {
+                     NLMSG_OK(msgHdr, (unsigned int)status);
+                     msgHdr = NLMSG_NEXT(msgHdr, status)) {
                     if (msgHdr->nlmsg_type == NLMSG_DONE) {
                         break;
                     }
@@ -117,12 +114,15 @@ void monitor_netlink(int _index, const char *_name)
                         break;
                     }
                     else if (msgHdr->nlmsg_type == RTM_NEWLINK) {
+                        if (index == -1) {
+                            index = get_ifindex_by_ifname(_name);
+                        }
                         ifi = (struct ifinfomsg *)NLMSG_DATA(msgHdr);
-                        if (ifi->ifi_index == _index) {
+                        if (ifi->ifi_index == index) {
                             /* 物理连接与否（网线插没插） */
                             bool link_running = ifi->ifi_flags & IFF_RUNNING;
                             /* 软件控制上有没有UP（ifconfig <iface> up/down） */
-                            bool link_up = ifi->ifi_flags & IFF_UP;
+                            bool link_up     = ifi->ifi_flags & IFF_UP;
                             bool link_sts_up = link_up && link_running;
                             if (link_sts_up != link_sts_up_last) {
                                 link_sts_up_last = link_sts_up;
@@ -137,23 +137,21 @@ void monitor_netlink(int _index, const char *_name)
                     }
                     else if (msgHdr->nlmsg_type == RTM_NEWADDR) {
                         struct ifaddrmsg *ifaddr = NLMSG_DATA(msgHdr);
-                        char ip[256] = { 0 };
-                        char iface[256] = { 0 };
-                        int len = msgHdr->nlmsg_len - NLMSG_SPACE(sizeof(*ifaddr));
+                        char ip[256]             = {0};
+                        char iface[256]          = {0};
+                        int len
+                            = msgHdr->nlmsg_len - NLMSG_SPACE(sizeof(*ifaddr));
                         struct rtattr *rta = IFA_RTA(ifaddr);
                         while (RTA_OK(rta, len)) {
-                            if(RTA_DATA(rta) != NULL) {
-                                /* TODO: not sure if IPv6 work */
-                                if(rta->rta_type == IFA_ADDRESS) {
-                                    inet_ntop(ifaddr->ifa_family,
-                                              RTA_DATA(rta), ip, sizeof(ip));
-                                }
-                                if(rta->rta_type == IFA_LABEL) {
-                                    strcpy(iface, RTA_DATA(rta));
+                            if (RTA_DATA(rta) != NULL) {
+                                if (rta->rta_type == IFA_ADDRESS) {
+                                    inet_ntop(ifaddr->ifa_family, RTA_DATA(rta),
+                                              ip, sizeof(ip));
                                 }
                             }
                             rta = RTA_NEXT(rta, len);
                         }
+                        if_indextoname(ifaddr->ifa_index, iface);
                         printf("%s's IP changed to %s\n", iface, ip);
                     }
                 }
@@ -168,11 +166,7 @@ exit_error:
 
 int main(int argc, char *argv[])
 {
-    int ifindex = get_ifindex_by_ifname(argv[1]);
-    printf("%d : %s\n", ifindex, argv[1]);
-
-    monitor_netlink(ifindex, argv[1]);
-
+    monitor_netlink(argv[1]);
     return 0;
 }
 ```

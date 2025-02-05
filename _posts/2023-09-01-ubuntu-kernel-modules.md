@@ -1,11 +1,40 @@
 ---
 layout: post
 title: 在 Ubuntu 下独立编译内核模块
-tag: [Kernel]
+tag: [Kernel,Ubuntu]
 categories: [Program]
 ---
 
 <!--break-->
+
+# 准备
+
+不知道什么原因，在最近的版本中，已经无法直接从默认的`repo`获取内核代码了。
+
+下面过程可以帮助开发者获取合适版本的内核源码：
+
+```bash
+sudo add-apt-repository ppa:canonical-kernel-team/ppa
+sudo apt update
+sudo apt-get install linux-headers-$(uname -r)
+sudo apt-get source linux-image-$(uname -r)
+```
+
+上面这一步可能还是无法直接获得代码，但是可以通过日志知道真正的源码包的名称。
+根据这个名称，可以获得真实的源码：
+
+```bash
+sudo apt-get source linux-hwe-6.8
+```
+
+```bash
+sudo chown $USER:$USER -R linux-hwe-6.8-6.8.0/
+cd linux-hwe-6.8-6.8.0/
+cp /boot/config-$(uname -r) .config
+make oldconfig
+```
+
+# 编译
 
 参考了
 《 [Linux驱动实践：带你一步一步编译内核驱动程序](https://zhuanlan.zhihu.com/p/434163532) 》
@@ -78,5 +107,3 @@ clean:
 执行`dmesg`可以看到`[ 5180.365546] module: x86/modules: Skipping invalid relocation target, existing value is nonzero for type 1, loc 00000000df2a29e3, val ffffffffc14970b6`
 
 `sudo apt upgrade`之后，问题消失。
-
-以上，在`5.15.0-82-generic #91~20.04.1-Ubuntu`验证成功。

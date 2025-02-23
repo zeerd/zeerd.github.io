@@ -2,7 +2,7 @@
 layout: post
 title: 使用 mailio 收取邮件并保存附件
 tag: [mailio]
-categories: [Linux]
+categories: [Program]
 ---
 
 <!--break-->

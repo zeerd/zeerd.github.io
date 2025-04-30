@@ -6,6 +6,8 @@ categories: [AI]
 ---
 <!--break-->
 
+[Ryzen AI Software 1.3](https://ryzenai.docs.amd.com/en/1.3/)
+
 
 下面内容是我研究这些教材时自己琢磨出来的（也有AI告诉的），未必是对的。只是我这么改之后，能用了。
 

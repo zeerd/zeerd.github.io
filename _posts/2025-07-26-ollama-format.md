@@ -94,3 +94,15 @@ print(json.dumps(response_json, ensure_ascii=False, indent=4))
     ]
 }
 ```
+
+如果使用的是`OpenAI`的接口，则需要将`format=fmt`替换成：
+
+```python
+response_format={
+    'type': 'json_schema',
+    'json_schema':
+    {
+        "schema": fmt
+    }
+}
+```

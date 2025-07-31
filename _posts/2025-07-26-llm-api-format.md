@@ -1,13 +1,12 @@
 ---
 layout: post
-title: Ollama 的结构化输出
-tags: [Ollama]
+title: 大语言模型 API： 结构化输出
+tags: [Ollama, OpenAI, API]
 categories: [AI]
 ---
-<!--break-->
-
 
 官方提供了通过 [BaseModel](https://github.com/ollama/ollama-python/blob/main/examples/structured-outputs.py) 规范输出格式的例子。
+<!--break-->
 
 但是，实际使用的情况下，很多时候提示词都是从模板中读取出来的，输出格式也不是限定的，需要根据实际情况动态生成。而无法预先通过`BaseModel`为每种情况创建子类。
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python 脚本实现 MCP 的中途提问（Elicitation）功能
-tags: [MCP]
+tags: [MCP, Python]
 categories: [AI]
 ---
 

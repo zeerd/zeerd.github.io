@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 大语言模型 API： 工具调用
-tags: [Ollama, OpenAI, API]
+tags: [Ollama, OpenAI, API, Python]
 categories: [AI]
 ---
 

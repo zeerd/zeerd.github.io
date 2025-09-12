@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python 脚本直接调用摩卡社区的 Hosted 的 MCP 服务
-tags: [MCP]
+tags: [MCP, Python]
 categories: [AI]
 ---
 

@@ -17,7 +17,7 @@ categories: [OperatingSystem]
 
 从 [官网](https://github.com/be5invis/Sarasa-Gothic) 下载Release包，有200多M。 解压缩出来更是有惊人的十几个G。
 
-这里面包含了大概40多组不同的自体。其中，仅简体中文自体就有10组。因此，当然并不需要全部使用。
+这里面包含了大概40多组不同的字体。其中，仅简体中文字体就有10组。因此，当然并不需要全部使用。
 
 目前，我个人使用的是“sarasa-fixed-sc”开头的一组字体。
 

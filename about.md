@@ -24,5 +24,6 @@ Tables of Contents from [jekyll-toc](https://github.com/allejo/jekyll-toc)
 
 The search function based on [lunr.js](http://jekyll.tips/jekyll-casts/jekyll-search-using-lunr-js/)
 
-Thanks for reading!
+You may [buy me a coffee](https://ko-fi.com/zeerd) if anything real helped.
 
+Thanks for reading!

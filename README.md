@@ -10,11 +10,3 @@ search function based on [lunr.js](http://jekyll.tips/jekyll-casts/jekyll-search
 more features by [jekyll-spaceship](https://github.com/jeffreytse/jekyll-spaceship)
 
 some concept from [jekyll-theme-yat](https://github.com/jeffreytse/jekyll-theme-yat/)
-
-# GIT SUBMODULES
-
-```
-git submodule init
-git submodule update
-```
-

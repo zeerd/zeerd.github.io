@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 在 Windows 系统的 WSL2 中使用 docker 访问显卡
-tags: [WSL2，Docker]
+tags: [WSL2, Docker]
 categories: [AI]
 ---
 <!--break-->
